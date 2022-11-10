@@ -165,5 +165,4 @@ function makeSession($visitorID){
   $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits')";
   mysqli_query($db, $sql2);
 }
-
  ?>

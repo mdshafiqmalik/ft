@@ -6,8 +6,6 @@
 // $keyLength: Lenght of ID i.e. 20
 // $fields: It is an array contains ["table"] and ["row"] to check it is unique in a db
 // need just random ID then call generateRandomID($keyLength);
-
-
 function generateUniqueID($fields, $keyLength){
   $randomString = "";
   for ($x = 1; $x <= $keyLength; $x++) {
