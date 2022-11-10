@@ -1,0 +1,76 @@
+:root{
+  --fontfam: 'Roboto', Ariel, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;1,300&display=swap');
+
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  body{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items:  center;
+  }
+  .mainCont{
+    min-width: 300px;
+    min-height: 300px;
+    background-color: #eee;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: var(--fontfam);
+    padding: 2em 3em;
+    border-radius: 10px;
+  }
+  .mainCont form{
+    display: flex;
+    flex-direction: column;
+  }
+  .mainCont form div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+  }
+  .mainCont span{
+    font-weight: 500;
+    margin: 1em;
+    font-size: 1.6em;
+    display: flex;
+    justify-content: center;
+  }
+  #errorMessage{
+    font-size: 1em;
+    margin: .3em;
+  }
+  .mainCont form input{
+    padding: .8em 2.3em;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .mainCont form input[type="submit"]{
+    margin-top: 1.5em;
+    font-family: var(--fontfam);
+    font-weight: bold;
+  }
+  @media only screen and (max-width: 500px) {
+    .mainCont form input{
+      margin-top: .2em;
+      padding: .7em 1.1em;
+      border: .1px solid;
+      border-radius: 4px;
+      outline: :0;
+      font-size: 1em;
+    }
+    .mainCont form input:hover{
+      outline: 0;
+    }
+    .mainCont{
+      background-color: white;
+    }
+    body{
+      align-items: flex-start;
+    }
+  }
