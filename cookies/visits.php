@@ -147,7 +147,7 @@ function addNewVisitor(){
   $visitorID =  generateUniqueID(["fast_visitor", "visiterId"],20);
   $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
   // Clear cookie
-  // setcookie("clear",false);
+  setcookie("clear",false);
   // set session as visiterSId === cookie
   $_SESSION["visitorSID"] = $visitorID;
   // Set cookie
@@ -161,6 +161,7 @@ function addNewVisitor(){
 function addCookie($encryptedID){
   $cookieEnabled = (bool) setcookie('cookieTest', "true", time() + (86400 * 365), "/");
   if ($cookieEnabled) {
+    echo "cookie Set";
     $cookieSet = (bool) setcookie('visitorID', $encryptedID, time() + (86400 * 365), "/");
   }else {
     $cookieSet = false;
