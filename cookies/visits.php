@@ -151,12 +151,7 @@ function addNewVisitor(){
   // set session as visiterSId === cookie
   $_SESSION["visitorSID"] = $visitorID;
   // Set cookie
-  $cookieEnabled = (bool) setcookie('cookieTest', "true", time() + (86400 * 365), "/");
-  if ($cookieEnabled) {
-    $cookieSet = (bool) setcookie('visitorID', $encryptedID, time() + (86400 * 365), "/");
-  }else {
-    $cookieSet = false;
-  }
+  $cookieSet = (bool) setcookie('visitorID', $encryptedID, time() + (86400 * 365), "/");
   var_dump($cookieSet);
   // Add to visiter data to DB
   $sql = "INSERT INTO fast_visitor ( visitorId, visitorDevice, visitorBrowser, visitorPlatform, browserInfo ) VALUES ('$visitorID','$deviceType', '$browser', '$platform','$browserInfo')";
