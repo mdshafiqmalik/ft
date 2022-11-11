@@ -145,7 +145,6 @@ function addNewVisitor(){
   $browser = $userDevice['browser'];
   $dateTime = time();
   $visitorID =  generateUniqueID(["fast_visitor", "visiterId"],20);
-  echo $visitorID;
   $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
   // Clear cookie
   setcookie("clear",false);
@@ -153,6 +152,7 @@ function addNewVisitor(){
   $_SESSION["visitorSID"] = $visitorID;
   // Set cookie
   addCookie($encryptedID);
+  echo $encryptedID;
   // Add to visiter DB
   $sql = "INSERT INTO fast_visitor ( visitorId, visitorDevice, visitorBrowser, visitorPlatform, browserInfo ) VALUES ('$visitorID','$deviceType', '$browser', '$platform','$browserInfo')";
   mysqli_query($db, $sql);
