@@ -49,7 +49,6 @@ function generateRandomID($keyLen){
    }
    return $key;
 }
-
  ?>
 
 <?php
