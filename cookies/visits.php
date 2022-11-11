@@ -45,7 +45,6 @@ function checkCookie(){
 }
 
 // To check wether visiterID exists in DB
-
 function existInDB($visitorID){
   include($GLOBALS['dbc']);
   $sql = "SELECT * FROM fast_visitor WHERE visitorId = '$visitorID'";
@@ -132,7 +131,6 @@ function addNewVisitor(){
   include($GLOBALS['dbc']);
   include_once($GLOBALS['global']);
   include($GLOBALS['encDec']);
-  // Visitor Data
   $ipAddress = getIp();
   $userDevice = get_browser(null, true);
   $browserInfo = serialize($userDevice);
