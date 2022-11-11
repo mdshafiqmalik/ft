@@ -10,6 +10,5 @@ include 'cookies/visits.php';
     <title></title>
   </head>
   <body>
-
   </body>
 </html>

@@ -4,10 +4,7 @@
 $GLOBALS['dbc'] = $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 $GLOBALS['encDec'] = $_SERVER['DOCUMENT_ROOT'].'/config/encDec.php';
 $GLOBALS['global'] = $_SERVER['DOCUMENT_ROOT'].'/global/global.php';
-
-
 visited();
-
 function visited(){
   // Authenticate with Cookie
     $cookie =  checkCookie();
