@@ -1,4 +1,3 @@
-
 <?php
 // last edited 10-11-2022 20:56
 // generateUniqueID function create a random number i.e. 93479139632491634

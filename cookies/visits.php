@@ -157,9 +157,4 @@ function addNewVisitor(){
   mysqli_query($db, $sql);
   makeSession($visitorID);
 }
-
-
-
-
-
  ?>
