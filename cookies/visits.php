@@ -164,6 +164,7 @@ function addCookie($encryptedID){
     echo "cookie Set";
     $cookieSet = (bool) setcookie('visitorID', $encryptedID, time() + (86400 * 365), "/");
   }else {
+    echo "Cookie Not set";
     $cookieSet = false;
   }
   return $cookieSet;
