@@ -147,7 +147,7 @@ function addNewVisitor(){
   $visitorID =  generateUniqueID(["fast_visitor", "visiterId"],20);
   $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
   // Clear cookie
-  setcookie("clear",false);
+  // setcookie("clear",false);
   // set session as visiterSId === cookie
   $_SESSION["visitorSID"] = $visitorID;
   // Set cookie
