@@ -3,7 +3,6 @@ session_start();
 include 'cookies/visits.php';
 ?>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
