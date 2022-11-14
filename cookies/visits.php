@@ -130,9 +130,10 @@ function updateSessionActivity($pagesViews,$httpRef,$visitRef, $sessionID){
   $visitRe = json_decode($visitRef, true);
   $dateTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
-    $httpReferer = $_SERVER['HTTP_REFERER'];
+    $httpRefe = $_SERVER['HTTP_REFERER'];
+    $httpReferer = preg_replace("(^https?://)", "", $httpRefe );
   }else{
-    $httpReferer = "No Referer";
+    $httpReferer = "NIL";
   }
   $array = array("$dateTime" => "$httpReferer");
   $httpR = $httpRe+$array;
@@ -143,7 +144,7 @@ function updateSessionActivity($pagesViews,$httpRef,$visitRef, $sessionID){
   if(isset($_GET['referer']) && !empty($_GET['referer'])){
     $visitReferer = $_GET['referer'];
   }else {
-    $visitReferer = "No Referer";
+    $visitReferer = "NIL";
   }
   $array2 = array("$dateTime" => "$visitReferer");
   $VisitR = $visitRe+$array2;
@@ -167,7 +168,7 @@ function makeSession($visitorID){
     $httpRefe = $_SERVER['HTTP_REFERER'];
     $httpReferer = preg_replace("(^https?://)", "", $httpRefe );
   }else{
-    $httpReferer = "No Referer";
+    $httpReferer = "NIL";
   }
   $array = array("$dateTime" => "$httpReferer");
   $hRef = json_encode($array);
@@ -175,7 +176,7 @@ function makeSession($visitorID){
   if(isset($_GET["referer"]) && !empty($_GET["referer"])){
     $visitReferer = $_GET["referer"];
   }else {
-    $visitReferer = "No Referer";
+    $visitReferer = "NIL";
   }
   $array2 = array("$dateTime" => "$visitReferer");
   $vRef = json_encode($array2);
