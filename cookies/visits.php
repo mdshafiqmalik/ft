@@ -142,7 +142,9 @@ function makeSession($visitorID){
   // Add to sessions on user and DB
   $visitorIP = getIp();
   $dateTime = time();
+  $referer = $_SERVER['HTTP_REFERER'];
   $thisPage = $_SERVER["REQUEST_URI"];
+  $visitDetail = [$thisPage, $referer];
   $sessionID = generateUniqueID(["fast_sessions", "sessionID"],20);
   $_SESSION["uniqueSession"] = $sessionID;
   $pageInfo = array("$dateTime" => "$thisPage");
@@ -150,6 +152,4 @@ function makeSession($visitorID){
   $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits')";
   mysqli_query($db, $sql2);
 }
-
-
  ?>
