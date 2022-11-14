@@ -24,7 +24,7 @@ function generateUniqueID($fields, $keyLength){
 
 // Checking in Database
 function checkInDB($fields, $randomString){
-$dbc = $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
+$dbc = $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/db.php';
 include($dbc);
 $sql = "SELECT * FROM $fields[0]";
 $result = mysqli_query($db, $sql);
