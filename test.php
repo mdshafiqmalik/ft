@@ -17,7 +17,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 return $idExists;
 }
-checkInDB()
+checkInDB();
 $cookieSet = setcookie('visitorID', "ghjh", time() + (86400 * 30), "/");
 var_dump($cookieSet);
 
