@@ -122,18 +122,27 @@ function updateSessionActivity($pagesViews, $sessionID){
   $lastVisited = json_decode($pagesViews, true);
   $dateTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
-    $referer = $_SERVER['HTTP_REFERER'];
-  }else {
-    $referer = "No Referer";
+    $httpReferer = $_SERVER['HTTP_REFERER'];
+  }else{
+    $httpReferer = "No Referer";
   }
+  $array = array("$dateTime" => "$httpReferer");
+  $hRef = json_encode($array);
+
+  if(isset($_GET["name"]) && !empty($_GET["name"])){
+    $visitReferer = $_GET["name"];
+  }else {
+    $visitReferer = "No Referer";
+  }
+  $array2 = array("$dateTime" => "$visitReferer");
+  $vRef = json_encode($array);
+
   $thisPage = $_SERVER["REQUEST_URI"];
-  $visitArray = [$thisPage, $referer];
-  $visitDetail = serialize($visitArray);
-  $newPage = array( "$dateTime "=> "$visitDetail");
+  $newPage = array( "$dateTime "=> "$thisPage");
   $newArray = $lastVisited+$newPage;
   $updatedPages = json_encode($newArray);
   include($GLOBALS['dbc']);
-  $sql = "UPDATE fast_sessions SET sessionVisits = '$updatedPages' WHERE sessionID = '$sessionID'";
+  $sql = "UPDATE fast_sessions SET sessionVisits = '$updatedPages', visitReferer = '$vRef', httpReferer = '$hRef' WHERE sessionID = '$sessionID'";
   $result = mysqli_query($db, $sql);
 }
 function makeSession($visitorID){
@@ -143,18 +152,27 @@ function makeSession($visitorID){
   $visitorIP = getIp();
   $dateTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
-    $referer = $_SERVER['HTTP_REFERER'];
-  }else {
-    $referer = "No Referer";
+    $httpReferer = $_SERVER['HTTP_REFERER'];
+  }else{
+    $httpReferer = "No Referer";
   }
+  $array = array("$dateTime" => "$httpReferer");
+  $hRef = json_encode($array);
+
+  if(isset($_GET["name"]) && !empty($_GET["name"])){
+    $visitReferer = $_GET["name"];
+  }else {
+    $visitReferer = "No Referer";
+  }
+  $array2 = array("$dateTime" => "$visitReferer");
+  $vRef = json_encode($array);
+
   $thisPage = $_SERVER["REQUEST_URI"];
-  $visitArray = [$thisPage, $referer];
-  $visitDetail = serialize($visitArray);
   $sessionID = generateUniqueID(["fast_sessions", "sessionID"],15);
   $_SESSION["uniqueSession"] = $sessionID;
-  $pageInfo = array("$dateTime" => '$visitDetail');
+  $pageInfo = array("$dateTime" => "$thisPage");
   $pageVisits = json_encode($pageInfo);
-  $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits')";
+  $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits, visitReferer, httpReferer) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits', '$vRef','$hRef')";
   mysqli_query($db, $sql2);
 }
  ?>
