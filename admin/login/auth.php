@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $plen = (boolean)strlen($password);
   $AdminIDSpace = preg_match('/\s/', $UsernameOrEMail);
   $passwordSpace = preg_match('/\s/', $password);
-  include '../../_.config/_s_db_.php';
+  include '../../config/db_.php';
   // check if Admin ID is Empty
   if ($IDlen) {
     // check Admin ID have spaces
@@ -88,7 +88,7 @@ function createLogin($adminID){
   $logDate = date('y-m-d H:i:s');
   $getDeviceInfo = $_SERVER['HTTP_USER_AGENT'];
   $getIP = getenv("REMOTE_ADDR");
-  include '../../_.config/_s_db_.php';
+  include '../../config/db_.php';
   $sql = "INSERT INTO admin_log_history (`loginID`,`adminID`,`loginDateTime`,`loginDevice`, `loginIP`,`status`) VALUES ('$randLogID','$adminID','$logDate','$getDeviceInfo', '$getIP', '1')";
   $result = mysqli_query($db, $sql);
   if ($result) {

@@ -39,7 +39,7 @@ if (isset($_SESSION['adminLoginID'])) {
 
 <?php
 function checkLogDetails($logID){
-  include '../../_.config/_s_db_.php';
+  include '../../config/db_.php';
   $checkLoginID = "SELECT adminID FROM admin_log_history Where loginID = '$logID' AND status = '1'";
   $userDat = mysqli_query($db, $checkLoginID);
   if (mysqli_num_rows($userDat)) {
@@ -53,7 +53,7 @@ function checkLogDetails($logID){
 }
 
 function getAdminDetails($adminId){
-  include '../../_.config/_s_db_.php';
+  include '../../config/db_.php';
   $sql = "SELECT * FROM fast_admin WHERE adminID = '$adminId'";
   $result = mysqli_query($db, $sql);
   if (mysqli_num_rows($result)) {
