@@ -5,7 +5,6 @@ $GLOBALS['dbc'] = $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 $GLOBALS['encDec'] = $_SERVER['DOCUMENT_ROOT'].'/config/encDec.php';
 $GLOBALS['global'] = $_SERVER['DOCUMENT_ROOT'].'/global/global.php';
 visited();
-
 function visited(){
   // Authenticate with Cookie
     $cookie =  checkCookie();
@@ -23,7 +22,6 @@ function visited(){
       addNewVisitor();
     }
 }
-
 function addNewVisitor(){
   include($GLOBALS['dbc']);
   include_once($GLOBALS['global']);
@@ -47,7 +45,6 @@ function addNewVisitor(){
   mysqli_query($db, $sql);
   makeSession($visitorID);
 }
-
 function checkCookie(){
   include($GLOBALS['encDec']);
     if (isset($_COOKIE['visitorID'])) {
@@ -68,7 +65,6 @@ function checkCookie(){
     }
   return $cookieResult;
 }
-
 // To check wether visiterID exists in DB
 function existInDB($visitorID){
   include($GLOBALS['dbc']);
@@ -86,7 +82,6 @@ function existInDB($visitorID){
   }
   return $userPresent;
 }
-
 function sessionExist(){
   if (isset($_SESSION["uniqueSession"])) {
     $sess = $_SESSION["uniqueSession"];
@@ -104,7 +99,6 @@ function sessionExist(){
   }
   return $sessionPresent;
 }
-
 function checkSession($sess){
     include($GLOBALS['dbc']);
   $sql = "SELECT * FROM fast_sessions WHERE sessionID = '$sess'";
@@ -124,7 +118,6 @@ function checkSession($sess){
   }
   return $sessionPresent;
 }
-
 function updateSessionActivity($pagesViews, $sessionID){
   $lastVisited = json_decode($pagesViews, true);
   $dateTime = time();
@@ -143,7 +136,6 @@ function updateSessionActivity($pagesViews, $sessionID){
   $sql = "UPDATE fast_sessions SET sessionVisits = '$updatedPages' WHERE sessionID = '$sessionID'";
   $result = mysqli_query($db, $sql);
 }
-
 function makeSession($visitorID){
   include($GLOBALS['dbc']);
   include_once($GLOBALS['global']);
