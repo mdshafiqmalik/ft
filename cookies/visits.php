@@ -23,6 +23,32 @@ function visited(){
     }
 }
 
+function addNewVisitor(){
+  include($GLOBALS['dbc']);
+  include_once($GLOBALS['global']);
+  include($GLOBALS['encDec']);
+  $ipAddress = getIp();
+  $userDevice = get_browser(null, true);
+  $browserInfo = serialize($userDevice);
+  $deviceType = $userDevice['device_type'];
+  $platform= $userDevice['platform'];
+  $browser = $userDevice['browser'];
+  $dateTime = time();
+  $visitorID =  generateUniqueID(["fast_visitor", "visitorID"],20);
+  $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
+  // Clear cookie
+  setcookie("clear",false);
+  // set session as visiterSId === cookie
+  $_SESSION["visitorSID"] = $visitorID;
+  // Set cookie
+  $cookieSet = setcookie('visitorID', $encryptedID, time() + (86400 * 30), "/");
+  var_dump($cookieSet);
+  // Add to visiter data to DB
+  $sql = "INSERT INTO fast_visitor ( visitorID, visitorDevice, visitorBrowser, visitorPlatform, browserInfo ) VALUES ('$visitorID','$deviceType', '$browser', '$platform','$browserInfo')";
+  mysqli_query($db, $sql);
+  makeSession($visitorID);
+}
+
 function checkCookie(){
   include($GLOBALS['encDec']);
     if (isset($_COOKIE['visitorID'])) {
@@ -127,29 +153,5 @@ function makeSession($visitorID){
   mysqli_query($db, $sql2);
 }
 
-function addNewVisitor(){
-  include($GLOBALS['dbc']);
-  include_once($GLOBALS['global']);
-  include($GLOBALS['encDec']);
-  $ipAddress = getIp();
-  $userDevice = get_browser(null, true);
-  $browserInfo = serialize($userDevice);
-  $deviceType = $userDevice['device_type'];
-  $platform= $userDevice['platform'];
-  $browser = $userDevice['browser'];
-  $dateTime = time();
-  $visitorID =  generateUniqueID(["fast_visitor", "visitorID"],20);
-  $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
-  // Clear cookie
-  setcookie("clear",false);
-  // set session as visiterSId === cookie
-  $_SESSION["visitorSID"] = $visitorID;
-  // Set cookie
-  $cookieSet = setcookie('visitorID', $encryptedID, time() + (86400 * 30), "/");
-  var_dump($cookieSet);
-  // Add to visiter data to DB
-  $sql = "INSERT INTO fast_visitor ( visitorID, visitorDevice, visitorBrowser, visitorPlatform, browserInfo ) VALUES ('$visitorID','$deviceType', '$browser', '$platform','$browserInfo')";
-  mysqli_query($db, $sql);
-  makeSession($visitorID);
-}
+
  ?>
