@@ -132,7 +132,8 @@ function updateSessionActivity($pagesViews, $sessionID){
   }else {
     $referer = "No Referer";
   }
-  $visitDetail = [$thisPage, $referer];
+  $visitArray = [$thisPage, $referer];
+  $visitDetail = serialize($visitArray);
   $thisPage = $_SERVER["REQUEST_URI"];
   $newPage = array( "$dateTime "=> "$visitDetail");
   $newArray = $lastVisited+$newPage;
@@ -155,7 +156,8 @@ function makeSession($visitorID){
   }
 
   $thisPage = $_SERVER["REQUEST_URI"];
-  $visitDetail = [$thisPage, $referer];
+  $visitArray = [$thisPage, $referer];
+  $visitDetail = serialize($visitArray);
   $sessionID = generateUniqueID(["fast_sessions", "sessionID"],20);
   $_SESSION["uniqueSession"] = $sessionID;
   $pageInfo = array("$dateTime" => "$visitDetail");
