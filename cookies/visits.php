@@ -142,7 +142,12 @@ function makeSession($visitorID){
   // Add to sessions on user and DB
   $visitorIP = getIp();
   $dateTime = time();
-  $referer = $_SERVER['HTTP_REFERER'];
+  if (isset($_SERVER['HTTP_REFERER'])) {
+    $referer = $_SERVER['HTTP_REFERER'];
+  }else {
+    $referer = "No Referer"
+  }
+
   $thisPage = $_SERVER["REQUEST_URI"];
   $visitDetail = [$thisPage, $referer];
   $sessionID = generateUniqueID(["fast_sessions", "sessionID"],20);
