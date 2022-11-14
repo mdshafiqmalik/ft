@@ -3,7 +3,7 @@
 if (($_SERVER["HTTP_HOST"] == "www.fastreed.com")||($_SERVER["HTTP_HOST"] == "fastreed.com")) {
   $hostName = 'db5010832350.hosting-data.io';
   $dbName = 'dbs9163368';
-  $userName = 'dbu633513';
+  $userName = 'dbu1298474';
   $passWord = 'Rajedit@5119';
 }elseif ($_SERVER["HTTP_HOST"] == "localhost") {
   $hostName = 'localhost';
