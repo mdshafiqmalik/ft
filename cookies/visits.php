@@ -34,7 +34,7 @@ function addNewVisitor(){
   $platform= $userDevice['platform'];
   $browser = $userDevice['browser'];
   $dateTime = time();
-  $visitorID =  generateUniqueID(["fast_visitor", "visitorID"],20);
+  $visitorID =  generateUniqueID(["fast_visitor", "visitorID"],15);
   $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
   // set session as visiterSId === cookie
   $_SESSION["visitorSID"] = $visitorID;
@@ -133,9 +133,9 @@ function updateSessionActivity($pagesViews, $sessionID){
     $referer = "No Referer";
   }
   $thisPage = $_SERVER["REQUEST_URI"];
-  $visitArray = [$thisPage, $referer];
-  $visitDetail = serialize($visitArray);
-  $newPage = array( "$dateTime "=> "$visitDetail");
+  // $visitArray = [$thisPage, $referer];
+  // $visitDetail = serialize($visitArray);
+  $newPage = array( "$dateTime "=> "$thisPage");
   $newArray = $lastVisited+$newPage;
   $updatedPages = json_encode($newArray);
   include($GLOBALS['dbc']);
@@ -155,11 +155,11 @@ function makeSession($visitorID){
     $referer = "No Referer";
   }
   $thisPage = $_SERVER["REQUEST_URI"];
-  $visitArray = [$thisPage, $referer];
-  $visitDetail = serialize($visitArray);
-  $sessionID = generateUniqueID(["fast_sessions", "sessionID"],20);
+  // $visitArray = [$thisPage, $referer];
+  // $visitDetail = serialize($visitArray);
+  $sessionID = generateUniqueID(["fast_sessions", "sessionID"],15);
   $_SESSION["uniqueSession"] = $sessionID;
-  $pageInfo = array("$dateTime" => "$visitDetail");
+  $pageInfo = array("$dateTime" => "$thisPage");
   $pageVisits = json_encode($pageInfo);
   $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits')";
   mysqli_query($db, $sql2);
