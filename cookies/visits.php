@@ -127,8 +127,14 @@ function checkSession($sess){
 function updateSessionActivity($pagesViews, $sessionID){
   $lastVisited = json_decode($pagesViews, true);
   $dateTime = time();
+  if (isset($_SERVER['HTTP_REFERER'])) {
+    $referer = $_SERVER['HTTP_REFERER'];
+  }else {
+    $referer = "No Referer";
+  }
+  $visitDetail = [$thisPage, $referer];
   $thisPage = $_SERVER["REQUEST_URI"];
-  $newPage = array( "$dateTime "=> "$thisPage");
+  $newPage = array( "$dateTime "=> "$visitDetail");
   $newArray = $lastVisited+$newPage;
   $updatedPages = json_encode($newArray);
   include($GLOBALS['dbc']);
@@ -152,7 +158,7 @@ function makeSession($visitorID){
   $visitDetail = [$thisPage, $referer];
   $sessionID = generateUniqueID(["fast_sessions", "sessionID"],20);
   $_SESSION["uniqueSession"] = $sessionID;
-  $pageInfo = array("$dateTime" => "$thisPage");
+  $pageInfo = array("$dateTime" => "$visitDetail");
   $pageVisits = json_encode($pageInfo);
   $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits')";
   mysqli_query($db, $sql2);
