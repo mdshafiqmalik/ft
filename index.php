@@ -7,7 +7,7 @@ include 'cookies/visits.php';
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Fastreed</title>
   </head>
   <body>
   </body>
