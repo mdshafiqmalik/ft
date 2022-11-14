@@ -39,16 +39,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 return $idExists;
 }
-
-
-// Function to create a randomID
-function generateRandomID($keyLen){
-   $key = "";
-   for ($x = 1; $x <= $keyLen; $x++) {
-       $key .= random_int(0, 9);
-   }
-   return $key;
-}
  ?>
 
 <?php
