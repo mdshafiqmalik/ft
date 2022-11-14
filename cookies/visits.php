@@ -47,7 +47,7 @@ function checkCookie(){
 // To check wether visiterID exists in DB
 function existInDB($visitorID){
   include($GLOBALS['dbc']);
-  $sql = "SELECT * FROM fast_visitor WHERE visitorId = '$visitorID'";
+  $sql = "SELECT * FROM fast_visitor WHERE visitorID = '$visitorID'";
   $result = mysqli_query($db, $sql);
   if ($result) {
     $isUser = mysqli_num_rows($result);
@@ -138,7 +138,7 @@ function addNewVisitor(){
   $platform= $userDevice['platform'];
   $browser = $userDevice['browser'];
   $dateTime = time();
-  $visitorID =  generateUniqueID(["fast_visitor", "visiterId"],20);
+  $visitorID =  generateUniqueID(["fast_visitor", "visitorID"],20);
   $encryptedID = openssl_encrypt($visitorID, $ciphering,$encryption_key, $options, $encryption_iv);
   // Clear cookie
   setcookie("clear",false);
@@ -148,7 +148,7 @@ function addNewVisitor(){
   $cookieSet = setcookie('visitorID', $encryptedID, time() + (86400 * 30), "/");
   var_dump($cookieSet);
   // Add to visiter data to DB
-  $sql = "INSERT INTO fast_visitor ( visitorId, visitorDevice, visitorBrowser, visitorPlatform, browserInfo ) VALUES ('$visitorID','$deviceType', '$browser', '$platform','$browserInfo')";
+  $sql = "INSERT INTO fast_visitor ( visitorID, visitorDevice, visitorBrowser, visitorPlatform, browserInfo ) VALUES ('$visitorID','$deviceType', '$browser', '$platform','$browserInfo')";
   mysqli_query($db, $sql);
   makeSession($visitorID);
 }
