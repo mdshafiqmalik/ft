@@ -13,6 +13,8 @@ function visited(){
       // check if the session is same or different
       if (sessionExist()["bool"]) {
         $pagesViews = sessionExist()["pagesViews"];
+        $httpRef = sessionExist()["httpRef"];
+        $visitRef = sessionExist()["visitRef"];
         $sessionID = sessionExist()["id"];
         updateSessionActivity($pagesViews,$httpRef,$visitRef,$sessionID);
       }else {
