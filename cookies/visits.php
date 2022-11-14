@@ -14,7 +14,7 @@ function visited(){
       if (sessionExist()["bool"]) {
         $pagesViews = sessionExist()["pagesViews"];
         $sessionID = sessionExist()["id"];
-        updateSessionActivity($pagesViews,$sessionID);
+        updateSessionActivity($pagesViews,$httpRef,$visitRef,$sessionID);
       }else {
         makeSession($visitorID['id']);
       }
@@ -89,6 +89,8 @@ function sessionExist(){
       $sessionPresent["bool"] = true;
       $sessionPresent["id"] = $sess;
       $sessionPresent["pagesViews"] = checkSession($sess)["pagesViews"];
+      $sessionPresent["httpReferer"] = checkSession($sess)["httpReferer"];
+      $sessionPresent["visitReferer"] = checkSession($sess)["visitReferer"];
     }else {
       $sessionPresent["bool"] = false;
       $sessionPresent["error"] = "New Session detected";
@@ -108,6 +110,8 @@ function checkSession($sess){
     if ($isPresent) {
         $row = mysqli_fetch_assoc($result);
         $sessionPresent['pagesViews'] = $row['sessionVisits'];
+        $sessionPresent['httpReferer'] = $row['httpReferer'];
+        $sessionPresent['visitReferer'] = $row['visitReferer'];
         $sessionPresent["bool"] = true;
 
     }else {
@@ -118,8 +122,10 @@ function checkSession($sess){
   }
   return $sessionPresent;
 }
-function updateSessionActivity($pagesViews, $sessionID){
+function updateSessionActivity($pagesViews,$httpRef,$visitRef, $sessionID){
   $lastVisited = json_decode($pagesViews, true);
+  $httpRe = json_decode($httpRef, true);
+  $visitRe = json_decode($visitRef, true);
   $dateTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
     $httpReferer = $_SERVER['HTTP_REFERER'];
@@ -127,7 +133,10 @@ function updateSessionActivity($pagesViews, $sessionID){
     $httpReferer = "No Referer";
   }
   $array = array("$dateTime" => "$httpReferer");
-  $hRef = json_encode($array);
+  $httpR = $httpRe+$array;
+  $hRef = json_encode($httpR);
+
+
 
   if(isset($_GET['referer']) && !empty($_GET['referer'])){
     $visitReferer = $_GET['referer'];
@@ -135,7 +144,8 @@ function updateSessionActivity($pagesViews, $sessionID){
     $visitReferer = "No Referer";
   }
   $array2 = array("$dateTime" => "$visitReferer");
-  $vRef = json_encode($array2);
+  $VisitR = $visitRe+$array2;
+  $vRef = json_encode($VisitR);
 
   $thisPage = $_SERVER["REQUEST_URI"];
   $newPage = array( "$dateTime "=> "$thisPage");
