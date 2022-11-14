@@ -129,7 +129,7 @@ function updateSessionActivity($pagesViews, $sessionID){
   $array = array("$dateTime" => "$httpReferer");
   $hRef = json_encode($array);
 
-  if(isset($_GET["referer"]) && !empty($_GET["name"])){
+  if(isset($_GET["referer"]) && !empty($_GET["referer"])){
     $visitReferer = $_GET["referer"];
   }else {
     $visitReferer = "No Referer";
