@@ -1,8 +1,8 @@
 <?php
 // TOP
 // last edited 10-11-2022 20:56
-$GLOBALS['dbc'] = $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
-$GLOBALS['encDec'] = $_SERVER['DOCUMENT_ROOT'].'/config/encDec.php';
+$GLOBALS['dbc'] = $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/db.php';
+$GLOBALS['encDec'] = $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/encDec.php';
 $GLOBALS['global'] = $_SERVER['DOCUMENT_ROOT'].'/global/global.php';
 visited();
 function visited(){

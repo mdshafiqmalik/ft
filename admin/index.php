@@ -50,7 +50,7 @@ if (isset($_SESSION['adminLoginID'])) {
 
 <?php
 function checkLogDetails($logID){
-  include $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/db.php';
   $checkLoginID = "SELECT adminID FROM admin_log_history Where loginID = '$logID' AND status = '1'";
   $userDat = mysqli_query($db, $checkLoginID);
   if (mysqli_num_rows($userDat)) {
@@ -64,7 +64,7 @@ function checkLogDetails($logID){
 }
 
 function getAdminDetails($adminId){
-  include $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/db.php';
   $sql = "SELECT * FROM fast_admin WHERE adminID = '$adminId'";
   $result = mysqli_query($db, $sql);
   if (mysqli_num_rows($result)) {
