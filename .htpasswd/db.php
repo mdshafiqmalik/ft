@@ -5,7 +5,7 @@ if (($_SERVER["HTTP_HOST"] == "www.fastreed.com")||($_SERVER["HTTP_HOST"] == "fa
   $dbName = 'dbs9163368';
   $userName = 'dbu1298474';
   $passWord = 'Rajedit@5119';
-}elseif ($_SERVER["HTTP_HOST"] == "localhost") {
+}elseif (($_SERVER["HTTP_HOST"] == "localhost")||($_SERVER["HTTP_HOST"] == "127.0.0.1")) {
   $hostName = 'localhost';
   $dbName = 'fastreed_db';
   $userName = 'root';
