@@ -165,7 +165,7 @@ function makeSession($visitorID){
   $dateTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
     $httpRefe = $_SERVER['HTTP_REFERER'];
-    $httpReferer = preg_replace("(^https?://)", "", $httpRefe )
+    $httpReferer = preg_replace("(^https?://)", "", $httpRefe );
   }else{
     $httpReferer = "No Referer";
   }
