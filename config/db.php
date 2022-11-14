@@ -1,7 +1,7 @@
 <?php
 // last edited 10-11-2022 20:56
 if (($_SERVER["HTTP_HOST"] == "www.fastreed.com")||($_SERVER["HTTP_HOST"] == "fastreed.com")) {
-  $hostName = 'db5009716888.hosting-data.io';
+  $hostName = 'db5010832350.hosting-data.io ';
   $dbName = 'dbs9163368';
   $userName = 'dbu633513';
   $passWord = 'Rajedit@5119';
