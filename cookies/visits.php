@@ -145,7 +145,7 @@ function makeSession($visitorID){
   if (isset($_SERVER['HTTP_REFERER'])) {
     $referer = $_SERVER['HTTP_REFERER'];
   }else {
-    $referer = "No Referer"
+    $referer = "No Referer";
   }
 
   $thisPage = $_SERVER["REQUEST_URI"];
