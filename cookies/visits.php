@@ -159,7 +159,7 @@ function makeSession($visitorID){
   $visitDetail = serialize($visitArray);
   $sessionID = generateUniqueID(["fast_sessions", "sessionID"],15);
   $_SESSION["uniqueSession"] = $sessionID;
-  $pageInfo = array("$dateTime" => "$visitDetail");
+  $pageInfo = array("$dateTime" => '$visitDetail');
   $pageVisits = json_encode($pageInfo);
   $sql2 = "INSERT INTO fast_sessions (sessionID, visitorIP, visitorID, sessionVisits) VALUES ('$sessionID','$visitorIP','$visitorID','$pageVisits')";
   mysqli_query($db, $sql2);
