@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/x-icon" href="favicon.svg">
+      <meta name="robots" content="noindex">
+      <link rel="stylesheet" href="assets/css/style.css?v=2.7.5.6">
+      <link rel="stylesheet" href="assets/css/root.css?v=2.7.5.6">
+      <link rel="stylesheet" href="users/src/style.css?v=2.7.5.6">
+      <script src="assets/js/fun.js?v=2.7.5.6" charset="utf-8"></script>
+      <title>Fastreed : Read, Write and Learn</title>
+      <style media="screen">
+      .newUser{
+        padding: 1em 1.4em;
+        border: 0;
+        margin: 1.5em 2em 1em 2em;
+        border-radius: 15px;
+        background-color: #680c86;
+      }
+      .startJourney{
+        font-family: var(--fontFam);
+        font-weight: 500;
+        width: 100%;
+        color: white;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .newUser #register{
+        margin-top: 1.6em;
+        margin-bottom: .6em;
+      }
+      .newUser #register a{
+        text-decoration: none;
+        font-weight: 500;
+        color: white;
+        border: 2px solid;
+        padding: .4em .8em;
+        border-radius: 40px;
+      }
+      .options p img{
+        width: 26px;
+        height: 26px;
+      }
+      .imp{
+        color: #fba942;
+      }
+      </style>
+
+  </head>
+  <body>
+
+    <div id="top" class="top">
+
+      <div class="navigation">
+        <b><span class="menu"onclick="renderHome()"style=" margin-left: 2em; padding: .15em;"> <img style="height: 34px; width:34px;"src="assets/pics/svgs/cancel.svg" alt="">
+         </span></b>
+      </div>
+      <div class="top2">
+        <div class="top3">
+
+
+
+      <!-- Logged Profile -->
+          <div class="settings gotoprofile">
+            <div >
+              <img style="border-radius:65px;height: 60px; width:60px; overflow: hidden; object-fit:contain;" src="" alt="">
+            </div>
+            <span>
+              <p id="name"></p>
+              <a id="profilelink" href="profile">View your profile</a>
+            </span>
+          </div><div class='user'>  <!-- Write an article  -->
+  <div class="settings options">
+    <p>
+      <img class="opt_icons" src="assets/pics/svgs/articles.svg" alt="">
+    <span> <a href="#">Write an article</a> </span>   </p>
+  </div><!-- Update Profile -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/manage_accounts.svg" alt="">
+    <span> <a href="profile/setting">Profile Settings</a> </span>   </p>
+</div><!-- Channels -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/channel.svg" alt="">
+<span> <a href="#">Your channels</a> </span>   </p>
+</div></div> <div " class="user"><!-- Your interests -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/interests.svg" alt="">
+    <span> <a href="#">Your interests</a> </span>   </p>
+</div><!-- Languages -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/language.svg" alt="">
+     <span>Languages</span>
+     <select class="language" name="language" id="language">
+       <option value="English">English</option>
+       <option value="Hindi">Hindi</option>
+     </select> </p>
+</div><!-- Privacy -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/security.svg" alt="">
+     <span> <a href="#">Privacy</a> </span>   </p>
+</div>  <!-- Security and Login -->
+  <div class="settings options">
+    <p>
+      <img class="opt_icons" src="assets/pics/svgs/lock.svg" alt="">
+       <span> <a href="#">Security & Login</a> </span>  </p>
+  </div>
+</div><div class="user"><!-- Terms and Policy -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/policy.svg" alt="">
+     <span> <a href="#">Terms & Policy</a>   </span>  </p>
+</div>  <!-- Help and Feedback -->
+  <div class="settings options">
+    <p>
+      <img class="opt_icons" src="assets/pics/svgs/help.svg" alt="">
+    <span> <a href="#">Help & Feedback</a> </span>  </p>
+  </div>  <!-- About Us -->
+  <div class="settings options">
+    <p>
+      <img class="opt_icons" src="assets/pics/svgs/info.svg" alt="">
+       <span> <a href="#">About Us</a>  </span> </p>
+  </div><!-- Log Out -->
+<div class="settings options">
+  <p>
+    <img class="opt_icons" src="assets/pics/svgs/power.svg" alt="">
+    <span> <a href="logout">Log Out</a> </span>  </p>
+</div>
+</div>        </div>
+      </div>
+    </div>
+
+
+    <div class="mainCont">
+      <!-- include Header -->
+
+  <div class="hd cont500">
+  <div class="header">
+
+  <div class="menuTop">
+    <div onclick="renderMenu()" class="menu"> <img stye="font-weight:bold;" src="/assets/pics/svgs/menu.svg" alt="">  </div>
+  </div>
+  <div class="logos">
+    <h1 class="logo">fastreed</h1>
+  </div>
+</div><div class="subheader">
+  <div><a href="/"><img id="home" class="submenu" src="/assets/pics/svgs/home.svg" alt=""></a></div>
+  <!--<div><a href="channels.php"><img id="subscribe" class="submenu" src="/assets/pics/svgs/logo.svg" alt=""></a></div>-->
+  <div><a href="/notifications"><img id="notification" class="submenu" src="/assets/pics/svgs/circle_notifications.svg" alt=""></a> </div>
+  <div><a href="/profile/"><img id="user" class="submenu" src="/assets/pics/svgs/user.svg" alt=""></a> </div>
+</div>
+  </div>
+        <!-- Search and Tag -->
+      <div class="tagandSearch cont500 ">
+        <div class="search">
+          <div id="search">
+          <span>&#128269;</span>
+            <input id="" type="search" name="" value="" placeholder=" Search Here....">
+          </div>
+        </div>
+        <div class="tags">
+          <select class="filterOpt" name="filterOpt" id="filterOpt">
+            <option value="">Filter </option>
+            <option value="trending">Trending</option>
+            <option value="mostActive">Channels</option>
+            <option value="newlyAdded">Newer</option>
+            <option value="atoz">A to Z</option>
+          </select>
+          <span onclick="allActive()" class="tagActive" id="all">All</span>
+          <span class="stags" id="how-to" onclick="goTo('how-to')">how to?</span>
+          <span class="stags" id="health" onclick="goTo('health')">health</span>
+          <span class="stags" id="blogging" onclick="goTo('blogging')">blogging</span>
+          <span class="stags" id="trading" onclick="goTo('trading')">trading</span>
+        </div>
+      </div>
+      <div class="cont500">
+
+          <div class="posts cont500">
+            <div class="postBody">
+
+              <div class="postPic"> <img src="/uploads/2022/7/67895436.jpg" alt=""> </div>
+              <div class="postTitle"> <h3> <a href="?posts=different-ways-of-tackling-life-problems.html" id="postTitle" href=""> What are the different way to tackle problems in life?</a></h3></div>
+              <div class="extFoot">
+                <span class="meta"><a id="channelName"  href="">Free Living</a></span>
+                <p class="dot">&#x2022;</p>
+                <span   class="meta"><a id="authorName" href=""> Jhon Do</a></span>
+                <p class="dot">&#x2022;</p>
+                <span id="pubTime" class="meta">6 months Ago</span>
+              </div>
+            </div>
+            <div class="postFooter">
+              <div class="footItems" id="react">
+                <div id="like" class="react"><img  class="footImages"  src="/assets/pics/svgs/thumbs-up.svg" alt=""></div>
+                <div id="likeCount" class="react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" >
+                <img id="comment"class="footImages"  src="/assets/pics/svgs/comment_notFilled_2.svg" alt="">
+                <div id="comentCount" class=" react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" id="share">
+                <img  class="footImages" src="/assets/pics/svgs/share_en.svg" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="posts cont500">
+            <div class="postBody">
+
+              <div class="postPic"> <img src="/uploads/2022/7/67529813.jpg" alt=""> </div>
+              <div class="postTitle"> <h3> <a href="?posts=how-to-propose-your-girl-romantically.html" id="postTitle" href=""> How to propse your girl romantically?</a></h3></div>
+              <div class="extFoot">
+                <span class="meta"><a id="channelName"  href="">Digital Assets</a></span>
+                <p class="dot">&#x2022;</p>
+                <span   class="meta"><a id="authorName" href=""> Vint Cerf</a></span>
+                <p class="dot">&#x2022;</p>
+                <span id="pubTime" class="meta">6 months Ago</span>
+              </div>
+            </div>
+            <div class="postFooter">
+              <div class="footItems" id="react">
+                <div id="like" class="react"><img  class="footImages"  src="/assets/pics/svgs/thumbs-up.svg" alt=""></div>
+                <div id="likeCount" class="react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" >
+                <img id="comment"class="footImages"  src="/assets/pics/svgs/comment_notFilled_2.svg" alt="">
+                <div id="comentCount" class=" react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" id="share">
+                <img  class="footImages" src="/assets/pics/svgs/share_en.svg" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="posts cont500">
+            <div class="postBody">
+
+              <div class="postPic"> <img src="/uploads/2022/7/25316852.jpg" alt=""> </div>
+              <div class="postTitle"> <h3> <a href="?posts=6-proven-ways-to-be-happy-in-your-life.html" id="postTitle" href=""> 6 proven way to be happy in your life you must know</a></h3></div>
+              <div class="extFoot">
+                <span class="meta"><a id="channelName"  href="">Free Living</a></span>
+                <p class="dot">&#x2022;</p>
+                <span   class="meta"><a id="authorName" href=""> Jhon Do</a></span>
+                <p class="dot">&#x2022;</p>
+                <span id="pubTime" class="meta">6 months Ago</span>
+              </div>
+            </div>
+            <div class="postFooter">
+              <div class="footItems" id="react">
+                <div id="like" class="react"><img  class="footImages"  src="/assets/pics/svgs/thumbs-up.svg" alt=""></div>
+                <div id="likeCount" class="react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" >
+                <img id="comment"class="footImages"  src="/assets/pics/svgs/comment_notFilled_2.svg" alt="">
+                <div id="comentCount" class=" react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" id="share">
+                <img  class="footImages" src="/assets/pics/svgs/share_en.svg" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="posts cont500">
+            <div class="postBody">
+
+              <div class="postPic"> <img src="/uploads/2022/7/12095427.jpg" alt=""> </div>
+              <div class="postTitle"> <h3> <a href="?posts=tips-to-become-a-good-man-you-need-to-know.html" id="postTitle" href=""> How to be a good man? These tips you need to know by 20</a></h3></div>
+              <div class="extFoot">
+                <span class="meta"><a id="channelName"  href="">Digital Assets</a></span>
+                <p class="dot">&#x2022;</p>
+                <span   class="meta"><a id="authorName" href=""> Vint Cerf</a></span>
+                <p class="dot">&#x2022;</p>
+                <span id="pubTime" class="meta">6 months Ago</span>
+              </div>
+            </div>
+            <div class="postFooter">
+              <div class="footItems" id="react">
+                <div id="like" class="react"><img  class="footImages"  src="/assets/pics/svgs/thumbs-up.svg" alt=""></div>
+                <div id="likeCount" class="react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" >
+                <img id="comment"class="footImages"  src="/assets/pics/svgs/comment_notFilled_2.svg" alt="">
+                <div id="comentCount" class=" react rt footImages fontFam b sm ml_d4em">0</div>
+              </div>
+              <div class="footItems" id="share">
+                <img  class="footImages" src="/assets/pics/svgs/share_en.svg" alt="">
+              </div>
+            </div>
+          </div>
+              </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+
+    function renderHome(){
+      var x= document.getElementById('top');
+      x.style.display ="none";
+      document.getElementsByTagName('body')[0].style.overflow = 'scroll';
+    }
+     function renderMenu(){
+       var x= document.getElementById('top');
+       x.style.display ="flex";
+       document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+     }
+  </script>
+</html>

@@ -1,7 +1,7 @@
 <?php
-session_start();
-$visits = $_SERVER['DOCUMENT_ROOT'].'/cookies/visits.php';
-include($visits);
+include '.htHidden/g_vars.php';
+$GLOBALS['root'] = $domain;
+include $domain.'/cookies/';
 if (isset($_GET['message'])) {
   $Message ='<div >
   <span id="errorMessage" style="color: red">'.$_GET['message'].'</span></div>

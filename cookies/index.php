@@ -1,9 +1,12 @@
 <?php
 // TOP
 // last edited 10-11-2022 20:56
-$GLOBALS['dbc'] = $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/db.php';
-$GLOBALS['encDec'] = $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/encDec.php';
-$GLOBALS['global'] = $_SERVER['DOCUMENT_ROOT'].'/global/global.php';
+include '../.htpasswd/g_vars.php';
+echo $domain;
+$GLOBALS['dbc'] = $domain.'/.htpasswd/s_keys/db.php';
+$GLOBALS['encDec'] = $domain.'/.htpasswd/s_keys/encDec.php';
+$GLOBALS['IDcreator'] = $domain.'/.htpasswd/functions/IDCreator.php';
+$GLOBALS['IPDEV'] = $domain.'/.htpasswd/functions/Ip&Device.php';
 visited();
 function visited(){
   // Authenticate with Cookie
@@ -26,8 +29,9 @@ function visited(){
 }
 function addNewVisitor(){
   include($GLOBALS['dbc']);
-  include_once($GLOBALS['global']);
+  include_once($GLOBALS['IDcreator']);
   include($GLOBALS['encDec']);
+  include($GLOBALS['IPDEV']);
   $ipAddress = getIp();
   $userDevice = get_browser(null, true);
   $browserInfo = serialize($userDevice);
