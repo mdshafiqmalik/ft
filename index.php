@@ -1,5 +1,5 @@
 <?php
 session_start();
-include '.htHidden/g_vars.php';
-include $domain.'/cookies/index.php';
- ?>
+include $_SERVER['DOCUMENT_ROOT'].'/cookies/index.php';
+include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
+?>

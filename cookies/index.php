@@ -1,12 +1,11 @@
 <?php
 // TOP
 // last edited 10-11-2022 20:56
-include '../.htpasswd/g_vars.php';
-echo $domain;
-$GLOBALS['dbc'] = $domain.'/.htpasswd/s_keys/db.php';
-$GLOBALS['encDec'] = $domain.'/.htpasswd/s_keys/encDec.php';
-$GLOBALS['IDcreator'] = $domain.'/.htpasswd/functions/IDCreator.php';
-$GLOBALS['IPDEV'] = $domain.'/.htpasswd/functions/Ip&Device.php';
+$domain = $_SERVER['DOCUMENT_ROOT'];
+$GLOBALS['dbc'] = $domain.'/.htHidden/s_keys/db.php';
+$GLOBALS['encDec'] = $domain.'/.htHidden/s_keys/encDec.php';
+$GLOBALS['IDcreator'] = $domain.'/.htHidden/functions/IDCreator.php';
+$GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
 visited();
 function visited(){
   // Authenticate with Cookie
@@ -164,7 +163,8 @@ function updateSessionActivity($pagesViews,$httpRef,$visitRef, $sessionID){
 }
 function makeSession($visitorID){
   include($GLOBALS['dbc']);
-  include_once($GLOBALS['global']);
+  include_once($GLOBALS['IDcreator']);
+  include_once($GLOBALS['IPDEV']);
   // Add to sessions on user and DB
   $visitorIP = getIp();
   $dateTime = time();
