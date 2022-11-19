@@ -52,6 +52,12 @@ nav #logo span{
   text-transform: capitalize;
   font-size: 1rem;
 }
+nav #small-logo{
+  display: none;
+}
+nav #small-logo:hover{
+  cursor: pointer;
+}
 nav #nav-left-menu , #fullscreen{
   display: flex;
   align-items: center;
@@ -76,4 +82,19 @@ nav #nav-profile, #nav-profile-img{
 }
 nav #nav-profile, #nav-profile-img:hover{
   cursor: pointer;
+}
+
+
+
+
+@media (max-width: 991px){
+  nav #nav-left-menu{
+    display: none;
+  }
+  nav #small-logo{
+    display: block;
+  }
+  .nav-logo #logo{
+    display: none;
+  }
 }

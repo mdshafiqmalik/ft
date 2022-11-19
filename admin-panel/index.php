@@ -11,8 +11,9 @@
       <!--  Navbar -->
       <nav>
         <div class="nav-G1">
-          <div class="logo nav-contents">
+          <div class="nav-logo nav-contents">
             <a id="logo" href="/">FastReed <span>admin</span> </a>
+            <div id="small-logo"> <a href="/admin-panel"><img height="50px" width="55px" src="assets/images/logo-mini.svg" alt=""></a> </div>
           </div>
 
           <div id="nav-left-menu">
