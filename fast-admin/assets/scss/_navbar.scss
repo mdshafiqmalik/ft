@@ -26,9 +26,9 @@
       color: lighten($gray-dark, 20%);
       font-size: 1.5rem;
       line-height: 48px;
-      margin-right: 0;
       padding: .25rem 0;
       width: 100%;
+      font-weight: 1000;
 
       &:active,
       &:focus,
@@ -185,7 +185,7 @@
             -moz-box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
             box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
             &.navbar-dropdown {
-              position: absolute;            
+              position: absolute;
               font-size: 0.9rem;
               margin-top: 0;
               .rtl & {
@@ -347,7 +347,7 @@
         color: $white;
         .nav-profile-text {
           p {
-            @extend .text-white;         
+            @extend .text-white;
           }
         }
         .search-field {
