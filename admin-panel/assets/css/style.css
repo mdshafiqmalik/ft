@@ -58,18 +58,21 @@ nav #small-logo{
 nav #small-logo:hover{
   cursor: pointer;
 }
-nav #nav-left-menu , #fullscreen{
+nav #nav-right-menu{
+  display: none;
+}
+nav #nav-left-menu , #fullscreen, #nav-right-menu{
   display: flex;
   align-items: center;
   padding: 0 1.2em;
 }
 
-nav #nav-left-menu img, #fullscreen img{
+nav #nav-left-menu img, #fullscreen img, #nav-right-menu img{
   height: 30px;
   width: 35px;
 
 }
-nav #nav-left-menu:hover, #fullscreen:hover{
+nav #nav-left-menu:hover, #fullscreen:hover, #nav-right-menu:hover{
   cursor: pointer;
 }
 nav #nav-profile, #nav-profile-img{
@@ -88,8 +91,11 @@ nav #nav-profile, #nav-profile-img:hover{
 
 
 @media (max-width: 991px){
-  nav #nav-left-menu{
+  nav #nav-left-menu, #fullscreen{
     display: none;
+  }
+  nav #nav-right-menu{
+    display: block;
   }
   nav #small-logo{
     display: block;
