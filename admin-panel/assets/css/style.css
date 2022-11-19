@@ -1,0 +1,79 @@
+
+@font-face {
+  font-family: ubuntu-light;
+  src: url(/fonts/Ubuntu/Ubuntu-Light.ttf);
+}
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #f2edf3;
+  -webkit-font-smoothing: antialiased;
+}
+*{
+  padding:0;
+  margin:0;
+}
+.top-div{
+  font-family: "ubuntu-light", sans-serif;
+  width: 100vw;
+  height: 100vh;
+}
+nav{
+  display: flex;
+  align-items:  center;
+  background-color: white;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  -webkit-box-align: center;
+  padding: 0 1em;
+}
+nav .nav-G1, nav .nav-G2{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+nav .nav-G2{
+  justify-content: flex-end;
+}
+nav #logo{
+  padding: 0em 2em 0em .4em;
+  color: #27367f;
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: bolder;
+}
+nav #logo span{
+  color: darkred;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+nav #nav-left-menu , #fullscreen{
+  display: flex;
+  align-items: center;
+  padding: 0 1.2em;
+}
+
+nav #nav-left-menu img, #fullscreen img{
+  height: 30px;
+  width: 35px;
+
+}
+nav #nav-left-menu:hover, #fullscreen:hover{
+  cursor: pointer;
+}
+nav #nav-profile, #nav-profile-img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+#nav-profile{
+  padding:  0 1.2em;
+}
+nav #nav-profile, #nav-profile-img:hover{
+  cursor: pointer;
+}

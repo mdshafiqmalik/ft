@@ -3329,6 +3329,7 @@ progress {
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: #f2edf3;
+  overflow: scroll;
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
@@ -5713,7 +5714,7 @@ textarea.form-control-lg {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1rem 1rem;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .card-title {
@@ -11499,7 +11500,7 @@ code {
 
 .bg-gradient-primary {
   background: -webkit-gradient(linear, left top, right top, from(#da8cff), to(#9a55ff)) !important;
-  background: linear-gradient(to right, #da8cff, #9a55ff) !important; }
+  background: linear-gradient(to right, #0b7e6d, #9aeae3) !important; }
 
 .bg-gradient-secondary {
   background: -webkit-gradient(linear, left top, right top, from(#e7ebf0), to(#868e96)) !important;
@@ -12937,7 +12938,7 @@ code {
   border: 0;
   background: #fff; }
   .card .card-body {
-    padding: 2.5rem 2.5rem; }
+    padding: 1.2em; }
     .card .card-body + .card-body {
       padding-top: 1rem; }
   .card .card-title {
