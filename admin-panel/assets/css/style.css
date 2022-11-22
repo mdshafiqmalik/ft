@@ -1,24 +1,46 @@
 
 @font-face {
-  font-family: ubuntu-light;
-  src: url(/fonts/Ubuntu/Ubuntu-Light.ttf);
-}
+  font-family: 'ubuntu-regular';
+  src: url("/fonts/Ubuntu/Ubuntu-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-medium';
+  src: url("/fonts/Ubuntu/Ubuntu-Medium.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-light';
+  src: url("/fonts/Ubuntu/Ubuntu-Light.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Light.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype"); }
+
+
+@font-face {
+  font-family: 'ubuntu-bold';
+  src: url("/fonts/Ubuntu/Ubuntu-Bold.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype"); }
 body{
   margin: 0;
   padding: 0;
   background-color: #f2edf3;
   -webkit-font-smoothing: antialiased;
+      font-weight: initial;
 }
 *{
   padding:0;
   margin:0;
 }
 .top-div{
-  font-family: "ubuntu-light", sans-serif;
+  font-family: "ubuntu-light", sans-serif !important;
   width: 100vw;
   height: 100vh;
 }
 nav{
+  box-shadow: 0px -5px 7px 2px grey;
   display: flex;
   align-items:  center;
   background-color: white;
@@ -53,7 +75,12 @@ nav #logo span{
   font-size: 1rem;
 }
 nav #small-logo{
+  margin: 0px .4em;
+  width: 30px;
+  height: 50px;
   display: none;
+  font-family: "ubuntu-bold", sans-serif;
+  font-size: 2rem;
 }
 nav #small-logo:hover{
   cursor: pointer;
@@ -87,9 +114,88 @@ nav #nav-profile, #nav-profile-img:hover{
   cursor: pointer;
 }
 
+/* Side Menu */
+.sideMenu{
+  min-height: 100vh;
+  max-width: 260px;
+  background-color: white;
+  transition: width .7s;
+  padding-top: 70px;
+  font-family: "ubuntu-regular", sans-serif;
+}
+.sideMenu #sideMenus{
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+.sideMenu #sideMenus li{
+  padding: 1.125rem 2.25rem;
+  font-size: 0.875rem;
+  color: #3e4e5b;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+#sideMenus li a{
+  text-decoration: none;
+  color: #3e4e5b;
+}
+#sideMenu-profile a{
+  display: flex;
+}
+#sideMenu-profile .image{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+#sideMenu-profile .image img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+#sideMenu-profile .about{
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+#sideMenu-profile .about span{
+text-decoration: none;
+}
 
+#sideMenu-profile .name{
+  font-size: 0.875rem;
+  font-family: "ubuntu-bold", sans-serif;
+  margin-bottom: .5rem !important;
+  list-style: none;
+  color: #3e4b5b;
+}
 
+#sideMenu-profile .desig{
+  color: rgba(108, 117, 125);
+  font-size: 12px;
+}
+
+.greenTickBadge{
+  padding-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.greenTickBadge img{
+  height: 20px;
+  width: 20px;
+}
+.sideMenusList .menus{
+  width: 50%;
+}
+
+.sideMenusList .menusIcon{
+  width: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+}
 @media (max-width: 991px){
   nav #nav-left-menu,#fullscreen{
     display: none;
