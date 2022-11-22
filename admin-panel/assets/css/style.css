@@ -67,7 +67,7 @@ nav #nav-left-menu , #fullscreen, #nav-right-menu{
   padding: 0 1.2em;
 }
 
-nav #nav-left-menu img, #fullscreen img, #nav-right-menu img{
+nav #nav-left-menu img, #nav-right-menu img{
   height: 30px;
   width: 35px;
 
@@ -91,16 +91,20 @@ nav #nav-profile, #nav-profile-img:hover{
 
 
 @media (max-width: 991px){
-  nav #nav-left-menu, #fullscreen{
+  nav #nav-left-menu,#fullscreen{
     display: none;
   }
   nav #nav-right-menu{
     display: block;
   }
   nav #small-logo{
-    display: block;
+    /* display: block; */
   }
   .nav-logo #logo{
+    /* display: none; */
+    font-size: 1.2em;
+  }
+  #logo span{
     display: none;
   }
 }
