@@ -3,26 +3,26 @@
   font-family: 'ubuntu-regular';
   src: url("/fonts/Ubuntu/Ubuntu-Regular.eot");
   /* IE9 Compat Modes */
-  src: url("/fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype"); }
+  src: url("/fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("s/fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'ubuntu-medium';
   src: url("/fonts/Ubuntu/Ubuntu-Medium.eot");
   /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype"); }
+  src: url("../fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("/fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'ubuntu-light';
   src: url("/fonts/Ubuntu/Ubuntu-Light.eot");
   /* IE9 Compat Modes */
-  src: url("/fonts/Ubuntu/Ubuntu-Light.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype"); }
+  src: url("/fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype"); }
 
 
 @font-face {
   font-family: 'ubuntu-bold';
   src: url("/fonts/Ubuntu/Ubuntu-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("/fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype"); }
+  src: url("/fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("/fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype"); }
 body{
   margin: 0;
   padding: 0;
@@ -36,7 +36,7 @@ body{
   margin:0;
 }
 .top-div{
-  font-family: "ubuntu-light", sans-serif !important;
+  font-family: "ubuntu-light", sans-serif;
   width: 100vw;
   height: 100vh;
 }
@@ -235,5 +235,9 @@ text-decoration: none;
 @media (max-width: 570px){
   nav #logo span{
     display: none;
+  }
+  nav #logo{
+    font-family: "ubuntu-bold", sans-serif;
+    font-size: 1.7em;
   }
 }
