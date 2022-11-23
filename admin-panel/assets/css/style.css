@@ -129,7 +129,7 @@ nav #nav-profile, #nav-profile-img:hover{
 .sideMenu{
   min-height: 100vh;
   height: auto;
-  min-width: 260px;
+  min-width: 255px;
   background-color: white;
   transition: width .7s;
   font-family: "ubuntu-regular", sans-serif;
@@ -228,7 +228,7 @@ text-decoration: none;
     justify-content: flex-end;
   }
   .sideMenu #sideMenus li{
-    padding: 1.2rem;
+    padding: 1.2rem 1.8rem;
   }
 }
 

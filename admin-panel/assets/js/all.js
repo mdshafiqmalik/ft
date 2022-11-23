@@ -60,7 +60,7 @@ function toggleNav(){
     navInfo.innerHTML = "notCollapsed";
     sideMenu.style.display= "flex";
     sideMenu.style.width= "auto";
-    sideMenu.style.minWidth= "260px";
+    sideMenu.style.minWidth= "255px";
     logo.style.display = "inline";
     menus.forEach(a=>a.style.display = "flex");
     sideMenuList.forEach(a=>a.style.display = "flex");
