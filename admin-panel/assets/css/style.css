@@ -227,11 +227,17 @@ text-decoration: none;
     flex-direction: row-reverse;
     justify-content: flex-end;
   }
+  .sideMenu #sideMenus li{
+    padding: 1.2rem;
+  }
 }
 
 @media (max-width: 570px){
   nav #logo span{
     display: none;
+  }
+  .sideMenu #sideMenus li{
+    padding: 1rem;
   }
 
 }
