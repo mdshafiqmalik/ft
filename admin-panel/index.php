@@ -40,8 +40,9 @@
         <div id="sideMenu" class="sideMenu">
           <div id="navInfo" hidden>notCollapsed</div>
           <ul class="sideMenusList" id="sideMenus">
+
             <li class="sideMenusList" id="sideMenu-profile" >
-              <a href="#">
+              <a id="sideProfile" href="#">
                 <div class="image">
                   <img src="../assets/images/face1.jpg" alt="">
                 </div>
@@ -54,36 +55,75 @@
                 </div>
               </a>
             </li>
+
             <li class="sideMenusList">
-              <a class="menus" href="#">Home</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
+              <div class="mainMenu">
+                  <a class="menus" href="#">Home</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu"></div>
+            </li>
+
+            <li class="sideMenusList">
+              <div class="mainMenu">
+                  <a class="menus"  href="#">Stats</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/stats.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu">  </div>
+            </li>
+
+            <li class="sideMenusList">
+              <div class="mainMenu">
+                  <a class="menus"  href="#">Users</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu">  </div>
+            </li>
+
+            <li class="sideMenusList">
+              <div class="mainMenu">
+                  <a class="menus"  href="#">Settings</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu">  </div>
+            </li>
+
+            <li class="sideMenusList dropdownMenu">
+              <div class="mainMenu" onclick="expandMenus(6)">
+                <span hidden> 0 </span>
+                <a class="menus"  href="#">Category</a>
+                <img class="dropdownIcon" height="10px" width="10px" src="../assets/svgs/dropdown.svg" alt="">
+                <div class="menusIcon">
+                  <img height="22px" width="22px" src="../assets/svgs/channel.svg" alt="">
+                </div>
+              </div>
+              <div class="subMenu">
+                <ul display="none"class="subMenu-ul">
+                  <li> <a href="#">Cricket</a> </li>
+                  <li><a href="#">Vollyball</a></li>
+                </ul>
               </div>
             </li>
+
             <li class="sideMenusList">
-              <a class="menus"  href="#">Stats</a>
-              <div class="menusIcon">
-                <img  height="22px" width="22px" src="../assets/svgs/stats.svg" alt="">
+              <div class="mainMenu">
+                  <a class="menus"  href="#">Logout</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
+                  </div>
               </div>
+              <div class="subMenu">  </div>
             </li>
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Users</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
-              </div>
-            </li>
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Settings</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
-              </div>
-            </li>
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Logout</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
-              </div>
-            </li>
+
+
           </ul>
         </div>
 
