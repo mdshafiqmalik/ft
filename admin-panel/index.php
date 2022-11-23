@@ -88,7 +88,12 @@
         </div>
 
         <div class="pageBody">
+          <div class="div1">
 
+          </div>
+          <div class="div2">
+
+          </div>
         </div>
       </div>
     </div>
