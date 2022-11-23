@@ -63,6 +63,7 @@ nav .nav-G2{
   justify-content: flex-end;
 }
 nav #logo{
+  display: inline;
   padding: 0em 2em 0em .4em;
   color: #27367f;
   text-decoration: none;
@@ -95,8 +96,9 @@ nav #nav-left-menu , #fullscreen, #nav-right-menu{
 }
 
 nav #nav-left-menu img, #nav-right-menu img{
-  height: 30px;
+  height: 40px;
   width: 35px;
+  transition: visibility .7s;
 
 }
 nav #nav-left-menu:hover, #fullscreen:hover, #nav-right-menu:hover{
@@ -114,13 +116,20 @@ nav #nav-profile, #nav-profile-img:hover{
   cursor: pointer;
 }
 
+/* Main body */
+.mainBody{
+  padding-top: 70px;
+  display: flex;
+  flex-direction: row;
+}
+
 /* Side Menu */
 .sideMenu{
   min-height: 100vh;
-  max-width: 260px;
+  height: auto;
+  min-width: 260px;
   background-color: white;
   transition: width .7s;
-  padding-top: 70px;
   font-family: "ubuntu-regular", sans-serif;
 }
 .sideMenu #sideMenus{
@@ -196,21 +205,33 @@ text-decoration: none;
   display: flex;
   flex-direction: row-reverse;
 }
-@media (max-width: 991px){
-  nav #nav-left-menu,#fullscreen{
+
+
+.pageBody{
+  display: flex;
+  width: 100%;
+  height: 160vh;
+}
+
+
+@media (max-width: 850px){
+  #fullscreen{
     display: none;
-  }
-  nav #nav-right-menu{
-    display: block;
-  }
-  nav #small-logo{
-    /* display: block; */
   }
   .nav-logo #logo{
-    /* display: none; */
-    font-size: 1.2em;
+    padding: 0;
   }
-  #logo span{
+}
+@media (max-width: 760px){
+  nav .nav-G1{
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 570px){
+  nav #logo span{
     display: none;
   }
+
 }
