@@ -46,7 +46,7 @@ function toggleNav(){
     menus.forEach(a=>a.style.display = "none");
     menusIcon.forEach(a=>a.style.width = "auto");
     sideMenuList.forEach(a=>a.style.display = "list-item");
-    sideMenuList.forEach(a=>a.style.padding = "1rem");
+    sideMenuList.forEach(a=>a.style.padding = "auto");
     menuProfile.style.display= "none";
   // When collapsed
   }
