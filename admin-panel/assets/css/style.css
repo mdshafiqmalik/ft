@@ -236,8 +236,4 @@ text-decoration: none;
   nav #logo span{
     display: none;
   }
-  .sideMenu #sideMenus li{
-    padding: 1rem;
-  }
-
 }

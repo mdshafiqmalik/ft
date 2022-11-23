@@ -13,7 +13,6 @@ document.getElementById('fullscreen').onclick = function(){
       document.documentElement.msRequestFullscreen();
       document.getElementById('fullscreen-icon').src = "../assets/svgs/minimize.svg";
     }
-
   } else {
     document.getElementById('fullscreen-icon').src = "../assets/svgs/fullscreen.svg";
     if (document.cancelFullScreen) {
@@ -28,30 +27,35 @@ document.getElementById('fullscreen').onclick = function(){
   }
 }
 let navinfo = document.getElementById('navinfo');
-
-let smallLogo = document.getElementById('small-logo');
-let leftMenu = document.getElementById('nav-left-menu');
 let sideMenu = document.getElementById('sideMenu');
 let sideMenuList = document.querySelectorAll('.sideMenusList');
 let menus = document.querySelectorAll('.menus');
 let menuProfile = document.getElementById('sideMenu-profile');
 let menusIcon = document.querySelectorAll('.menusIcon');
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  sideMenu.style.display = "none";
+});
+
 function toggleNav(){
   // when not collapsed
-  if (navInfo.innerHTML === "expand") {
-    navInfo.innerHTML = "collapsed";
-    sideMenu.style.width= "auto";
-    sideMenu.style.minWidth= "0px";
-    menus.forEach(a=>a.style.display = "none");
-    menusIcon.forEach(a=>a.style.width = "auto");
-    sideMenuList.forEach(a=>a.style.display = "list-item");
-    sideMenuList.forEach(a=>a.style.padding = "auto");
-    menuProfile.style.display= "none";
-  // When collapsed
+  if (screen.width <= 570) {
+    if (sideMenu.style.display === "none") {
+      expandNav();
+
+    }else {
+      collapseNav();
+      sideMenu.style.display = "none";
+    }
+  }else if (navInfo.innerHTML === "notCollapsed") {
+      collapseNav();
   }
   else {
-    navInfo.innerHTML = "expand";
+      expandNav();
+  }
+
+  function expandNav() {
+    navInfo.innerHTML = "notCollapsed";
     sideMenu.style.display= "flex";
     sideMenu.style.width= "auto";
     sideMenu.style.minWidth= "260px";
@@ -60,5 +64,16 @@ function toggleNav(){
     sideMenuList.forEach(a=>a.style.display = "flex");
     menuProfile.style.display= "block";
     menusIcon.forEach(a=>a.style.width = "50%");
+  }
+
+  function collapseNav() {
+    navInfo.innerHTML = "collapsed";
+    sideMenu.style.width= "auto";
+    sideMenu.style.minWidth= "0px";
+    menus.forEach(a=>a.style.display = "none");
+    menusIcon.forEach(a=>a.style.width = "auto");
+    sideMenuList.forEach(a=>a.style.display = "list-item");
+    sideMenuList.forEach(a=>a.style.padding = "auto");
+    menuProfile.style.display= "none";
   }
 }

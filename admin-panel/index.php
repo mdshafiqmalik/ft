@@ -12,7 +12,7 @@
       <nav>
         <div id="nav-G1" class="nav-G1">
           <div class="nav-logo nav-contents">
-            <a id="logo" href="/">FastReed <span>admin</span> </a>
+            <a id="logo" href="/">FastReed <span>.com</span> </a>
             <div id="small-logo"> <a href="/admin-panel"><img width="40px" height="48px" src="../assets/images/favicon.png" alt=""></a> </div>
           </div>
 
@@ -38,7 +38,7 @@
       <div class="mainBody">
 
         <div id="sideMenu" class="sideMenu">
-          <div id="navInfo" hidden>expand</div>
+          <div id="navInfo" hidden>notCollapsed</div>
           <ul class="sideMenusList" id="sideMenus">
             <li class="sideMenusList" id="sideMenu-profile" >
               <a href="#">
