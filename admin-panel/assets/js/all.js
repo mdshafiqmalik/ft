@@ -34,7 +34,9 @@ let menuProfile = document.getElementById('sideMenu-profile');
 let menusIcon = document.querySelectorAll('.menusIcon');
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  sideMenu.style.display = "none";
+  if (screen.width < 570) {
+      sideMenu.style.display = "none";
+  }
 });
 
 function toggleNav(){

@@ -29,6 +29,7 @@ body{
   background-color: #f2edf3;
   -webkit-font-smoothing: antialiased;
       font-weight: initial;
+        -webkit-tap-highlight-color: transparent;
 }
 *{
   padding:0;
@@ -89,10 +90,11 @@ nav #small-logo:hover{
 nav #nav-right-menu{
   display: none;
 }
-nav #nav-left-menu , #fullscreen, #nav-right-menu{
+nav #nav-left-menu , #fullscreen{
   display: flex;
   align-items: center;
   padding: 0 1.2em;
+
 }
 
 nav #nav-left-menu img, #nav-right-menu img{
@@ -205,8 +207,6 @@ text-decoration: none;
   display: flex;
   flex-direction: row-reverse;
 }
-
-
 .pageBody{
   display: flex;
   width: 100%;

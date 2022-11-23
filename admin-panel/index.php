@@ -84,31 +84,6 @@
                 <img   height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
               </div>
             </li>
-
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Stats</a>
-              <div class="menusIcon">
-                <img  height="22px" width="22px" src="../assets/svgs/stats.svg" alt="">
-              </div>
-            </li>
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Users</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
-              </div>
-            </li>
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Settings</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
-              </div>
-            </li>
-            <li class="sideMenusList">
-              <a class="menus"  href="#">Logout</a>
-              <div class="menusIcon">
-                <img   height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
-              </div>
-            </li>
           </ul>
         </div>
 
