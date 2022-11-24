@@ -23,7 +23,10 @@
       </form>
       <div class="loginElements forgotPassword">
         <input type="checkbox" name="" value="">
-        <p>Keep me signed in</p>
+        <p>Remember this device</p>
+      </div>
+      <div class="">
+
       </div>
     </div>
   </body>
