@@ -47,8 +47,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
                   <img src="../assets/images/face1.jpg" alt="">
                 </div>
                 <div class="about">
-                  <span class="name">David Grey H.</span>
-                  <span class="desig">Project Admin</span>
+                  <span class="name">Anonymous</span>
+                  <span class="desig">New User</span>
                 </div>
                 <div class="greenTickBadge">
                   <img src="../assets/svgs/verified.svg" alt="">
@@ -68,26 +68,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
 
             <li class="sideMenusList">
               <div class="mainMenu">
-                  <a class="menus"  href="/profile">My Profile</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
-                  </div>
-              </div>
-              <div class="subMenu">  </div>
-            </li>
-
-            <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/">Posts</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/articles.svg" alt="">
-                  </div>
-              </div>
-              <div class="subMenu">  </div>
-            </li>
-            <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/login/settings">Settings</a>
+                  <a class="menus"  href="/login">Login/Register</a>
                   <div class="menusIcon">
                     <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
                   </div>
@@ -96,7 +77,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
             </li>
 
             <li class="sideMenusList dropdownMenu">
-              <div class="mainMenu" onclick="expandMenus(6)">
+              <div class="mainMenu" onclick="expandMenus(4)">
                 <span hidden> 1 </span>
                 <a class="menus"  href="#">Category</a>
                 <img  class="dropdownIcon-b" height="10px" width="10px" src="../assets/svgs/dropdown.svg" alt="">
@@ -112,16 +93,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
                   <li><a href="#">Vollyball</a></li>
                 </ul>
               </div>
-            </li>
-
-            <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/logout">Logout</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
-                  </div>
-              </div>
-              <div class="subMenu">  </div>
             </li>
           </ul>
         </div>
