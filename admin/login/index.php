@@ -17,14 +17,15 @@
       </div>
       <form class="loginElements loginForm" action="" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username">
-        <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
-        <input id="submit" class="submit" type="submit" name="Submit" value="Login">
 
+        <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
+        <div class="loginElements forgotPassword">
+          <input type="checkbox" name="" value="">
+          <p>Remember this device</p>
+        </div>
+        <input id="submit" class="submit" type="submit" name="Submit" value="Login">
       </form>
-      <div class="loginElements forgotPassword">
-        <input type="checkbox" name="" value="">
-        <p>Remember this device</p>
-      </div>
+
       <div class="">
 
       </div>

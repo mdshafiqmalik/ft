@@ -22,10 +22,10 @@
         <input class="fields" type="email" name="username" value="" placeholder="Email">
         <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
-
       </form>
+      
       <div class="others">
-        <a href="#">Login Here</a>
+        <a href="/login">Login Here</a>
       </div>
     </div>
   </body>

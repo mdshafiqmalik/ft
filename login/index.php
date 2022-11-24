@@ -20,15 +20,14 @@
       <form class="loginElements loginForm" action="" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username">
         <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
+        <div class="loginElements forgotPassword">
+          <input type="checkbox" name="" value="">
+          <p>Remember this device</p>
+        </div>
         <input id="submit" type="submit" name="Submit" value="Login">
-
       </form>
-      <div class="loginElements forgotPassword">
-        <input type="checkbox" name="" value="">
-        <p>Remember this device</p>
-      </div>
-      <div class="">
-
+      <div class="others">
+        <a href="/register">Register Now</a>
       </div>
     </div>
   </body>
