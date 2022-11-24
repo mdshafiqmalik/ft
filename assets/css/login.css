@@ -139,4 +139,7 @@ body{
   .forgotPassword p{
     margin-left: 30px;
   }
+  .loginForm .fields{
+    margin-bottom: 1.8em;
+  }
 }
