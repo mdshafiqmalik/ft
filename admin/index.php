@@ -28,11 +28,6 @@
           <div id="fullscreen">
             <img id="fullscreen-icon" src="../assets/svgs/fullscreen.svg" alt="">
           </div>
-
-
-          <!-- <div id="nav-right-menu">
-            <img src="../assets/svgs/menu_lines.svg" alt="">
-          </div> -->
         </div>
       </nav>
       <div class="mainBody">

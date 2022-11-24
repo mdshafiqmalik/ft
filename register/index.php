@@ -11,7 +11,7 @@
   <body>
     <div class="loginOuterDiv">
       <div class="loginElements brandLogo">
-        <a href="#">FastReed <span>register</span> </a>
+        <a href="/">FastReed <span>register</span> </a>
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Create a new account</span>
@@ -23,7 +23,7 @@
         <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
       </form>
-      
+
       <div class="others">
         <a href="/login">Login Here</a>
       </div>

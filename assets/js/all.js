@@ -72,7 +72,6 @@ function responsiveNess() {
     dropdownIcon_a.style.display = "none";
     collapseNav();
   }else {
-    console.log("big screen");
     dropdownIcon_a.style.display = "none";
     expandNav();
   }
