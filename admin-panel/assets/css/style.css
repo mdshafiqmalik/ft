@@ -134,7 +134,7 @@ nav #nav-profile, #nav-profile-img:hover{
   height: auto;
   min-width: 260px;
   background-color: white;
-  transition: width .7s;
+  transition: width .7s, transform 1s;
   font-family: "ubuntu-regular", sans-serif;
 }
 .sideMenu #sideMenus{

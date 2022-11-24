@@ -45,8 +45,9 @@ function toggleNav(){
   if (screen.width <= 570) {
     if (sideMenu.style.display === "none") {
       expandNav();
-
+      sideMenu.style.transform= "matrix(1, 0, 0, 1, 1, 0)";
     }else {
+      sideMenu.style.transform= "matrix(1, 0, 0, 1, -260, 0)";
       collapseNav();
       sideMenu.style.display = "none";
     }
@@ -60,7 +61,7 @@ function toggleNav(){
   function expandNav() {
     navInfo.innerHTML = "notCollapsed";
     sideMenu.style.display= "flex";
-    sideMenu.style.width= "auto";
+    // sideMenu.style.width= "auto";
     sideMenu.style.minWidth= "260px";
     logo.style.display = "inline";
     menus.forEach(a=>a.style.display = "flex");
