@@ -33,21 +33,26 @@ let menus = document.querySelectorAll('.menus');
 let menuProfile = document.getElementById('sideMenu-profile');
 let menusIcon = document.querySelectorAll('.menusIcon');
 let subMenus = document.querySelector(`.subMenu .subMenu-ul`);
+let dropdownIcon_b = document.querySelector(`.dropdownIcon-b`);
+let dropdownIcon_a = document.querySelector(`.dropdownIcon-a`);
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  if (screen.width < 570) {
-      sideMenu.style.display = "none";
-  }
-});
+addEventListener("resize", (makeResponsive) => {});
+
+window.onload = function (){
+  responsiveNess();
+}
+
+onresize = (makeResponsive) => {
+  responsiveNess();
+};
+
 
 function toggleNav(){
   // when not collapsed
   if (screen.width <= 570) {
     if (sideMenu.style.display === "none") {
       expandNav();
-      sideMenu.style.transform= "matrix(1, 0, 0, 1, 1, 0)";
     }else {
-      sideMenu.style.transform= "matrix(1, 0, 0, 1, -260, 0)";
       collapseNav();
       sideMenu.style.display = "none";
     }
@@ -57,50 +62,65 @@ function toggleNav(){
   else {
       expandNav();
   }
-
-  function expandNav() {
-    navInfo.innerHTML = "notCollapsed";
-    sideMenu.style.display= "flex";
-    // sideMenu.style.width= "auto";
-    sideMenu.style.minWidth= "260px";
-    logo.style.display = "inline";
-    menus.forEach(a=>a.style.display = "flex");
-    sideMenuList.forEach(a=>a.style.display = "flex");
-    menuProfile.style.display= "block";
-    menusIcon.forEach(a=>a.style.width = "50%");
-    subMenus.style.position ="relative";
-    subMenus.style.boxShadow= "none";
-  }
-
-  function collapseNav() {
-    navInfo.innerHTML = "collapsed";
-    sideMenu.style.width= "auto";
-    sideMenu.style.minWidth= "0px";
-    sideMenu.style.maxWidth= "80px";
-    menus.forEach(a=>a.style.display = "none");
-    menusIcon.forEach(a=>a.style.width = "auto");
-    sideMenuList.forEach(a=>a.style.display = "list-item");
-    sideMenuList.forEach(a=>a.style.padding = "auto");
-    menuProfile.style.display= "none";
-    subMenus.style.position ="absolute";
-    subMenus.style.boxShadow= "-1px 3px 5px 0px grey";
+}
+function responsiveNess() {
+  if (screen.width < 570) {
+      sideMenu.style.display = "none";
+      dropdownIcon_b.style.display = "none";
+  }else if (screen.width < 850) {
+    dropdownIcon_a.style.display = "none";
+    collapseNav();
+  }else {
+    console.log("big screen");
+    dropdownIcon_a.style.display = "none";
+    expandNav();
   }
 }
 
+function expandNav() {
+  navInfo.innerHTML = "notCollapsed";
+  sideMenu.style.display= "flex";
+  sideMenu.style.width= "auto";
+  sideMenu.style.minWidth= "260px";
+  logo.style.display = "inline";
+  menus.forEach(a=>a.style.display = "flex");
+  sideMenuList.forEach(a=>a.style.display = "flex");
+  menuProfile.style.display= "block";
+  menusIcon.forEach(a=>a.style.width = "50%");
+  subMenus.style.position ="relative";
+  subMenus.style.boxShadow= "none";
+  dropdownIcon_b.style.display = "flex";
+  dropdownIcon_a.style.display = "none";
+}
+
+function collapseNav() {
+  navInfo.innerHTML = "collapsed";
+  sideMenu.style.width= "auto";
+  sideMenu.style.minWidth= "0px";
+  sideMenu.style.maxWidth= "80px";
+  menus.forEach(a=>a.style.display = "none");
+  menusIcon.forEach(a=>a.style.width = "auto");
+  sideMenuList.forEach(a=>a.style.display = "list-item");
+  sideMenuList.forEach(a=>a.style.padding = "auto");
+  menuProfile.style.display= "none";
+  subMenus.style.position ="absolute";
+  subMenus.style.boxShadow= "-1px 3px 5px 0px grey";
+  dropdownIcon_b.style.display = "none";
+  dropdownIcon_a.style.display = "flex";
+}
+
 function expandMenus(x){
-  let status = document.querySelector(`.sideMenu ul li:nth-child(${x}) span`);
   let menu = document.querySelector(`.sideMenu ul li:nth-child(${x})`);
-  console.log(menu);
-  let dropIcon = document.querySelector(`.sideMenu ul li:nth-child(${x}) img`);
+  let status = document.querySelector(`.sideMenu ul li:nth-child(${x}) span`);
   if (status.innerHTML==0) {
-    dropIcon.style.transform = "rotate(0deg)";
+    dropdownIcon_a.style.transform = "rotate(0deg)";
+    dropdownIcon_b.style.transform = "rotate(0deg)";
     subMenus.style.display = "flex";
     status.innerHTML=1;
   }else {
-    dropIcon.style.transform = "rotate(-90deg)";
+    dropdownIcon_a.style.transform = "rotate(-90deg)";
+    dropdownIcon_b.style.transform = "rotate(-90deg)";
     status.innerHTML=0;
     subMenus.style.display = "none";
   }
-
-
 }

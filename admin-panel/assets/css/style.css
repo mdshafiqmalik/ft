@@ -223,10 +223,8 @@ text-decoration: none;
   flex-direction: row-reverse;
   align-items: center;
 }
-.mainMenu .menusIcon img,  .dropdownMenu .dropdownIcon{
+.dropdownIcon_b, .dropdownIcon_a{
   filter: var(--svg-text-color);
-}
-.dropdownMenu .dropdownIcon{
   transform: rotate(-90deg);
   transition: transform ease .3s;
 }
@@ -274,6 +272,9 @@ text-decoration: none;
   }
   .nav-logo #logo{
     padding: 0;
+  }
+  .mainMenu .dropdownIcon_a{
+    padding-right: -5px;
   }
 }
 @media (max-width: 768px){
