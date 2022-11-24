@@ -258,12 +258,6 @@ text-decoration: none;
   height: 160vh;
   padding: .5em;
 }
-.pageBody .div1{
-  width: 50%;
-  border: 1px solid red;
-  height: 400px;
-  background: green;
-}
 
 @media (max-width: 870px){
   #fullscreen{
@@ -294,8 +288,5 @@ text-decoration: none;
   nav #logo{
     font-family: "ubuntu-bold", sans-serif;
     font-size: 1.7em;
-  }
-  .sideMenu{
-    position: absolute;
   }
 }
