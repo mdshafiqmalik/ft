@@ -239,11 +239,10 @@ text-decoration: none;
   width: 100%;
   max-width: 200px;
   flex-direction: column;
-  list-style: none;
+  list-style:inside;
   transition: visibility .7s ease;
   display: none;
   background-color: white;
-  border-radius: 5px;
   border-bottom: 1px solid grey;
 }
 .subMenu .subMenu-ul li{
@@ -266,7 +265,7 @@ text-decoration: none;
   background: green;
 }
 
-@media (max-width: 850px){
+@media (max-width: 870px){
   #fullscreen{
     display: none;
   }
