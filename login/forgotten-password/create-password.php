@@ -19,7 +19,7 @@
       </div>
       <form class="loginElements loginForm" action="" method="post">
         <input class="fields" type="current-password" name="current-password" value="" placeholder="New Password">
-        <input class="fields" type="current-password" name="current-password" value="" placeholder="New Password">
+        <input class="fields" type="current-password" name="current-password" value="" placeholder="Verify Password">
         <input id="submit" type="submit" name="Submit" value=" Reset Password">
       </form>
     </div>
