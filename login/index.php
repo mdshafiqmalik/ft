@@ -18,7 +18,7 @@
         <span class="messageAndErrors">Sign In to continue</span>
       </div>
       <form class="loginElements loginForm" action="" method="post">
-        <input class="fields" type="text" name="username" value="" placeholder="Username">
+        <input class="fields" type="text" name="username" value="" placeholder="Username/Email/Phone">
         <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
         <div class="loginElements forgotPassword">
           <input type="checkbox" name="" value="">
