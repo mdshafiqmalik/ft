@@ -1,7 +1,7 @@
 <?php
 session_start();
-// include $_SERVER['DOCUMENT_ROOT'].'/cookies/index.php';
-// include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
+include $_SERVER['DOCUMENT_ROOT'].'/cookies/index.php';
+include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -47,67 +47,37 @@ session_start();
                   <img src="../assets/images/face1.jpg" alt="">
                 </div>
                 <div class="about">
-                  <span class="name">David Grey H.</span>
-                  <span class="desig">Project Admin</span>
+                  <span class="name">Anonymous</span>
+                  <span class="desig">New User</span>
                 </div>
                 <div class="greenTickBadge">
-                  <img src="../assets/svgs/verified.svg" alt="">
+                  <img src="../assets/svgs/add_box.svg" alt="">
                 </div>
               </a>
             </li>
 
             <li class="sideMenusList">
-              <a href="/">
-                <div class="mainMenu">
-                    <p class="menus">Dashboard</p>
-                    <div class="menusIcon">
-                      <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
-                    </div>
-                </div>
-              </a>
-
+              <div class="mainMenu">
+                  <a class="menus" href="/">Dashboard</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
+                  </div>
+              </div>
               <div class="subMenu"></div>
             </li>
 
-
             <li class="sideMenusList">
-              <a href="/profile">
-                <div class="mainMenu">
-                    <p class="menus">My Profile</p>
-                    <div class="menusIcon">
-                      <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
-                    </div>
-                </div>
-              </a>
-              <div class="subMenu">  </div>
-            </li>
-
-            <li class="sideMenusList">
-              <a href="/">
-                <div class="mainMenu">
-                    <p class="menus">Posts</p>
-                    <div class="menusIcon">
-                      <img height="22px" width="22px" src="../assets/svgs/articles.svg" alt="">
-                    </div>
-                </div>
-              </a>
-              <div class="subMenu">  </div>
-            </li>
-
-            <li class="sideMenusList">
-              <a href="/login/settings">
-                <div class="mainMenu">
-                    <p class="menus">Settings</p>
-                    <div class="menusIcon">
-                      <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
-                    </div>
-                </div>
-              </a>
+              <div class="mainMenu">
+                  <a class="menus"  href="/login">Login/Register</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
+                  </div>
+              </div>
               <div class="subMenu">  </div>
             </li>
 
             <li class="sideMenusList dropdownMenu">
-              <div class="mainMenu" onclick="expandMenus(6)">
+              <div class="mainMenu" onclick="expandMenus(4)">
                 <span hidden> 1 </span>
                 <a class="menus"  href="#">Category</a>
                 <img  class="dropdownIcon-b" height="10px" width="10px" src="../assets/svgs/dropdown.svg" alt="">
@@ -126,16 +96,25 @@ session_start();
             </li>
 
             <li class="sideMenusList">
-              <a href="/logout">
-                <div class="mainMenu">
-                    <p class="menus">Logout</p>
-                    <div class="menusIcon">
-                      <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
-                    </div>
-                </div>
-              </a>
+              <div class="mainMenu">
+                  <a class="menus"  href="/terms-privacy">Terms & Privacy</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/security.svg" alt="">
+                  </div>
+              </div>
               <div class="subMenu">  </div>
             </li>
+
+            <li class="sideMenusList">
+              <div class="mainMenu">
+                  <a class="menus"  href="/About">About</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/info.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu">  </div>
+            </li>
+
           </ul>
         </div>
 
