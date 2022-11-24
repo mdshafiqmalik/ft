@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/css/style.css?v=<?php echo getenv('cssVersion'); ?>">
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo getenv('cssVersion'); ?>">
     <title>Fastreed: Admin Panel</title>
   </head>
   <body>
@@ -98,7 +98,7 @@
 
             <li class="sideMenusList dropdownMenu">
               <div class="mainMenu" onclick="expandMenus(6)">
-                <span hidden> 0 </span>
+                <span hidden> 1 </span>
                 <a class="menus"  href="#">Category</a>
                 <img  class="dropdownIcon-b" height="10px" width="10px" src="../assets/svgs/dropdown.svg" alt="">
                 <div class="menusIcon">
@@ -140,5 +140,5 @@
       </div>
     </div>
   </body>
-  <script src="assets/js/all.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
+  <script src="/assets/js/all.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
 </html>

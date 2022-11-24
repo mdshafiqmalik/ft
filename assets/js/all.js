@@ -113,15 +113,15 @@ function collapseNav() {
 function expandMenus(x){
   let menu = document.querySelector(`.sideMenu ul li:nth-child(${x})`);
   let status = document.querySelector(`.sideMenu ul li:nth-child(${x}) span`);
-  if (status.innerHTML==0) {
+  if (status.innerHTML==1) {
     dropdownIcon_a.style.transform = "rotate(0deg)";
     dropdownIcon_b.style.transform = "rotate(0deg)";
     subMenus.style.display = "flex";
-    status.innerHTML=1;
+    status.innerHTML=0;
   }else {
     dropdownIcon_a.style.transform = "rotate(-90deg)";
     dropdownIcon_b.style.transform = "rotate(-90deg)";
-    status.innerHTML=0;
+    status.innerHTML=1;
     subMenus.style.display = "none";
   }
 }
