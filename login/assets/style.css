@@ -14,3 +14,9 @@
 #registerNow{
   margin-left: 1.2rem;
 }
+
+.otpMail{
+  color: blue;
+  font-style: italic;
+  font-size: 1rem;
+}
