@@ -15,7 +15,7 @@
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
       </div>
-      <form class="loginElements loginForm" action="index.html" method="post">
+      <form class="loginElements loginForm" action="" method="post">
         <input type="text" name="username" value="" placeholder="Username">
         <input type="current-password" name="current-password" value="" placeholder="Password">
         <input class="submit" type="submit" name="Submit" value="Submit">
