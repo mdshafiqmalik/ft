@@ -1,0 +1,142 @@
+@font-face {
+  font-family: 'ubuntu-regular';
+  src: url("/fonts/Ubuntu/Ubuntu-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("/fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-medium';
+  src: url("/fonts/Ubuntu/Ubuntu-Medium.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("/fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ubuntu-light';
+  src: url("/fonts/Ubuntu/Ubuntu-Light.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype"); }
+
+
+@font-face {
+  font-family: 'ubuntu-bold';
+  src: url("/fonts/Ubuntu/Ubuntu-Bold.eot");
+  /* IE9 Compat Modes */
+  src: url("/fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("/fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("/fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype"); }
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-color: #f2edf3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginOuterDiv{
+  width: 270px;
+  min-height: 400px;
+  background-color: white;
+  position: absolute;
+  top: 20px;
+  display: flex;
+  /* box-shadow: 0 0 4px 0px grey; */
+  flex-direction: column;
+  padding: 3rem !important;
+}
+.loginElements{
+  width: 100%;
+}
+.brandLogo{
+  font-family: "ubuntu-bold", sans-serif;
+  display: flex;
+  margin-bottom: 32px;
+}
+.brandLogo a{
+    text-decoration: none;
+    color: #26367f;
+    font-size: 2.2rem;
+}
+.brandLogo span{
+  font-size: .9rem;
+  color: darkred;
+}
+.greetHeading{
+  display: block;
+  font-family: "ubuntu-medium",sans-serif;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.messageAndErrors{
+  display: block;
+  font-family: "ubuntu-light",sans-serif;
+  color: #3a3a40;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+}
+.loginForm #submit{
+  font-size: 1.2em;
+  padding: .7rem 1.2rem;
+  max-width: 150px;
+  margin-bottom: 20px;
+  background :linear-gradient(to right, #4f008d, #680352);
+  font-family: "ubuntu-bold",sans-serif;
+  color: white;
+  border-radius: 4px;
+}
+.loginForm .fields{
+  font-family: "ubunbtu-medium",sans-serif;
+  padding: 1rem !important;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+}
+.loginForm input:focus{
+  outline: 0;
+  border-color: blue;
+}
+.loginForm input::-webkit-input-placeholder{
+  color: #bbb;
+}
+.loginForm input::-moz-placeholder{
+  color: #bbb;
+}
+.loginForm input::-moz-placeholder{
+  color: #bbb;
+}
+.loginForm input::placeholder{
+  color: #bbb;
+}
+
+.forgotPassword{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.forgotPassword input{
+  position: absolute;
+  margin-right: 10px;
+}
+.forgotPassword p{
+  color: #777;
+  font-family: "ubunbtu-medium",sans-serif;
+  position: absolute;
+  margin-left: 20px;
+}
+@media (max-width: 570px){
+  .loginOuterDiv{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: scroll;
+    margin:0;
+    top:0;
+  }
+  .forgotPassword p{
+    margin-left: 30px;
+  }
+}
