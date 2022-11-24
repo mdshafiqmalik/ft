@@ -9,7 +9,7 @@
   <body>
     <div class="loginOuterDiv">
       <div class="loginElements brandLogo">
-        <a href="#">FastReed  </a>
+        <a href="#">FastReed <span>admin</span> </a>
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Hello! let's get started</span>
