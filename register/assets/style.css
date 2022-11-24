@@ -7,8 +7,6 @@
 .others a{
   text-decoration: none;
   font-family: "ubuntu-medium",sans-serif;
-  background: linear-gradient(to right, #4f008d, #680352);
-  color: white;
   padding: .7rem 1.2rem;
   border-radius: 5px;
 }
