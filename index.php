@@ -57,41 +57,52 @@ session_start();
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus" href="/">Dashboard</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus">Dashboard</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
+                    </div>
+                </div>
+              </a>
+
               <div class="subMenu"></div>
             </li>
 
+
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/profile">My Profile</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
-                  </div>
-              </div>
+              <a href="/profile">
+                <div class="mainMenu">
+                    <p class="menus">My Profile</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/">Posts</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/articles.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus">Posts</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/articles.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
+
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/login/settings">Settings</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
-                  </div>
-              </div>
+              <a href="/login/settings">
+                <div class="mainMenu">
+                    <p class="menus">Settings</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
 
@@ -115,12 +126,14 @@ session_start();
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="/logout">Logout</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
-                  </div>
-              </div>
+              <a href="/logout">
+                <div class="mainMenu">
+                    <p class="menus">Logout</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
           </ul>

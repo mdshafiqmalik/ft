@@ -68,12 +68,9 @@ function responsiveNess() {
       collapseNav();
       sideMenu.style.display = "none";
       dropdownIcon_b.style.display = "none";
-  }else if (screen.width < 870) {
+  }else  {
     dropdownIcon_a.style.display = "none";
     collapseNav();
-  }else {
-    dropdownIcon_a.style.display = "none";
-    expandNav();
   }
 }
 

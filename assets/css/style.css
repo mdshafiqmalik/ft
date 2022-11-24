@@ -217,7 +217,13 @@ text-decoration: none;
   display: flex;
     align-items: center;
 }
-
+.sideMenusList a{
+  display: flex;
+    width: 100%;
+    text-decoration: none;
+    font-family: 'ubuntu-regular';
+    color: initial;
+}
 .mainMenu .menusIcon{
   width: 50%;
   display: flex;
@@ -240,7 +246,7 @@ text-decoration: none;
   width: 100%;
   max-width: 200px;
   flex-direction: column;
-  list-style:inside;
+  list-style:none;
   transition: visibility .7s ease;
   display: none;
   background-color: white;

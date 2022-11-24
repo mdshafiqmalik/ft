@@ -2,6 +2,7 @@
   display: flex;
   border-top: 1px solid grey;
   padding-top: 10px;
+  margin-bottom: 10px;
 }
 .others a{
   font-size: .88rem;

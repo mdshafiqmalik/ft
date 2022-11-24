@@ -52,42 +52,50 @@
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus" href="#">Home</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus">Dashboard</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/home.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu"></div>
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="#">Stats</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/stats.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus">Activity</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/stats.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="#">Users</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus" >Users</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="#">Settings</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus" >Settings</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
 
@@ -111,12 +119,14 @@
             </li>
 
             <li class="sideMenusList">
-              <div class="mainMenu">
-                  <a class="menus"  href="#">Logout</a>
-                  <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
-                  </div>
-              </div>
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus" >Logout</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
+                    </div>
+                </div>
+              </a>
               <div class="subMenu">  </div>
             </li>
 
