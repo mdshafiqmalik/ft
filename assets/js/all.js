@@ -64,7 +64,7 @@ function toggleNav(){
   }
 }
 function responsiveNess() {
-  if (screen.width < 570) {
+  if (screen.width <= 570) {
       collapseNav();
       sideMenu.style.display = "none";
       dropdownIcon_b.style.display = "none";
