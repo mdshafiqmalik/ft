@@ -27,7 +27,8 @@
         <input id="submit" type="submit" name="Submit" value="Login">
       </form>
       <div class="others">
-        <a href="/register">Register Now</a>
+        <a href="">Forgotten Password</a>
+        <a id="registerNow" href="/register">Register Now</a>
       </div>
     </div>
   </body>
