@@ -51,7 +51,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
                   <span class="desig">New User</span>
                 </div>
                 <div class="greenTickBadge">
-                  <img src="../assets/svgs/verified.svg" alt="">
+                  <img src="../assets/svgs/add_box.svg" alt="">
                 </div>
               </a>
             </li>
@@ -70,7 +70,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
               <div class="mainMenu">
                   <a class="menus"  href="/login">Login/Register</a>
                   <div class="menusIcon">
-                    <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
+                    <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
                   </div>
               </div>
               <div class="subMenu">  </div>
@@ -94,6 +94,27 @@ include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
                 </ul>
               </div>
             </li>
+
+            <li class="sideMenusList">
+              <div class="mainMenu">
+                  <a class="menus"  href="/terms-privacy">Terms & Privacy</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/security.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu">  </div>
+            </li>
+
+            <li class="sideMenusList">
+              <div class="mainMenu">
+                  <a class="menus"  href="/About">About</a>
+                  <div class="menusIcon">
+                    <img height="22px" width="22px" src="../assets/svgs/info.svg" alt="">
+                  </div>
+              </div>
+              <div class="subMenu">  </div>
+            </li>
+
           </ul>
         </div>
 
