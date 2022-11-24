@@ -130,8 +130,9 @@ nav #nav-profile, #nav-profile-img:hover{
 
 /* Side Menu */
 .sideMenu{
-  min-height: 100vh;
-  height: auto;
+  overflow: scroll;
+  height: 100%;
+  position: fixed;
   min-width: 260px;
   background-color: white;
   transition: width .7s, transform 1s;
