@@ -105,7 +105,7 @@ body{
 .loginForm .submit{
   max-width: 150px;
   background :linear-gradient(to right, #da8cff, #9a55ff);
-  font-family: "ubuntu-medium",sans-serif;
+  font-family: "ubuntu-bold",sans-serif;
   color: white;
   border-radius: 4px;
 }
@@ -132,5 +132,8 @@ body{
     overflow: scroll;
     margin:0;
     top:0;
+  }
+  .forgotPassword p{
+    margin-left: 30px;
   }
 }
