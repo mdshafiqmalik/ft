@@ -17,7 +17,7 @@
         <span class="greetHeading">Enter Username or Email</span>
         <span class="messageAndErrors">to reset your password</span>
       </div>
-      <form class="loginElements loginForm" action="" method="post">
+      <form class="loginElements loginForm" action="otp-auth.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username/Email/Phone">
         <input id="submit" type="submit" name="Submit" value="Send OTP">
       </form>

@@ -17,7 +17,7 @@
         <span class="greetHeading">Check your mail box</span>
         <span class="messageAndErrors">enter the OTP sent to <i> <b>mdshafiqmalik98@gmail.com</b> </i> </span>
       </div>
-      <form class="loginElements loginForm" action="" method="post">
+      <form class="loginElements loginForm" action="create-password.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Enter 6 digit OTP">
         <input id="submit" type="submit" name="Submit" value="Verify">
       </form>
