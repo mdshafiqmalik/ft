@@ -92,14 +92,13 @@
             </li>
 
             <li class="sideMenusList dropdownMenu">
-              <div class="mainMenu" onclick="expandMenus(4)">
+              <div class="mainMenu" onclick="expandMenus(6)">
                 <span hidden> 1 </span>
                 <a class="menus"  href="#">Category</a>
-                <img  class="dropdownIcon-b" height="10px" width="10px" src="/assets/svgs/dropdown.svg" alt="">
+                <img  class="dropdownIcon-b" height="10px" width="10px" src="../assets/svgs/dropdown.svg" alt="">
                 <div class="menusIcon">
-                  <img class="dropdownIcon-a" height="10px" width="10px" src="/assets/svgs/dropdown.svg" alt="">
-                  <img class="dropdownIcona-a-n" height="22px" width="22px" src="/assets/svgs/channel.svg" alt="">
-
+                  <img class="dropdownIcon-a" height="10px" width="10px" src="../assets/svgs/dropdown.svg" alt="">
+                  <img class="dropdownIcona-a-n" height="22px" width="22px" src="../assets/svgs/channel.svg" alt="">
                 </div>
               </div>
               <div class="subMenu">
