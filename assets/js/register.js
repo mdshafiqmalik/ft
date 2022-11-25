@@ -1,14 +1,15 @@
 
+
 function openEye(){
-  let eyeIcon = document.querySelector(".spPassword img");
-  let spPasswordInput = document.querySelector(".spPassword input");
-  if (eyeIcon.dataset.status == "closed"){
-    spPasswordInput.type=  "text";
-    eyeIcon.setAttribute("data-status", "opened");
-    eyeIcon.src = "/assets/svgs/eye_show.svg";
+  var closed = document.getElementById('eyeClosed').style.display;
+  var opened = document.getElementById('eyeOpened').style.display;
+  if (closed == 'block') {
+    document.getElementById('eyeClosed').style.display = "none";
+    document.getElementById('eyeOpened').style.display = "block";
+    document.getElementById('password').type = "text";
   }else {
-    eyeIcon.src = "/assets/svgs/eye_closed.svg";
-    eyeIcon.setAttribute("data-status", "closed");
-    spPasswordInput.type=  "passsword";
+    document.getElementById('eyeOpened').style.display = "none";
+    document.getElementById('eyeClosed').style.display = "block";
+    document.getElementById('password').type = "password";
   }
 }
