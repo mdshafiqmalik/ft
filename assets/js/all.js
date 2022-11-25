@@ -100,6 +100,7 @@ function collapseNav() {
   menusIcon.forEach(a=>a.style.width = "auto");
   subMenus.style.position ="absolute";
   subMenus.style.boxShadow= "-1px 3px 5px 0px grey";
+
   dropdownIcon_b.style.display = "none";
   dropdownIcon_a.style.display = "flex";
 }
@@ -111,13 +112,18 @@ function expandMenus(x){
     dropdownIcon_a.style.transform = "rotate(0deg)";
     dropdownIcon_b.style.transform = "rotate(0deg)";
     subMenus.style.width = "100%";
-    subMenus.style.height = "auto";
+    if (navInfo.innerHTML == "collapsed") {
+      subMenus.style.height = "auto";
+    }else {
+      subMenus.style.height = "100%";
+    }
+
     status.innerHTML=0;
   }else {
     dropdownIcon_a.style.transform = "rotate(-90deg)";
     dropdownIcon_b.style.transform = "rotate(-90deg)";
     status.innerHTML=1;
     subMenus.style.width = "0px";
-    // subMenus.style.height = "0px";
+    subMenus.style.height = "0px";
   }
 }
