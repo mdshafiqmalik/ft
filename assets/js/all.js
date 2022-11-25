@@ -51,9 +51,11 @@ function toggleNav(){
   // when not collapsed
   if (screen.width <= 570) {
     if (sideMenu.style.width === "0px") {
+      subMenus.style.width ="auto";
       expandNav();
     }else {
       collapseNav();
+      subMenus.style.width ="0px";
       sideMenu.style.width = "0px";
     }
   }else if (navInfo.innerHTML === "notCollapsed") {
@@ -108,12 +110,14 @@ function expandMenus(x){
   if (status.innerHTML==1) {
     dropdownIcon_a.style.transform = "rotate(0deg)";
     dropdownIcon_b.style.transform = "rotate(0deg)";
+    subMenus.style.width = "100%";
     subMenus.style.height = "auto";
     status.innerHTML=0;
   }else {
     dropdownIcon_a.style.transform = "rotate(-90deg)";
     dropdownIcon_b.style.transform = "rotate(-90deg)";
     status.innerHTML=1;
-    subMenus.style.height = "0";
+    subMenus.style.width = "0%";
+    subMenus.style.height = "0px";
   }
 }

@@ -150,7 +150,7 @@ nav #nav-profile, #nav-profile-img:hover{
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: transform 1s;
+  transition: height 1s;
 }
 .mainMenu{
   display: flex;
@@ -245,7 +245,7 @@ text-decoration: none;
   margin-top: 7px;
 }
 .subMenu .subMenu-ul{
-  width: 100%;
+  width: 0px;
   overflow-y: hidden;
   z-index: 9;
   display: flex;
@@ -253,7 +253,7 @@ text-decoration: none;
   flex-direction: column;
   list-style:none;;
   height: 0;
-  transition: height .7s ease;
+  transition: width 1s ease, height 1s ease;
   background-color: white;
 }
 .subMenu .subMenu-ul li{
