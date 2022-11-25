@@ -19,10 +19,10 @@
       </div>
       <form class="loginElements loginForm" action="" method="post">
         <div class="spPassword">
-          <input class="fields passwordV" type="password" name="current-password" value="" placeholder="New Password" autocomplete="current-password">
+          <input id="newPassword" class="fields" type="password" name="current-password" value="" placeholder="New Password" autocomplete="current-password">
         </div>
         <div class="spPassword">
-          <input class="fields passwordV" type="password" name="current-password" value="" placeholder="Verify Password" autocomplete="current-password">
+          <input id="confirmPassword" class="fields" type="password" name="current-password" value="" placeholder="Verify Password" autocomplete="current-password">
           <img id="eyeClosed" onclick="openEye()" style="display:block;" src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" onclick="openEye()" style="display:none;" src="/assets/svgs/eye_show.svg" alt="">
         </div>

@@ -6,10 +6,20 @@ function openEye(){
   if (closed == 'block') {
     document.getElementById('eyeClosed').style.display = "none";
     document.getElementById('eyeOpened').style.display = "block";
-    document.getElementsByClassName('passwordV').type = "text";
+    document.getElementById('newPassword').type = "text";
+
+    let confirmPass = document.getElementById('confirmPassword');
+    if (confirmPass) {
+      confirmPass.type = "text";
+    }
   }else {
     document.getElementById('eyeOpened').style.display = "none";
     document.getElementById('eyeClosed').style.display = "block";
-    document.getElementsByClassName('passwordV').type = "password";
+    document.getElementById('newPassword').type = "password";
+
+    let confirmPassword = document.getElementById('confirmPassword');
+    if (confirmPassword) {
+      confirmPassword.type = "password";
+    }
   }
 }

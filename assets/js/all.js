@@ -42,19 +42,19 @@ window.onload = function (){
   responsiveNess();
 }
 
-onresize = (makeResponsive) => {
-  responsiveNess();
-};
+// onresize = (makeResponsive) => {
+//   responsiveNess();
+// };
 
 
 function toggleNav(){
   // when not collapsed
   if (screen.width <= 570) {
-    if (sideMenu.style.display === "none") {
+    if (sideMenu.style.width === "0px") {
       expandNav();
     }else {
       collapseNav();
-      sideMenu.style.display = "none";
+      sideMenu.style.width = "0px";
     }
   }else if (navInfo.innerHTML === "notCollapsed") {
       collapseNav();
@@ -66,7 +66,7 @@ function toggleNav(){
 function responsiveNess() {
   if (screen.width <= 570) {
       collapseNav();
-      sideMenu.style.display = "none";
+      sideMenu.style.width = "0px";
       dropdownIcon_b.style.display = "none";
   }else  {
     dropdownIcon_a.style.display = "none";
@@ -76,30 +76,21 @@ function responsiveNess() {
 
 function expandNav() {
   navInfo.innerHTML = "notCollapsed";
-  sideMenu.style.display= "flex";
-  sideMenu.style.width= "auto";
-  sideMenu.style.minWidth= "260px";
-  logo.style.display = "inline";
+  sideMenu.style.width= "360px";
   menus.forEach(a=>a.style.display = "flex");
   sideMenuList.forEach(a=>a.style.display = "flex");
   menuProfile.style.display= "block";
-  menusIcon.forEach(a=>a.style.width = "50%");
-  subMenus.style.position ="relative";
-  subMenus.style.boxShadow= "none";
   dropdownIcon_b.style.display = "flex";
   dropdownIcon_a.style.display = "none";
 }
 
 function collapseNav() {
   navInfo.innerHTML = "collapsed";
-  sideMenu.style.width= "auto";
-  sideMenu.style.minWidth= "0px";
-  sideMenu.style.maxWidth= "80px";
+  menuProfile.style.display= "none";
+  sideMenu.style.width= "80px";
+  sideMenuList.forEach(a=>a.style.padding = "1.125rem 1.25rem 1.125rem 1.25rem");
   menus.forEach(a=>a.style.display = "none");
   menusIcon.forEach(a=>a.style.width = "auto");
-  sideMenuList.forEach(a=>a.style.display = "list-item");
-  sideMenuList.forEach(a=>a.style.padding = "auto");
-  menuProfile.style.display= "none";
   subMenus.style.position ="absolute";
   subMenus.style.boxShadow= "-1px 3px 5px 0px grey";
   dropdownIcon_b.style.display = "none";
