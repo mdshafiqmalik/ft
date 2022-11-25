@@ -113,17 +113,18 @@ body{
   color: #bbb;
 }
 
-.forgotPassword{
+.additional{
   display: flex;
   align-items: center;
-  margin-top: 20px;
-    margin-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
-.forgotPassword input{
+.additional input{
   position: absolute;
   margin-right: 10px;
 }
-.forgotPassword p{
+.additional p{
+  max-width: 250px;
   color: #777;
   font-family: "ubunbtu-medium",sans-serif;
   position: absolute;

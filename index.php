@@ -1,7 +1,7 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'].'/cookies/index.php';
-include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
+include ('.htHidden/functions/visitCookie.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

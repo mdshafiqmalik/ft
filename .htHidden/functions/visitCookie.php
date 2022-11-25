@@ -2,10 +2,10 @@
 // TOP
 // last edited 10-11-2022 20:56
 $domain = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = $domain.'../s_keys/db.php';
-$GLOBALS['encDec'] = $domain.'../s_keys/encDec.php';
-$GLOBALS['IDcreator'] = $domain.'IDCreator.php';
-$GLOBALS['IPDEV'] = $domain.'Ip&Device.php';
+$GLOBALS['dbc'] = $domain.'/.htHidden/s_keys/db.php';
+$GLOBALS['encDec'] = $domain.'/.htHidden/s_keys/encDec.php';
+$GLOBALS['IDcreator'] = $domain.'/.htHidden/functions/IDCreator.php';
+$GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
 visited();
 function visited(){
   // Authenticate with Cookie

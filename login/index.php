@@ -20,7 +20,7 @@
       <form class="loginElements loginForm" action="" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username/Email/Phone">
         <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
-        <div class="loginElements forgotPassword">
+        <div class="loginElements additional">
           <input type="checkbox" name="" value="">
           <p>Remember this device</p>
         </div>

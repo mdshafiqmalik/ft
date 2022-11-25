@@ -22,6 +22,9 @@
         <input class="fields" type="email" name="username" value="" placeholder="Email">
         <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
+        <div class="loginElements additional">
+          <p>By clicking register, you agree to our <a href="#">Terms of Service</a> and that you read our <a href="#">Privacy Policy</a> </p>
+        </div>
       </form>
 
       <div class="others">
