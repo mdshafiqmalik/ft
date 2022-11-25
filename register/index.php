@@ -21,18 +21,18 @@
         <input class="fields" type="text" name="username" value="" placeholder="Username">
         <input class="fields" type="email" name="username" value="" placeholder="Email">
         <div class="spPassword">
-          <input class="fields" type="password" name="current-password" value="" placeholder="Password" autocomplete="current-password">
-          <img src="/assets/svgs/eye_closed.svg" alt="">
+          <input class="fields" type="password" name="password" value="" placeholder="Password">
+          <img onclick="openEye()" data-status="closed"  src="/assets/svgs/eye_closed.svg" alt="">
         </div>
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
         <div class="loginElements additional">
           <p id="acceptTC" >By clicking register, you agree to our <a href="#">Terms of Service</a> and that you read our <a href="#">Privacy Policy</a> </p>
         </div>
       </form>
-
       <div class="others">
         <a href="/login">Login Here</a>
       </div>
     </div>
+    <script src="/assets/js/register.js" charset="utf-8"></script>
   </body>
 </html>

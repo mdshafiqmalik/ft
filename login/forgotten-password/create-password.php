@@ -18,10 +18,16 @@
         <span class="messageAndErrors"></span>
       </div>
       <form class="loginElements loginForm" action="" method="post">
-        <input class="fields" type="current-password" name="current-password" value="" placeholder="New Password">
-        <input class="fields" type="current-password" name="current-password" value="" placeholder="Verify Password">
+        <div class="spPassword">
+          <input class="fields" type="password" name="current-password" value="" placeholder="New Password" autocomplete="current-password">
+        </div>
+        <div class="spPassword">
+          <input class="fields" type="password" name="current-password" value="" placeholder="Verify Password" autocomplete="current-password">
+          <img src="/assets/svgs/eye_closed.svg" alt="">
+        </div>
         <input id="submit" type="submit" name="Submit" value=" Reset Password">
       </form>
     </div>
+    <script src="/assets/js/register.js" charset="utf-8"></script>
   </body>
 </html>
