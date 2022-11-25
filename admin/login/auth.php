@@ -15,6 +15,6 @@
     }
 
     $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcFdOMbAAAAABVlj4_7eGdQ2Ha_3vHayE2YMoGP&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']), true);
-    var_dump($response['success']);
+    var_dump($response);
 
 ?>
