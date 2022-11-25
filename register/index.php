@@ -21,7 +21,7 @@
         <input class="fields" type="text" name="username" value="" placeholder="Username">
         <input class="fields" type="email" name="username" value="" placeholder="Email">
         <div class="spPassword">
-          <input id="password"class="fields" type="password" name="password" value="" placeholder="Password">
+          <input class="fields passwordV" type="password" name="password" value="" placeholder="Password">
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">
         </div>
