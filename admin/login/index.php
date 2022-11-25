@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo getenv('cssVersion'); ?>">
     <link rel="stylesheet" href="assets/login.css?v=<?php echo getenv('cssVersion'); ?>">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="assets/login.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
     <title>Fastreed: Admin Login</title>
   </head>
   <body>
@@ -24,9 +25,9 @@
           <input type="checkbox" name="" value="">
           <p>Remember this device</p>
         </div>
-        <div class="g-recaptcha captcha" data-size = "compact" data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
+        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
         <br>
-        <input id="submit" class="submit" type="submit" name="Submit" value="Login">
+        <input id="submit" class="submit"  type="submit" name="Submit" value="Login">
       </form>
       <div class="others">
         <a href="/login">User Login</a>
