@@ -76,7 +76,8 @@ function responsiveNess() {
 
 function expandNav() {
   navInfo.innerHTML = "notCollapsed";
-  sideMenu.style.width= "360px";
+  sideMenuList.forEach(a=>a.style.alignItems = "initial");
+  sideMenu.style.width= "260px";
   menus.forEach(a=>a.style.display = "flex");
   sideMenuList.forEach(a=>a.style.display = "flex");
   menuProfile.style.display= "block";
@@ -88,6 +89,7 @@ function collapseNav() {
   navInfo.innerHTML = "collapsed";
   menuProfile.style.display= "none";
   sideMenu.style.width= "80px";
+  sideMenuList.forEach(a=>a.style.alignItems = "center");
   sideMenuList.forEach(a=>a.style.padding = "1.125rem 1.25rem 1.125rem 1.25rem");
   menus.forEach(a=>a.style.display = "none");
   menusIcon.forEach(a=>a.style.width = "auto");
