@@ -1,15 +1,10 @@
-<?php
-session_start();
-// include $_SERVER['DOCUMENT_ROOT'].'/cookies/index.php';
-// include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/g_vars.php';
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo getenv('cssVersion'); ?>">
-    <title>Fastreed Dashboard</title>
+    <title>Fastreed: Admin Panel</title>
   </head>
   <body>
     <div class="top-div">
@@ -17,7 +12,7 @@ session_start();
       <nav>
         <div id="nav-G1" class="nav-G1">
           <div class="nav-logo">
-            <a id="logo" href="/">FastReed <span>.com</span> </a>
+            <a id="logo" href="/">FastReed <span>.com/admin</span> </a>
             <div id="small-logo"> <a href="/admin-panel"><img width="40px" height="48px" src="../assets/images/favicon.png" alt=""></a> </div>
           </div>
 
@@ -65,15 +60,25 @@ session_start();
                     </div>
                 </div>
               </a>
-
               <div class="subMenu"></div>
             </li>
 
+            <li class="sideMenusList">
+              <a href="/">
+                <div class="mainMenu">
+                    <p class="menus">Activity</p>
+                    <div class="menusIcon">
+                      <img height="22px" width="22px" src="../assets/svgs/stats.svg" alt="">
+                    </div>
+                </div>
+              </a>
+              <div class="subMenu">  </div>
+            </li>
 
             <li class="sideMenusList">
-              <a href="/profile">
+              <a href="/">
                 <div class="mainMenu">
-                    <p class="menus">My Profile</p>
+                    <p class="menus" >Users</p>
                     <div class="menusIcon">
                       <img height="22px" width="22px" src="../assets/svgs/user.svg" alt="">
                     </div>
@@ -85,19 +90,7 @@ session_start();
             <li class="sideMenusList">
               <a href="/">
                 <div class="mainMenu">
-                    <p class="menus">Posts</p>
-                    <div class="menusIcon">
-                      <img height="22px" width="22px" src="../assets/svgs/articles.svg" alt="">
-                    </div>
-                </div>
-              </a>
-              <div class="subMenu">  </div>
-            </li>
-
-            <li class="sideMenusList">
-              <a href="/login/settings">
-                <div class="mainMenu">
-                    <p class="menus">Settings</p>
+                    <p class="menus" >Settings</p>
                     <div class="menusIcon">
                       <img height="22px" width="22px" src="../assets/svgs/settings.svg" alt="">
                     </div>
@@ -126,9 +119,9 @@ session_start();
             </li>
 
             <li class="sideMenusList">
-              <a href="/logout">
+              <a href="/">
                 <div class="mainMenu">
-                    <p class="menus">Logout</p>
+                    <p class="menus" >Logout</p>
                     <div class="menusIcon">
                       <img height="22px" width="22px" src="../assets/svgs/power.svg" alt="">
                     </div>
@@ -136,6 +129,8 @@ session_start();
               </a>
               <div class="subMenu">  </div>
             </li>
+
+
           </ul>
         </div>
 
