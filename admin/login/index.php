@@ -21,10 +21,6 @@
       <form class="loginElements loginForm" action="auth.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username/Email/Phone">
         <input class="fields" type="password" name="password" value="" placeholder="Password">
-        <div class="loginElements additional">
-          <input type="checkbox" name="" value="">
-          <p>Remember this device</p>
-        </div>
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
         <br>
         <input id="submit" class="submit"  type="submit" name="Submit" value="Login" disabled>
