@@ -20,10 +20,13 @@
       <form class="loginElements loginForm" action="" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username">
         <input class="fields" type="email" name="username" value="" placeholder="Email">
-        <input class="fields" type="current-password" name="current-password" value="" placeholder="Password">
+        <div class="spPassword">
+          <input class="fields" type="password" name="current-password" value="" placeholder="Password" autocomplete="current-password">
+          <img src="/assets/svgs/eye_closed.svg" alt="">
+        </div>
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
         <div class="loginElements additional">
-          <p>By clicking register, you agree to our <a href="#">Terms of Service</a> and that you read our <a href="#">Privacy Policy</a> </p>
+          <p id="acceptTC" >By clicking register, you agree to our <a href="#">Terms of Service</a> and that you read our <a href="#">Privacy Policy</a> </p>
         </div>
       </form>
 
