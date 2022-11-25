@@ -17,7 +17,7 @@
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
       </div>
-      <form class="loginElements loginForm" action="" method="post">
+      <form class="loginElements loginForm" action="auth.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username/Email/Phone">
         <input class="fields" type="password" name="password" value="" placeholder="Password">
         <div class="loginElements additional">
