@@ -15,8 +15,4 @@
 }
 /*  */
 @media (max-width: 570px){
-  .g-recaptcha {
-      position: relative;
-      margin-left: -20px;
-  }
 }
