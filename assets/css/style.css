@@ -229,10 +229,14 @@ text-decoration: none;
   flex-direction: row-reverse;
   align-items: center;
 }
-.mainMenu .dropdownIcon_b, .mainMenu .dropdownIcon_a{
+.mainMenu .dropdownIcon-b, .mainMenu .dropdownIcon-a{
   filter: var(--svg-text-color);
   transform: rotate(-90deg);
   transition: transform ease .3s;
+}
+.dropdownIcon-a{
+  padding-left: 10px;
+  align-self: flex-end;
 }
 .subMenu{
   display: flex;
@@ -241,18 +245,19 @@ text-decoration: none;
   margin-top: 7px;
 }
 .subMenu .subMenu-ul{
+  width: 100%;
+  overflow-y: hidden;
   z-index: 9;
   display: flex;
-  width: 100%;
   max-width: 200px;
   flex-direction: column;
   list-style:none;;
-  transition: visibility .7s ease;
-  display: none;
+  height: 0;
+  transition: height .7s ease;
   background-color: white;
 }
 .subMenu .subMenu-ul li{
-  padding: 10px 5px 10px 12px;
+  padding: 10px 0px 10px 12px;
 }
 .subMenu-ul a{
   text-decoration: none;

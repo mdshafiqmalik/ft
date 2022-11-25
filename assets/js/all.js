@@ -79,7 +79,10 @@ function expandNav() {
   sideMenuList.forEach(a=>a.style.alignItems = "initial");
   sideMenu.style.width= "260px";
   menus.forEach(a=>a.style.display = "flex");
+  menusIcon.forEach(a=>a.style.width = "50%");
   sideMenuList.forEach(a=>a.style.display = "flex");
+  subMenus.style.position ="relative";
+  subMenus.style.boxShadow= "none";
   menuProfile.style.display= "block";
   dropdownIcon_b.style.display = "flex";
   dropdownIcon_a.style.display = "none";
@@ -105,12 +108,12 @@ function expandMenus(x){
   if (status.innerHTML==1) {
     dropdownIcon_a.style.transform = "rotate(0deg)";
     dropdownIcon_b.style.transform = "rotate(0deg)";
-    subMenus.style.display = "flex";
+    subMenus.style.height = "auto";
     status.innerHTML=0;
   }else {
     dropdownIcon_a.style.transform = "rotate(-90deg)";
     dropdownIcon_b.style.transform = "rotate(-90deg)";
     status.innerHTML=1;
-    subMenus.style.display = "none";
+    subMenus.style.height = "0";
   }
 }
