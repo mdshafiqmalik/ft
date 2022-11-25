@@ -126,9 +126,12 @@ body{
 .additional p{
   max-width: 250px;
   color: #777;
-  font-family: "ubunbtu-medium",sans-serif;
+  font-family: "ubunbtu-bold",sans-serif;
   position: absolute;
   margin-left: 20px;
+}
+.additional p a{
+  text-decoration: none;
 }
 @media (max-width: 570px){
   .loginOuterDiv{
