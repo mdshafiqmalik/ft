@@ -40,9 +40,8 @@ body{
   position: absolute;
   top: 20px;
   display: flex;
-  /* box-shadow: 0 0 4px 0px grey; */
   flex-direction: column;
-  padding: 3rem !important;
+  padding: 3rem ;
 }
 .loginElements{
   width: 100%;
