@@ -24,7 +24,7 @@
           <input type="checkbox" name="" value="">
           <p>Remember this device</p>
         </div>
-        <div class="g-recaptcha captcha" data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
+        <div class="g-recaptcha captcha" data-size = "compact" data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
         <br>
         <input id="submit" class="submit" type="submit" name="Submit" value="Login">
       </form>
