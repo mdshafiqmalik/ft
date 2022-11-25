@@ -27,6 +27,7 @@
   margin: 0;
 }
 body{
+  -webkit-tap-highlight-color: transparent;
   background-color: #f2edf3;
   display: flex;
   align-items: center;
