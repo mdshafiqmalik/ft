@@ -1,6 +1,5 @@
 <?php
-session_start();
-include ('.htHidden/functions/visitCookie.php');
+include '.htHidden/functions/checkVisitorType.php';
 
 ?>
 <!DOCTYPE html>

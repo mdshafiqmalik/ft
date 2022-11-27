@@ -1,3 +1,9 @@
+<?php
+session_start();
+$domain = $_SERVER['DOCUMENT_ROOT'];
+include $domain.'/.htHidden/functions/anonymousVisitor.php';
+ ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

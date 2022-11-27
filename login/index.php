@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo getenv('cssVersion'); ?>">
     <link rel="stylesheet" href="assets/style.css?v=<?php echo getenv('cssVersion'); ?>">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Fastreed: User Login</title>
   </head>
   <body>
@@ -24,6 +25,8 @@
           <input type="checkbox" name="" value="">
           <p>Remember this device</p>
         </div>
+        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
+        <br>
         <input id="submit" type="submit" name="Submit" value="Login">
       </form>
       <div class="others">

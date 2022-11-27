@@ -21,6 +21,7 @@ function generateUniqueID($fields, $keyLength){
 
   return $randomString;
 }
+
 // Checking in Database
 function checkInDB($fields, $randomString){
 $dbc = $_SERVER['DOCUMENT_ROOT'].'/.htHidden/s_keys/db.php';
