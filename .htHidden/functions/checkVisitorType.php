@@ -19,9 +19,6 @@ $GLOBALS['IDcreator'] = $domain.'/.htHidden/functions/IDCreator.php';
 $GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
 if (isset($_COOKIE['userID'])) {
   if (!empty($_COOKIE['userID'])) {
-    if () {
-      // code...
-    }
     include 'userVisits.php';
   }else {
     // No Cookie value Mean an anonymous user
