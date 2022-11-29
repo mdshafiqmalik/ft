@@ -5,7 +5,23 @@ if (!isset($_GET['adminQoute'])) {
   header("Location: unauthorized.php");
 }elseif (empty($_GET['adminQoute'])) {
     header("Location: unauthorized.php");
+}elseif (!checkAdminQoute($_GET['adminQoute'])) {
+  header("Location: unauthorized.php");
 }
+function checkAdminQoute($aq){
+$hrs = (int) date('h');
+$min = (int) date('i');
+$day = (int) date('d');
+$key = (int) $hrs*$min*$day;
+$aq = (int) $aq;
+  if ($aq === $key) {
+    $adminQouteFound = true;
+  }else {
+    $adminQouteFound = false;
+  }
+  return $adminQouteFound;
+}
+
  ?>
 
 <!DOCTYPE html>

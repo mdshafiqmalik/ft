@@ -1,6 +1,3 @@
-<?php
-include '.htHidden/activity/checkVisitorType.php';
-?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -26,7 +23,7 @@ include '.htHidden/activity/checkVisitorType.php';
 
         <div id="nav-G2" class="nav-G2">
           <div id="nav-profile">
-            <img id="nav-profile-img" src="../assets/images/face1.jpg" alt="">
+            <img id="nav-profile-img" src="../assets/svgs/user.svg" alt="">
           </div>
           <div id="fullscreen">
             <img id="fullscreen-icon" src="../assets/svgs/fullscreen.svg" alt="">
@@ -42,7 +39,7 @@ include '.htHidden/activity/checkVisitorType.php';
             <li class="sideMenusList" id="sideMenu-profile" >
               <a id="sideProfile" href="#">
                 <div class="image">
-                  <img src="../assets/images/face1.jpg" alt="">
+                  <img src="../assets/svgs/user.svg" alt="">
                 </div>
                 <div class="about">
                   <span class="name">Anonymous</span>
@@ -129,41 +126,3 @@ include '.htHidden/activity/checkVisitorType.php';
   </body>
   <script src="/assets/js/all.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
 </html>
-
-
-<?php
-// header('content-type:application/php');
-// $domain = $_SERVER['DOCUMENT_ROOT'];
-// include $domain.'/.htHidden/activity/checkVisitorType.php';
-// if (isset($_SESSION['GSI'])) {
-//   $session = $_SESSION['GSI'];
-//   if (checkUser($session, "guests", "guestID")) {
-//     $guestIndexFile = $domain.'/dashboard/rGuests.php';
-//     $guestIndex = file_get_contents($guestIndexFile);
-//     echo $guestIndex;
-//   }else {
-//     $guestIndexFile = $domain.'/dashboard/guests.php';
-//     $guestIndex = file_get_contents($guestIndexFile);
-//     echo $guestIndex;
-//   }
-// }elseif (isset($_SESSION['USI'])) {
-//   // code...
-// }
-//
-// function checkUser($guestID, $table, $col){
-//   include($GLOBALS['dbc']);
-//   $sql = "SELECT * FROM $table WHERE $col = '$guestID'";
-//   $result = mysqli_query($db, $sql);
-//   if ($result) {
-//     $isUser = mysqli_num_rows($result);
-//     if ($isUser) {
-//         $userPresent = true;
-//     }else {
-//         $userPresent = false;
-//     }
-//   }else {
-//     $userPresent = false;
-//   }
-//   return $userPresent;
-// }
- ?>
