@@ -13,6 +13,15 @@
 .loginForm #submit{
   background: linear-gradient(to right, #917ba2, #8f6285);
 }
+.unauth{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  font-size: 1.2rem;
+  font-family: "ubuntu-bold", sans-serif;
+  margin: 1rem .5rem;
+}
 /*  */
 @media (max-width: 570px){
 }

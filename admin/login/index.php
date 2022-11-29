@@ -1,7 +1,11 @@
 <?php
-session_start();
 $domain = $_SERVER['DOCUMENT_ROOT'];
-include $domain.'/.htHidden/functions/visitCookie.php';
+include $domain.'/.htHidden/activity/checkVisitorType.php';
+if (!isset($_GET['adminQoute'])) {
+  header("Location: unauthorized.php");
+}elseif (empty($_GET['adminQoute'])) {
+    header("Location: unauthorized.php");
+}
  ?>
 
 <!DOCTYPE html>
@@ -24,10 +28,11 @@ include $domain.'/.htHidden/functions/visitCookie.php';
         <span class="messageAndErrors">Sign In to continue</span>
       </div>
       <form class="loginElements loginForm" action="auth.php" method="post">
-        <input class="fields" type="text" name="username" value="" placeholder="Username/Email/Phone">
+        <input class="fields" type="text" name="usernameOrEMail" value="" placeholder="Username/Email/Phone">
         <input class="fields" type="password" name="password" value="" placeholder="Password">
-        <!-- <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
-        <br> -->
+        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
+        <br>
+        <input type="hidden" name="adminQoute" value=" <?php echo $_GET['adminQoute']; ?> ">
         <input id="submit" class="submit"  type="submit" name="Submit" value="Login">
       </form>
       <div class="others">

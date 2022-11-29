@@ -34,7 +34,6 @@ body{
   justify-content: center;
 }
 .loginOuterDiv{
-  min-height: 400px;
   background-color: white;
   position: absolute;
   top: 20px;

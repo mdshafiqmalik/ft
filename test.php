@@ -1,8 +1,5 @@
 <?php
-if (isset($_COOKIE['user'])) {
-
-}else {
-  // No Cookie Mean an anonymous user
-  // code...
-}
+$confirmPassword = "Rajedit@5119";
+$hashPassword =  password_hash($confirmPassword, PASSWORD_DEFAULT);
+echo "$hashPassword";
  ?>

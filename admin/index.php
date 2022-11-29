@@ -1,7 +1,6 @@
 <?php
-session_start();
 $domain = $_SERVER['DOCUMENT_ROOT'];
-include $domain.'/.htHidden/functions/anonymousVisitor.php';
+include $domain.'/.htHidden/activity/checkVisitorType.php';
  ?>
 
 <!DOCTYPE html>

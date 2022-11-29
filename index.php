@@ -1,7 +1,7 @@
 <?php
-include '.htHidden/functions/checkVisitorType.php';
-
-?>
+$domain = $_SERVER['DOCUMENT_ROOT'];
+include $domain.'/.htHidden/activity/checkVisitorType.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
