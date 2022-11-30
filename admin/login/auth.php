@@ -15,21 +15,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {
         if (deviceStatus($adminID)) {
-          echo "Logged";
+          include $domain. '/.htHidden/functions/activityConverter.php';
         }else {
-          echo "Device not logged or Could not recognize device";
+          $_SESSION['authStatus'] = "Could Not recognize This device";
         }
       }else {
-        echo "Invalid Password";
+        $_SESSION['authStatus'] = "Invalid Password";
       }
     }else {
-      echo "Invalid Username";
+      $_SESSION['authStatus'] = "Invalid Username";
     }
   }else {
-    echo "Invalid Captcha";
+    $_SESSION['authStatus'] = "Invalid Captcha";
   }
 }else {
-  echo "Post Request Not Found";
+  $_SESSION['authStatus'] = "Post Request Not Found";
 }
 
 
@@ -45,14 +45,17 @@ function userName(){
       }else {
         $userNameRes['status'] = "Incorrect Username";
         $userNameRes['valid'] = false;
+        $_SESSION['authStatus'] = "Incorrect Username"
       }
     }else {
-      $userNameRes['status'] = "Username is empty";
+      $userNameRes['status'] = "Username Cannot Be Empty";
       $userNameRes['valid'] = false;
+      $_SESSION['authStatus'] = "Username Cannot Be Empty";
     }
   }else {
-    $userNameRes['status'] = "Username Not Included";
+    $userNameRes['status'] = "Username Not Found In Form";
     $userNameRes['valid'] = false;
+    $_SESSION['authStatus'] = "Username Not Found In Form";
   }
   return $userNameRes;
 }
@@ -84,14 +87,17 @@ function passWord($adID){
       }else {
         $passWordRes['status'] = "Incorrect Password";
         $passWordRes['valid'] = false;
+        $_SESSION['authStatus'] = "Incorrect Password"
       }
     }else {
       $passWordRes['status'] = "Password is empty";
       $passWordRes['valid'] = false;
+      $_SESSION['authStatus']= "Password Is Empty";
     }
   }else {
     $passWordRes['status'] = "Password Not Included";
     $passWordRes['valid'] = false;
+    $_SESSION['authStatus']= "Password Not Included In Form";
   }
   return $passWordRes;
 }
@@ -127,14 +133,17 @@ function captchaResponse(){
       }else {
         // G_recaptcha not Authorized
         // WARNING: Potential sapammer
-        $captchaRes['status'] = "Not Valid";
+        $_SESSION['authStatus'] ="Captcha Not Valid";
+        $captchaRes['status'] = "Captcha Not Valid";
         $captchaRes['valid'] = false;
       }
     }else {
+      $_SESSION['authStatus'] ="Refill The Captcha";
       $captchaRes['status'] = "Empty Captcha";
       $captchaRes['valid'] = false;
     }
   }else {
+    $_SESSION['authStatus'] ="Captcha Not Included In Form";
     $captchaRes['status'] = "Captcha Not Included";
     $captchaRes['valid'] = false;
   }
@@ -186,22 +195,21 @@ function deviceStatus($userID){
         $result2 = mysqli_query($db, $sql2);
         $row = mysqli_num_rows($result2);
         if ((boolean)$row) {
-          // Logged device
           $deviceLogged = true;
         }else {
-          // Device Logged Out
+          $_SESSION['authStatus'] = "Device Logged Out";
           $deviceLogged = false;
         }
       }else {
-        // Device ID not matched
+        $_SESSION['authStatus'] = "Device ID Not Matched With DB";
         $deviceLogged = false;
       }
     }else {
-      // Device ID not found
+      $_SESSION['authStatus'] ="New Device Detected";
       $deviceLogged = false;
     }
   }else {
-    // Device not logged
+    $_SESSION['authStatus'] = "New Device Detected";
     $deviceLogged = false;
   }
   return $deviceLogged;
