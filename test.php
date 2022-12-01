@@ -12,5 +12,6 @@
 //   $sql = "SELECT credKey FROM secretCredentials WHERE credKey = 'G_RECAPTCHA'";
 //   $result = mysqli_query($db, $sql);
 // }
-include '../secrets/db.php';var_dump($db);
+// include '../secrets/db.php';var_dump($db);
+echo($_SERVER['DOCUMENT_ROOT']);
  ?>

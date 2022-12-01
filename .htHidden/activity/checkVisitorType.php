@@ -13,10 +13,13 @@
 //    Anonymouscookie will be deleted from browser
 //    and updated with userCookie
 session_start();
+if (!isset($_DOCROOT)) {
+  $_DOCROOT = '../../../';
+}
 date_default_timezone_set("asia/kolkata");
 $domain = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = '../secrets/s_keys/db.php';
-$GLOBALS['encDec'] = '../secrets/encDec.php';
+$GLOBALS['dbc'] = $_DOCROOT.'secrets/db.php';
+$GLOBALS['encDec'] =$_DOCROOT.'secrets/encDec.php';
 $GLOBALS['IDcreator'] = $domain.'/.htHidden/activity/createID.php';
 $GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
 
