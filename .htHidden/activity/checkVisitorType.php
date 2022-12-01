@@ -15,8 +15,8 @@
 session_start();
 date_default_timezone_set("asia/kolkata");
 $domain = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = $domain.'/.htHidden/s_keys/db.php';
-$GLOBALS['encDec'] = $domain.'/.htHidden/s_keys/encDec.php';
+$GLOBALS['dbc'] = '../secrets/s_keys/db.php';
+$GLOBALS['encDec'] = '../secrets/encDec.php';
 $GLOBALS['IDcreator'] = $domain.'/.htHidden/activity/createID.php';
 $GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
 
