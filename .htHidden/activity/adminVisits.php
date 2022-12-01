@@ -1,9 +1,9 @@
 <?php
 if (sessionExist()["bool"]) {
   $sessionID = sessionExist()["id"];
-  upadteVisits($sessionID);
+  updateVisits($sessionID);
 }else {
-  makeSession($adminID);
+  makeSession($encAdminID);
 }
 
 function sessionExist(){
@@ -44,6 +44,11 @@ function makeSession($adminID){
   include($GLOBALS['dbc']);
   include_once($GLOBALS['IDcreator']);
   include_once($GLOBALS['IPDEV']);
+  if (isset($_SESSION['refSession'])) {
+    $refByGuestID = $_SESSION['refSession'];
+  }else {
+    $refByGuestID = "";
+  }
   $adminIP = getIp();
   $date = date('Y-m-d');
   $dateTime = time();
@@ -52,12 +57,12 @@ function makeSession($adminID){
   $sessionID = 'ASI'.$sessionID;
   $_SESSION["ASI"] = $sessionID;
   updateVisits($sessionID);
-  $sql2 = "INSERT INTO admins_sessions (sessionID,adminID,tdate, adminIP) VALUES ('$sessionID', '$adminID','$date','$adminIP')";
+  $sql2 = "INSERT INTO admins_sessions (sessionID,adminID,tdate, adminIP, refID) VALUES ('$sessionID', '$adminID','$date','$adminIP','$refByGuestID')";
   mysqli_query($db, $sql2);
 }
 
 
-function upadteVisits($sessionID){
+function updateVisits($sessionID){
   $visitTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
     $httpRefe = $_SERVER['HTTP_REFERER'];

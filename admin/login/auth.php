@@ -14,8 +14,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {
         if (deviceStatus($adminID)) {
-          include $domain. '/.htHidden/functions/activityConverter.php';
-          echo "Logged";
+          // Making a ref session to from which
+          include($GLOBALS['encDec']);
+          if (isset($_COOKIE['UID'])) {
+            $refID = openssl_decrypt($_COOKIE['UID'], $ciphering,$encryption_key, $options, $encryption_iv);
+            $_SESSION['refSession'] = $refID;
+
+            setcookie("UID", null, time()-3600, '/');
+            unset($_SESSION['USI']);
+
+
+          }elseif (isset($_COOKIE['GID'])) {
+            $refID = openssl_decrypt($_COOKIE['GID'], $ciphering,$encryption_key, $options, $encryption_iv);
+            $_SESSION['refSession'] = $refID;
+
+            setcookie("GID", null, time()-3600, '/');
+            unset($_SESSION['GSI']);
+
+          }
+          //--------------//
+
+          // make admin cookie
+          $adID = openssl_encrypt($adminID, $ciphering,$encryption_key, $options, $encryption_iv);
+          setcookie("AID", $adID, time()+3600, '/');
+          header("Location: ../");
+          $_SESSION['authStatus'] = ""; 
         }
       }
     }

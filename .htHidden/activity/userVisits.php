@@ -1,9 +1,9 @@
 <?php
 if (sessionExist()["bool"]) {
   $sessionID = sessionExist()["id"];
-  upadteVisits($pagesViews,$sessionID);
+  updateVisits($pagesViews,$sessionID);
 }else {
-  makeSession($userID);
+  makeSession($encUserID);
 }
 
 function sessionExist(){
@@ -51,12 +51,12 @@ function makeSession($userID){
   $sessionID = createNewID("users_sessions");
   $sessionID = 'USI'.$sessionID;
   $_SESSION["USI"] = $sessionID;
-  upadteVisits($sessionID);
+  updateVisits($sessionID);
   $sql2 = "INSERT INTO users_sessions (sessionID,userID,tdate, userIP) VALUES ('$sessionID','$userID','$date','$userIP')";
   mysqli_query($db, $sql2);
 }
 
-function upadteVisits($sessionID){
+function updateVisits($sessionID){
   $visitTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
     $httpRefe = $_SERVER['HTTP_REFERER'];

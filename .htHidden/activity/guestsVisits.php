@@ -9,7 +9,7 @@ function guestVisited(){
       // check if the session is same or different
       if (sessionExist()["bool"]) {
         $sessionID = sessionExist()["id"];
-        upadteVisits($sessionID);
+        updateVisits($sessionID);
       }else {
         makeSession($guestID['id']);
       }
@@ -123,12 +123,12 @@ function makeSession($guestID){
   $guestIP = getIp();
   $date = date('Y-m-d');
   $dateTime = time();
-  upadteVisits($sessionID);
+  updateVisits($sessionID);
   $sql2 = "INSERT INTO guests_sessions (tdate, sessionID, guestIP, guestID) VALUES ('$date','$sessionID','$guestIP','$guestID')";
   mysqli_query($db, $sql2);
 }
 
-function upadteVisits($sessionID){
+function updateVisits($sessionID){
   $visitTime = time();
   if (isset($_SERVER['HTTP_REFERER'])) {
     $httpRefe = $_SERVER['HTTP_REFERER'];

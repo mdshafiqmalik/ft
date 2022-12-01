@@ -29,7 +29,9 @@ $GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
 if (isset($_COOKIE['UID'])) {
   if (!empty($_COOKIE['UID'])) {
     $userID = $_COOKIE['UID'];
-    $authUser = checkAuthVisitor($userID, "users", "userID");
+    include($GLOBALS['encDec']);
+    $encUserID = openssl_decrypt($userID, $ciphering,$encryption_key, $options, $encryption_iv);
+    $authUser = checkAuthVisitor($encUserID, "users", "userID");
     if ($authUser) {
       include 'userVisits.php';
     }else {
@@ -43,7 +45,9 @@ if (isset($_COOKIE['UID'])) {
 }elseif (isset($_COOKIE['AID'])) {
   if (!empty($_COOKIE['AID'])) {
     $adminID = $_COOKIE['AID'];
-    $authAdmin = checkAuthVisitor($adminID, "admins", "adminID");
+    include($GLOBALS['encDec']);
+    $encAdminID = openssl_decrypt($adminID, $ciphering,$encryption_key, $options, $encryption_iv);
+    $authAdmin = checkAuthVisitor($encAdminID, "admins", "adminID");
     if ($authAdmin) {
       include 'adminVisits.php';
     }else {

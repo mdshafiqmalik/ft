@@ -12,7 +12,11 @@
 //   $sql = "SELECT credKey FROM secretCredentials WHERE credKey = 'G_RECAPTCHA'";
 //   $result = mysqli_query($db, $sql);
 // }
-// include '../secrets/db.php';var_dump($db);
-// echo($_SERVER['DOCUMENT_ROOT']);
-
+include '../secrets/db.php';
+$ID = "GID202212010000001";
+$sql = "SELECT * FROM guests WHERE guestID = '$ID'";
+$result = mysqli_query($db, $sql);
+$row = $result->fetch_assoc()['tdate'];
+$withOUTGID = ltrim($ID, 'GID');;
+echo $withOUTGID;
  ?>
