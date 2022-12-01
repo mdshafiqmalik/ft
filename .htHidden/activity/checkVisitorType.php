@@ -14,7 +14,7 @@
 //    and updated with userCookie
 session_start();
 if (!isset($_DOCROOT)) {
-  $_DOCROOT = '../../../';
+  $_DOCROOT = '../../';
 }
 date_default_timezone_set("asia/kolkata");
 $domain = $_SERVER['DOCUMENT_ROOT'];

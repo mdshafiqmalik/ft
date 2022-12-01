@@ -44,7 +44,7 @@ $aq = (int) $aq;
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
         <?php
-        if (isset($_SESSION['authStatus']) && !empty($SESSION['authStatus'])) {
+        if (isset($_SESSION['authStatus'])) {
           echo '<span class="errors">'.$_SESSION['authStatus'].'</span>';
         }
          ?>
@@ -52,9 +52,8 @@ $aq = (int) $aq;
       <form class="loginElements loginForm" action="auth.php" method="post">
         <input class="fields" type="text" name="usernameOrEMail" value="" placeholder="Username/Email/Phone">
         <input class="fields" type="password" name="password" value="" placeholder="Password">
-        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
+        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
         <br>
-        <input type="hidden" name="adminQoute" value=" <?php echo $_GET['adminQoute']; ?> ">
         <input id="submit" class="submit"  type="submit" name="Submit" value="Login">
       </form>
       <div class="others">

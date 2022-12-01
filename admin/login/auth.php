@@ -9,9 +9,8 @@ if (isset($_POST['redirect'])) {
 }else {
  $redirect = '/admin/';
 }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (captchaResponse()['valid']) {
+  if ($c = captchaResponse()['valid']) {
     if (userName()['valid']) {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {
@@ -22,10 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
-
-
-
-
 function userName(){
   if (isset($_POST['usernameOrEMail'])) {
     $uLength = (boolean) strlen($_POST['usernameOrEMail']);
@@ -78,17 +73,17 @@ function passWord($adID){
       }else {
         $passWordRes['valid'] = false;
         $_SESSION['authStatus'] = "Incorrect Password";
-        // header("Location: /admin/login?s=4");
+        header("Location: /admin/login?s=4");
       }
     }else {
       $passWordRes['valid'] = false;
       $_SESSION['authStatus']= "Password Is Empty";
-      // header("Location: /admin/login?s=5");
+      header("Location: /admin/login?s=5");
     }
   }else {
     $passWordRes['valid'] = false;
     $_SESSION['authStatus']= "Password Not Included In Form";
-    // header("Location: /admin/login?s=6");
+    header("Location: /admin/login?s=6");
   }
   return $passWordRes;
 }
@@ -118,17 +113,19 @@ function captchaResponse(){
   if (isset($_POST['g-recaptcha-response'])) {
     $g_captcha = $_POST['g-recaptcha-response'];
     if (!empty($g_captcha)) {
-      include('../../'.$GLOBALS['dbc']);
-      if (validateCaptcha($g_captcha, $g_recaptcha)) {
+      include($GLOBALS['dbc']);
+      if ((boolean) validateCaptcha($g_captcha, $g_recaptcha)) {
         $captchaRes['valid'] = true;
-        var_dump(validateCaptcha($g_captcha));
+        // var_dump(validateCaptcha($g_captcha, $g_recaptcha));
+        // echo " Captcha Validated<br>";
       }else {
         // G_recaptcha not Authorized
         // WARNING: Potential sapammer
-        var_dump(validateCaptcha($g_captcha));
+        // var_dump(validateCaptcha($g_captcha , $g_recaptcha));
+        // echo "Captcha Invalid <br>";
         $_SESSION['authStatus'] ="Captcha Not Valid";
         $captchaRes['valid'] = false;
-        // header("Location: /admin/login?s=7");
+        header("Location: /admin/login?s=7");
       }
     }else {
       $_SESSION['authStatus'] ="Refill The Captcha";
@@ -146,7 +143,7 @@ function captchaResponse(){
 function validateCaptcha($res, $captchaKey){
   try {
       $url = 'https://www.google.com/recaptcha/api/siteverify';
-      $data = ['secret'   => $G_recaptcha,
+      $data = ['secret'   => $captchaKey,
                'response' => $res,
                'remoteip' => $_SERVER['REMOTE_ADDR']];
 
@@ -160,7 +157,7 @@ function validateCaptcha($res, $captchaKey){
 
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
-      return json_decode($result);
+      return json_decode($result)->success;
   }
   catch (Exception $e) {
       return null;

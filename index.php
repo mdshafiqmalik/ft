@@ -1,4 +1,5 @@
 <?php
+$_DOCROOT = '../';
 include '.htHidden/activity/checkVisitorType.php';
 ?>
 <!DOCTYPE html>
