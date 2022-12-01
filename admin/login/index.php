@@ -42,10 +42,9 @@ $aq = (int) $aq;
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
-        <span class="errors">Incorrect Password</span>
         <?php
-        if (isset($_SESSION['status']) && !empty($SESSION['status'])) {
-          // code...
+        if (isset($_SESSION['authStatus']) && !empty($SESSION['authStatus'])) {
+          echo '<span class="errors">'.$_SESSION['authStatus'].'</span>';
         }
          ?>
       </div>

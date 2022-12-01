@@ -10,26 +10,16 @@ if (isset($_POST['redirect'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (captchaResponse()['status']) {
+  if (captchaResponse()['valid']) {
     if (userName()['valid']) {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {
         if (deviceStatus($adminID)) {
           include $domain. '/.htHidden/functions/activityConverter.php';
-        }else {
-          $_SESSION['authStatus'] = "Could Not recognize This device";
         }
-      }else {
-        $_SESSION['authStatus'] = "Invalid Password";
       }
-    }else {
-      $_SESSION['authStatus'] = "Invalid Username";
     }
-  }else {
-    $_SESSION['authStatus'] = "Invalid Captcha";
   }
-}else {
-  $_SESSION['authStatus'] = "Post Request Not Found";
 }
 
 
@@ -43,19 +33,19 @@ function userName(){
         $userNameRes['valid'] = true;
         $userNameRes['AID'] = validateUsername()['AID'];
       }else {
-        $userNameRes['status'] = "Incorrect Username";
         $userNameRes['valid'] = false;
-        $_SESSION['authStatus'] = "Incorrect Username"
+        $_SESSION['authStatus'] = "Incorrect Username";
+        header("Location: /admin/login?s=1");
       }
     }else {
-      $userNameRes['status'] = "Username Cannot Be Empty";
       $userNameRes['valid'] = false;
       $_SESSION['authStatus'] = "Username Cannot Be Empty";
+      header("Location: /admin/login?s=2");
     }
   }else {
-    $userNameRes['status'] = "Username Not Found In Form";
     $userNameRes['valid'] = false;
     $_SESSION['authStatus'] = "Username Not Found In Form";
+    header("Location: /admin/login?s=3");
   }
   return $userNameRes;
 }
@@ -85,19 +75,19 @@ function passWord($adID){
       if ($pWordMatched) {
         $passWordRes['valid'] = true;
       }else {
-        $passWordRes['status'] = "Incorrect Password";
         $passWordRes['valid'] = false;
-        $_SESSION['authStatus'] = "Incorrect Password"
+        $_SESSION['authStatus'] = "Incorrect Password";
+        // header("Location: /admin/login?s=4");
       }
     }else {
-      $passWordRes['status'] = "Password is empty";
       $passWordRes['valid'] = false;
       $_SESSION['authStatus']= "Password Is Empty";
+      // header("Location: /admin/login?s=5");
     }
   }else {
-    $passWordRes['status'] = "Password Not Included";
     $passWordRes['valid'] = false;
     $_SESSION['authStatus']= "Password Not Included In Form";
+    // header("Location: /admin/login?s=6");
   }
   return $passWordRes;
 }
@@ -126,26 +116,27 @@ function validatePassword($pass, $adID){
 function captchaResponse(){
   if (isset($_POST['g-recaptcha-response'])) {
     $g_captcha = $_POST['g-recaptcha-response'];
-    $g_capEmpty = (boolean) strlen($g_captcha);
-    if (!$g_capEmpty) {
+    if (!empty($g_captcha)) {
       if (validateCaptcha($g_captcha)) {
-        $captchaRes = true;
+        $captchaRes['valid'] = true;
+        var_dump(validateCaptcha($g_captcha));
       }else {
         // G_recaptcha not Authorized
         // WARNING: Potential sapammer
+        var_dump(validateCaptcha($g_captcha));
         $_SESSION['authStatus'] ="Captcha Not Valid";
-        $captchaRes['status'] = "Captcha Not Valid";
         $captchaRes['valid'] = false;
+        // header("Location: /admin/login?s=7");
       }
     }else {
       $_SESSION['authStatus'] ="Refill The Captcha";
-      $captchaRes['status'] = "Empty Captcha";
       $captchaRes['valid'] = false;
+      header("Location: /admin/login?s=8");
     }
   }else {
     $_SESSION['authStatus'] ="Captcha Not Included In Form";
-    $captchaRes['status'] = "Captcha Not Included";
     $captchaRes['valid'] = false;
+    header("Location: /admin/login?s=9");
   }
   return $captchaRes;
 }
@@ -167,7 +158,7 @@ function validateCaptcha($res){
 
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
-      return json_decode($result)->success;
+      return json_decode($result);
   }
   catch (Exception $e) {
       return null;
@@ -199,18 +190,22 @@ function deviceStatus($userID){
         }else {
           $_SESSION['authStatus'] = "Device Logged Out";
           $deviceLogged = false;
+          header("Location: /admin/login?s=10");
         }
       }else {
         $_SESSION['authStatus'] = "Device ID Not Matched With DB";
         $deviceLogged = false;
+        header("Location: /admin/login?s=11");
       }
     }else {
       $_SESSION['authStatus'] ="New Device Detected";
       $deviceLogged = false;
+      header("Location: /admin/login?s=12");
     }
   }else {
     $_SESSION['authStatus'] = "New Device Detected";
     $deviceLogged = false;
+    header("Location: /admin/login?s=13");
   }
   return $deviceLogged;
 }

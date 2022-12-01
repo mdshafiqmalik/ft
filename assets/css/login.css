@@ -72,7 +72,12 @@ body{
   margin-bottom: 10px;
 }
 .errors{
-  color: darkred;
+  display: inline;
+  font-family: "ubuntu-bold",sans-serif;
+  color:red;
+  margin:0;
+  background-color: lightyellow;
+  padding: 5px 10px;
 }
 .loginForm{
   display: flex;
