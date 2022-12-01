@@ -44,6 +44,9 @@ $aq = (int) $aq;
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
         <?php
+        if(!isset($_COOKIE["PHPSESSID"])){
+          session_start();
+        }
         if (isset($_SESSION['authStatus'])) {
           echo '<span class="errors">'.$_SESSION['authStatus'].'</span>';
         }

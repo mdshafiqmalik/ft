@@ -1,7 +1,4 @@
 <?php
-if(!isset($_COOKIE["PHPSESSID"])){
-  session_start();
-}
 $_DOCROOT = '../../../';
 $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
@@ -74,8 +71,8 @@ function passWord($adID){
       if ($pWordMatched) {
         $passWordRes['valid'] = true;
       }else {
-        $passWordRes['valid'] = false;
         $_SESSION['authStatus'] = "Incorrect Password";
+        $passWordRes['valid'] = false;
         header("Location: /admin/login?s=4");
       }
     }else {
@@ -119,13 +116,9 @@ function captchaResponse(){
       include($GLOBALS['dbc']);
       if ((boolean) validateCaptcha($g_captcha, $g_recaptcha)) {
         $captchaRes['valid'] = true;
-        // var_dump(validateCaptcha($g_captcha, $g_recaptcha));
-        // echo " Captcha Validated<br>";
       }else {
-        // G_recaptcha not Authorized
         // WARNING: Potential sapammer
-        // var_dump(validateCaptcha($g_captcha , $g_recaptcha));
-        // echo "Captcha Invalid <br>";
+        // G_recaptcha not Authorized
         $_SESSION['authStatus'] ="Captcha Not Valid";
         $captchaRes['valid'] = false;
         header("Location: /admin/login?s=7");

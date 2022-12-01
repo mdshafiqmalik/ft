@@ -13,5 +13,6 @@
 //   $result = mysqli_query($db, $sql);
 // }
 // include '../secrets/db.php';var_dump($db);
-echo($_SERVER['DOCUMENT_ROOT']);
+// echo($_SERVER['DOCUMENT_ROOT']);
+
  ?>
