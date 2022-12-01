@@ -1,5 +1,5 @@
 <?php
-  $_DOCROOT = '../../../';
+  $_DOCROOT = '../../';
 $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
 // if (!isset($_GET['adminQoute'])) {

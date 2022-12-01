@@ -1,5 +1,5 @@
 <?php
-$$_DOCROOT = '../../../';
+$$_DOCROOT = '../../';
 include $domain.'/.htHidden/activity/checkVisitorType.php';
  ?>
 
