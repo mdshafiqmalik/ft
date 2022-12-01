@@ -1,1 +1,2 @@
-/.htidden/*
+#ignore hidden files
+.htidden/*

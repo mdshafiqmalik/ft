@@ -16,5 +16,6 @@ if (($_SERVER["HTTP_HOST"] == "www.fastreed.com")||($_SERVER["HTTP_HOST"] == "fa
   $userName = 'root';
   $passWord = '';
 }
+$g_recaptcha = "sdfdsfdsf";
 $db = mysqli_connect("$hostName","$userName","$passWord","$dbName");
 ?>
