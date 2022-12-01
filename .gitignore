@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 #ignore hidden files
 .htidden/*
+=======
+/.htHidden/*
+>>>>>>> eb73091e3ada6104b8dd9b538b3fe296e70524d9
