@@ -5,8 +5,8 @@ function createNewID($table){
   include($dbc);
   $date = date('Y-m-d');
   $year = date('Y');
-  $month = realNum(date('m'));
-  $day = realNum(date('d'));
+  $month = date('m');
+  $day = date('d');
   $newID = $year.$month.$day;
   $sql = "SELECT * FROM $table WHERE tdate ='$date'";
   $result = mysqli_query($db, $sql);

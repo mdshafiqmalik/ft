@@ -64,12 +64,15 @@ body{
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
-.messageAndErrors{
+.messageAndErrors, .errors{
   display: block;
   font-family: "ubuntu-light",sans-serif;
   color: #3a3a40;
   font-size: 1rem;
   margin-bottom: 10px;
+}
+.errors{
+  color: darkred;
 }
 .loginForm{
   display: flex;

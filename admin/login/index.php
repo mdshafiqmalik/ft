@@ -1,13 +1,13 @@
 <?php
 $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
-if (!isset($_GET['adminQoute'])) {
-  header("Location: unauthorized.php");
-}elseif (empty($_GET['adminQoute'])) {
-    header("Location: unauthorized.php");
-}elseif (!checkAdminQoute($_GET['adminQoute'])) {
-  header("Location: unauthorized.php");
-}
+// if (!isset($_GET['adminQoute'])) {
+//   header("Location: unauthorized.php");
+// }elseif (empty($_GET['adminQoute'])) {
+//     header("Location: unauthorized.php");
+// }elseif (!checkAdminQoute($_GET['adminQoute'])) {
+//   header("Location: unauthorized.php");
+// }
 function checkAdminQoute($aq){
 $hrs = (int) date('h');
 $min = (int) date('i');
@@ -42,6 +42,12 @@ $aq = (int) $aq;
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
+        <span class="errors">Incorrect Password</span>
+        <?php
+        if (isset($_SESSION['status']) && !empty($SESSION['status'])) {
+          // code...
+        }
+         ?>
       </div>
       <form class="loginElements loginForm" action="auth.php" method="post">
         <input class="fields" type="text" name="usernameOrEMail" value="" placeholder="Username/Email/Phone">
