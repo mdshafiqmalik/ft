@@ -46,7 +46,6 @@ $aq = (int) $aq;
         <?php
 
         if (isset($_SESSION['authStatus'])) {
-          session_start();
           echo '<span class="errors">'.$_SESSION['authStatus'].'</span>';
         }
          ?>

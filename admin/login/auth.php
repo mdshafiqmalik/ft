@@ -31,17 +31,19 @@ function userName(){
       }else {
         $userNameRes['valid'] = false;
         $_SESSION['authStatus'] = "Incorrect Username";
-        header("Location: /admin/login?s=1");
+        header("Location: /admin/login/index.php?s=1");
       }
     }else {
       $userNameRes['valid'] = false;
       $_SESSION['authStatus'] = "Username Cannot Be Empty";
-      header("Location: /admin/login?s=2");
+      header("Location: /admin/login/index.php?s=2");
+      exit;
     }
   }else {
     $userNameRes['valid'] = false;
     $_SESSION['authStatus'] = "Username Not Found In Form";
-    header("Location: /admin/login?s=3");
+    header("Location: /admin/login/index.php?s=3");
+    exit;
   }
   return $userNameRes;
 }
@@ -74,16 +76,19 @@ function passWord($adID){
         $_SESSION['authStatus'] = "Incorrect Password";
         $passWordRes['valid'] = false;
         header("Location: /admin/login?s=4");
+        exit;
       }
     }else {
       $passWordRes['valid'] = false;
       $_SESSION['authStatus']= "Password Is Empty";
       header("Location: /admin/login?s=5");
+      exit;
     }
   }else {
     $passWordRes['valid'] = false;
     $_SESSION['authStatus']= "Password Not Included In Form";
     header("Location: /admin/login?s=6");
+    exit;
   }
   return $passWordRes;
 }
@@ -122,16 +127,19 @@ function captchaResponse(){
         $_SESSION['authStatus'] ="Captcha Not Valid";
         $captchaRes['valid'] = false;
         header("Location: /admin/login?s=7");
+        exit;
       }
     }else {
       $_SESSION['authStatus'] ="Refill The Captcha";
       $captchaRes['valid'] = false;
       header("Location: /admin/login?s=8");
+      exit;
     }
   }else {
     $_SESSION['authStatus'] ="Captcha Not Included In Form";
     $captchaRes['valid'] = false;
     header("Location: /admin/login?s=9");
+    exit;
   }
   return $captchaRes;
 }
@@ -186,21 +194,25 @@ function deviceStatus($userID){
           $_SESSION['authStatus'] = "Device Logged Out";
           $deviceLogged = false;
           header("Location: /admin/login?s=10");
+          exit;
         }
       }else {
         $_SESSION['authStatus'] = "Device ID Not Matched With DB";
         $deviceLogged = false;
         header("Location: /admin/login?s=11");
+        exit;
       }
     }else {
       $_SESSION['authStatus'] ="New Device Detected";
       $deviceLogged = false;
       header("Location: /admin/login?s=12");
+      exit;
     }
   }else {
     $_SESSION['authStatus'] = "New Device Detected";
     $deviceLogged = false;
     header("Location: /admin/login?s=13");
+    exit;
   }
   return $deviceLogged;
 }
