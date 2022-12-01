@@ -203,13 +203,13 @@ function deviceStatus($userID){
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="Device not added";
+      $_SESSION['authStatus'] ="Device not added(Contact Admin)";
       $deviceLogged = false;
       header("Location: /admin/login?s=12");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] = "Device not added";
+    $_SESSION['authStatus'] = "Device not added(Contact Admin)";
     $deviceLogged = false;
     header("Location: /admin/login?s=13");
     exit;
