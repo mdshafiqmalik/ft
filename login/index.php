@@ -29,7 +29,7 @@ include $domain.'/.htHidden/activity/checkVisitorType.php';
           <input type="checkbox" name="" value="">
           <p>Remember this device</p>
         </div>
-        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LcFdOMbAAAAAHQ3kaP4oBuyYnh2KRnYXR6CcrnP"></div>
+        <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
         <br>
         <input id="submit" type="submit" name="Submit" value="Login">
       </form>
