@@ -1,7 +1,7 @@
 <?php
 // Call = createNewID("table_name")
 function createNewID($table){
-  $dbc = '../../secrets/db.php';
+  $dbc = '../../../secrets/db.php';
   include($dbc);
   $date = date('Y-m-d');
   $year = date('Y');
