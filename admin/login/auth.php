@@ -1,4 +1,7 @@
 <?php
+if(!isset($_COOKIE["PHPSESSID"])){
+  session_start();
+}
 $_DOCROOT = '../../../';
 $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
