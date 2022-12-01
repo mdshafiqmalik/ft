@@ -2,7 +2,6 @@
 // Call = createNewID("table_name")
 function createNewID($table){
   include($GLOBALS['dbc']);
-  include($dbc);
   $date = date('Y-m-d');
   $year = date('Y');
   $month = date('m');

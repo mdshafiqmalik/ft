@@ -19,7 +19,7 @@ function guestVisited(){
 }
 function addNewVisitor(){
   include($GLOBALS['dbc']);
-  include_once($GLOBALS['IDcreator']);
+  include($GLOBALS['IDcreator']);
   include($GLOBALS['encDec']);
   include($GLOBALS['IPDEV']);
   $ipAddress = getIp();
