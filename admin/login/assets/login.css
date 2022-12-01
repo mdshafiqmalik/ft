@@ -23,6 +23,14 @@
   margin: 1rem .5rem;
 }
 
+
+#USB,#PSB{
+  font-size: x-small;
+  float: right;
+  display: block;
+  font-family: "ubuntu-medium",sans-serif;
+  margin-bottom: 3px;
+}
 /*  */
 @media (max-width: 570px){
 }

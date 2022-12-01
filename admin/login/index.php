@@ -51,8 +51,10 @@ $aq = (int) $aq;
          ?>
       </div>
       <form class="loginElements loginForm" action="auth.php" method="post">
-        <input class="fields" type="text" name="usernameOrEMail" value="" placeholder="Username/Email/Phone" required>
-        <input class="fields" type="password" name="password" value="" placeholder="Password" required>
+        <span id="USB" ></span>
+        <input  onkeyup="checkUsername()" id="username" class="fields" type="text" name="usernameOrEMail" value="" placeholder="Username/Email/Phone" required>
+        <span id="PSB" ></span>
+        <input onkeyup="checkPassword()" id="password"  class="fields" type="password" name="password" value="" placeholder="Password" required>
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
         <br>
         <input id="submit" class="submit"  type="submit" name="Submit" value="Login">
