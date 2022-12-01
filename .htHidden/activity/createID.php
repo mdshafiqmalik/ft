@@ -1,7 +1,10 @@
 <?php
 // Call = createNewID("table_name")
+if (!isset($_DOCROOT)) {
+  $_DOCROOT = '../../';
+}
 function createNewID($table){
-  $dbc = '../../../secrets/db.php';
+  $dbc = $_DOCROOT.'secrets/db.php';
   include($dbc);
   $date = date('Y-m-d');
   $year = date('Y');
