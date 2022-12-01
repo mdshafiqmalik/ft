@@ -1,4 +1,3 @@
-
 <?php
 $_DOCROOT = '../../../';
 $domain = $_SERVER['DOCUMENT_ROOT'];
