@@ -203,13 +203,13 @@ function deviceStatus($userID){
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="Device not added as admin";
+      $_SESSION['authStatus'] ="Not an admin device";
       $deviceLogged = false;
       header("Location: /admin/login?err=AE12");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] = "Device not added as admin";
+    $_SESSION['authStatus'] = "Not an admin device";
     $deviceLogged = false;
     header("Location: /admin/login?err=AE13");
     exit;
