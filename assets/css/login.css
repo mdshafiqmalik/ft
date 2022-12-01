@@ -76,7 +76,8 @@ body{
   font-family: "ubuntu-bold",sans-serif;
   color:red;
   margin:0;
-  background-color: lightyellow;
+  border: 1px solid;
+  border-radius: 2px;
   padding: 5px 10px;
 }
 .loginForm{
