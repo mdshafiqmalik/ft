@@ -117,7 +117,8 @@ function captchaResponse(){
   if (isset($_POST['g-recaptcha-response'])) {
     $g_captcha = $_POST['g-recaptcha-response'];
     if (!empty($g_captcha)) {
-      if (validateCaptcha($g_captcha)) {
+      $getCaptchaKey = getCaptchaKey();
+      if (validateCaptcha($g_captcha, $getCaptchaKey)) {
         $captchaRes['valid'] = true;
         var_dump(validateCaptcha($g_captcha));
       }else {
@@ -141,10 +142,16 @@ function captchaResponse(){
   return $captchaRes;
 }
 
-function validateCaptcha($res){
+function getCaptchaKey(){
+  include($GLOBALS['dbc']);
+  $sql = "SELECT credKey FROM secretCredentials WHERE credKey = 'G_RECAPTCHA'";
+  $result = mysqli_query($db, $sql);
+}
+
+function validateCaptcha($res, $captchaKey){
   try {
       $url = 'https://www.google.com/recaptcha/api/siteverify';
-      $data = ['secret'   => '6LcFdOMbAAAAABVlj4_7eGdQ2Ha_3vHayE2YMoGP',
+      $data = ['secret'   => $captchaKey,
                'response' => $res,
                'remoteip' => $_SERVER['REMOTE_ADDR']];
 
