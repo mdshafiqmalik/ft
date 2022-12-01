@@ -197,19 +197,19 @@ function deviceStatus($userID){
           exit;
         }
       }else {
-        $_SESSION['authStatus'] = "Device ID Not Matched With DB";
+        $_SESSION['authStatus'] = "Invalid Device ID";
         $deviceLogged = false;
         header("Location: /admin/login?s=11");
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="New Device Detected";
+      $_SESSION['authStatus'] ="Device not added";
       $deviceLogged = false;
       header("Location: /admin/login?s=12");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] = "New Device Detected";
+    $_SESSION['authStatus'] = "Device not added";
     $deviceLogged = false;
     header("Location: /admin/login?s=13");
     exit;
