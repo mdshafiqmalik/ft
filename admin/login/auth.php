@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (passWord($adminID)['valid']) {
         if (deviceStatus($adminID)) {
           include $domain. '/.htHidden/functions/activityConverter.php';
+          echo "Logged";
         }
       }
     }
