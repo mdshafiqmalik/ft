@@ -44,8 +44,9 @@ $aq = (int) $aq;
         <span class="greetHeading">Hello! let's get started</span>
         <span class="messageAndErrors">Sign In to continue</span>
         <?php
-        session_start();
+
         if (isset($_SESSION['authStatus'])) {
+          session_start();
           echo '<span class="errors">'.$_SESSION['authStatus'].'</span>';
         }
          ?>
