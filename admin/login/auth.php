@@ -36,9 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           // make admin cookie
           $adID = openssl_encrypt($adminID, $ciphering, $encryption_key, $options, $encryption_iv);
+          unset($_SESSION['authStatus']);
           setcookie("AID", $adID, time()+3600, '/');
           header("Location: ../");
-          $_SESSION['authStatus'] = "";
+
         }
       }
     }
