@@ -42,11 +42,11 @@ function validateInviteCode($i){
       $validCode = true;
     }else {
       $validCode = false;
-      $_SESSION['inviteCodeError'] = "Invalid Invite Code or Invalid device ID  ";
+      $_SESSION['inviteCodeError'] = "Invalid Invite Code or Invalid device ID";
     }
   }else {
     $validCode = false;
-    $_SESSION['inviteCodeError'] = "There is an error at our end";
+    $_SESSION['inviteCodeError'] = "Invalid Invite Code or Invalid device ID";
   }
   return $validCode;
 }
