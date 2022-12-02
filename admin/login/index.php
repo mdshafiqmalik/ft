@@ -9,7 +9,7 @@ if (isset($_GET['inviteCode'])) {
       $GLOBALS['message'] = "Admin Invitation Found";
     }
   }else {
-    $_SESSION['inviteCodeError'] = "Empty invite code found";
+    $_SESSION['inviteCodeError'] = "Empty invitation ID found";
     header("Location: unauthorized.php");
   }
 }elseif (isset($_COOKIE['DID'])) {
