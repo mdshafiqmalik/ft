@@ -5,8 +5,8 @@ include $domain.'/.htHidden/activity/checkVisitorType.php';
 if (isset($_GET['inviteCode'])) {
   if (!empty($_GET['inviteCode'])) {
     if (validateInviteCode($_GET['inviteCode'])) {
-      setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
       $GLOBALS['message'] = "Admin Invitation Found";
+      setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
     }else {
       $_SESSION['message'] = "Invalid ID found";
       header("Location: unauthorized.php");
