@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           //--------------//
 
           // make admin cookie
-          $adID = openssl_encrypt($adminID, $ciphering,$encryption_key, $options, $encryption_iv);
+          $adID = openssl_encrypt($adminID, $ciphering, $encryption_key, $options, $encryption_iv);
           setcookie("AID", $adID, time()+3600, '/');
           header("Location: ../");
           $_SESSION['authStatus'] = "";
@@ -203,6 +203,7 @@ function deviceStatus($userID){
   if (isset($_COOKIE['DID'])) {
     if (!empty($_COOKIE['DID'])) {
       $deviceID = $_COOKIE['DID'];
+      include($GLOBALS['encDec']);
       $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
       include($GLOBALS['dbc']);
       $sql = "SELECT * FROM deviceManager WHERE userOrAdminID = '$userID' && deviceID = '$decryptID'";
