@@ -46,7 +46,7 @@ $aq = (int) $aq;
         <?php
 
         if (isset($_SESSION['authStatus'])) {
-          echo '<span class="errors">'.$_SESSION['authStatus'].'</span>';
+          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['authStatus'].'</span></div>';
         }
          ?>
       </div>

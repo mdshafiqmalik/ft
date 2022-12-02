@@ -70,3 +70,9 @@ function hasSpecialChars(str) {
   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   return specialChars.test(str);
 }
+
+function hideError(a){
+  let error = document.getElementById('adminErros');
+  error.style.display = "none";
+
+}

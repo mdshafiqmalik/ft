@@ -72,13 +72,24 @@ body{
   margin-bottom: 10px;
 }
 .errors{
-  display: inline;
-  font-family: "ubuntu-bold",sans-serif;
-  color:red;
+  font-size: .8rem;
+  font-family: "ubuntu-medium",sans-serif;
+  background-color: #f7a7a3;
   margin:0;
-  border: 1px solid;
   border-radius: 2px;
+  border-left: 2px solid red;
   padding: 5px 10px;
+  transition: width 1s;
+}
+.errors::before{
+  content: '\00d7';
+  margin-left: 10px;
+  color: red;
+  border: 1px solid red;
+  text-align: center;
+  padding: 0 4px;
+  border-radius: 40px;
+  float: right;
 }
 .loginForm{
   display: flex;
