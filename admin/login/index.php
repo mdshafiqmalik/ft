@@ -2,27 +2,48 @@
   $_DOCROOT = '../../../';
 $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
-// if (!isset($_GET['adminQoute'])) {
-//   header("Location: unauthorized.php");
-// }elseif (empty($_GET['adminQoute'])) {
-//     header("Location: unauthorized.php");
-// }elseif (!checkAdminQoute($_GET['adminQoute'])) {
-//   header("Location: unauthorized.php");
-// }
-function checkAdminQoute($aq){
-$hrs = (int) date('h');
-$min = (int) date('i');
-$day = (int) date('d');
-$key = (int) $hrs*$min*$day;
-$aq = (int) $aq;
-  if ($aq === $key) {
-    $adminQouteFound = true;
+if (isset($_GET['inviteCode'])) {
+  if (!empty($_GET['inviteCode'])) {
+    if (validateInviteCOde($_GET['inviteCode'])) {
+      setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
+      $GLOBALS['message'] = "Admin Invitation Found";
+    }
   }else {
-    $adminQouteFound = false;
+    $_SESSION['inviteCodeError'] = "Empty invite code found";
+    header("Location: unauthorized.php");
   }
-  return $adminQouteFound;
+}elseif (isset($_COOKIE['DID'])) {
+  if (!empty($_COOKIE['DID'])) {
+    if (validateInviteCOde($_COOKIE['DID'])) {
+      $GLOBALS['message'] = "Registered Device Found";
+    }
+  }else {
+    $_SESSION['inviteCodeError'] = "Empty device ID found";
+    header("Location: unauthorized.php");
+  }
+}else {
+    header("Location: unauthorized.php");
 }
 
+function validateInviteCOde($i){
+  include($GLOBALS['encDec']);
+  include($GLOBALS['dbc']);
+  $decryptID = openssl_decrypt($i, $ciphering,$encryption_key, $options, $encryption_iv);
+  $sql = "SELECT deviceID FROM deviceManager WHERE deviceID = '$decryptID'";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    if ((boolean) mysqli_num_rows($result)) {
+      $validCode = true;
+    }else {
+      $validCode = false;
+      $_SESSION['inviteCodeError'] = "Invalid Invite Code or Invalid device ID  ";
+    }
+  }else {
+    $validCode = false;
+    $_SESSION['inviteCodeError'] = "There is an error at our end";
+  }
+  return $validCode;
+}
  ?>
 
 <!DOCTYPE html>
@@ -47,6 +68,10 @@ $aq = (int) $aq;
 
         if (isset($_SESSION['authStatus'])) {
           echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['authStatus'].'</span></div>';
+        }
+
+        if (isset($_COOKIE['DID'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$GLOBALS['message'].'</span></div>';
         }
          ?>
       </div>

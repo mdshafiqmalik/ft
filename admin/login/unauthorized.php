@@ -1,5 +1,6 @@
 <?php
-$$_DOCROOT = '../../../';
+$_DOCROOT = '../../../';
+$domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
  ?>
 
@@ -23,8 +24,15 @@ include $domain.'/.htHidden/activity/checkVisitorType.php';
         <span class="messageAndErrors">It seems you are not an admin</span>
       </div>
       <div class="loginElements unauth">
-         <p id="unauth" >You Are Not Authorized To <br> Access
-         This Service</p>
+        <?php if (isset($_SESSION['inviteCodeError'])){
+          echo '<p id="unauth" >'.$_SESSION['inviteCodeError'].'</p>';
+        }else {
+          echo '<p id="unauth" >You Are Not Authorized To <br> Access
+          This Service</p>';
+        }
+
+          ?>
+
        </div>
        <div class="others">
          <a href="/login">User Login</a>

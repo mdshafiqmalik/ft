@@ -109,7 +109,7 @@ function passWord($adID){
     }
   }else {
     $passWordRes['valid'] = false;
-    $_SESSION['authStatus']= "Password Not Included In Form";
+    $_SESSION['authSthttp://localhost/atus']= "Password Not Included In Form";
     header("Location: /admin/login?err=AE06");
     exit;
   }
@@ -203,12 +203,13 @@ function deviceStatus($userID){
   if (isset($_COOKIE['DID'])) {
     if (!empty($_COOKIE['DID'])) {
       $deviceID = $_COOKIE['DID'];
+      $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
       include($GLOBALS['dbc']);
-      $sql = "SELECT * FROM deviceManager WHERE userOrAdminID = '$userID' && deviceID = '$deviceID'";
+      $sql = "SELECT * FROM deviceManager WHERE userOrAdminID = '$userID' && deviceID = '$decryptID'";
       $result = mysqli_query($db, $sql);
       if ($result) {
         // Checking if not logged out
-        $sql2 = "SELECT loggedStatus FROM deviceManager WHERE deviceID = '$deviceID'";
+        $sql2 = "SELECT loggedStatus FROM deviceManager WHERE deviceID = '$decryptID'";
         $result2 = mysqli_query($db, $sql2);
         $row = mysqli_num_rows($result2);
         if ((boolean)$row) {

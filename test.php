@@ -12,11 +12,20 @@
 //   $sql = "SELECT credKey FROM secretCredentials WHERE credKey = 'G_RECAPTCHA'";
 //   $result = mysqli_query($db, $sql);
 // }
+include '../secrets/encDec.php';
 include '../secrets/db.php';
-$ID = "GID202212010000001";
-$sql = "SELECT * FROM guests WHERE guestID = '$ID'";
+// include '../secrets/encDec.php';
+
+
+
+// i3T7pcU2Ip90pQYYpBsFkJgl ==  DID202212020000000
+// i3T7pcU2Ip93pwwYpBsFkJgk == DID202211280000001
+
+
+$sql = "SELECT deviceID FROM deviceManager WHERE deviceID = 'DI202211280000001'";
 $result = mysqli_query($db, $sql);
-$row = $result->fetch_assoc()['tdate'];
-$withOUTGID = ltrim($ID, 'GID');;
-echo $withOUTGID;
+if ($result) {
+  $row = mysqli_num_rows($result);
+  
+}
  ?>
