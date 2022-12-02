@@ -26,6 +26,7 @@ $sql = "SELECT deviceID FROM deviceManager WHERE deviceID = 'DI2022_-1128g0001'"
 $result = mysqli_query($db, $sql);
 if ($result) {
   echo "i3T7pcU2Ip90pQYYpBsFkJgl";
+  echo "<br><br>";
   echo "i3T7pcU2Ip93pwwYpBsFkJgk";
 }else {
 echo "false";
