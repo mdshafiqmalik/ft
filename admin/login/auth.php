@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $adID = openssl_encrypt($adminID, $ciphering,$encryption_key, $options, $encryption_iv);
           setcookie("AID", $adID, time()+3600, '/');
           header("Location: ../");
-          $_SESSION['authStatus'] = ""; 
+          $_SESSION['authStatus'] = "";
         }
       }
     }
@@ -226,13 +226,13 @@ function deviceStatus($userID){
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="Not an admin device";
+      $_SESSION['authStatus'] ="No admin invitation found";
       $deviceLogged = false;
       header("Location: /admin/login?err=AE12");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] = "Not an admin device";
+    $_SESSION['authStatus'] = "No admin invitation found";
     $deviceLogged = false;
     header("Location: /admin/login?err=AE13");
     exit;
