@@ -4,7 +4,7 @@ $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
 if (isset($_GET['inviteCode'])) {
   if (!empty($_GET['inviteCode'])) {
-    if (validateInviteCOde($_GET['inviteCode'])) {
+    if (validateInviteCode($_GET['inviteCode'])) {
       setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
       $GLOBALS['message'] = "Admin Invitation Found";
     }
@@ -14,7 +14,7 @@ if (isset($_GET['inviteCode'])) {
   }
 }elseif (isset($_COOKIE['DID'])) {
   if (!empty($_COOKIE['DID'])) {
-    if (validateInviteCOde($_COOKIE['DID'])) {
+    if (validateInviteCode($_COOKIE['DID'])) {
       $GLOBALS['message'] = "Registered Device Found";
     }
   }else {
@@ -25,7 +25,7 @@ if (isset($_GET['inviteCode'])) {
     header("Location: unauthorized.php");
 }
 
-function validateInviteCOde($i){
+function validateInviteCode($i){
   include($GLOBALS['encDec']);
   include($GLOBALS['dbc']);
   $decryptID = openssl_decrypt($i, $ciphering,$encryption_key, $options, $encryption_iv);
