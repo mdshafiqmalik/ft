@@ -22,10 +22,11 @@ include '../secrets/db.php';
 // i3T7pcU2Ip93pwwYpBsFkJgk == DID202211280000001
 
 
-$sql = "SELECT deviceID FROM deviceManager WHERE deviceID = 'DI202211280000001'";
+$sql = "SELECT deviceID FROM deviceManager WHERE deviceID = 'DI20221128g0001'";
 $result = mysqli_query($db, $sql);
 if ($result) {
-  $row = mysqli_num_rows($result);
-  
+  echo "true";
+}else {
+echo "false";
 }
  ?>
