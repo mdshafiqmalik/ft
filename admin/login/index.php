@@ -7,6 +7,9 @@ if (isset($_GET['inviteCode'])) {
     if (validateInviteCode($_GET['inviteCode'])) {
       setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
       $GLOBALS['message'] = "Admin Invitation Found";
+    }else {
+      $_SESSION['message'] = "Invalid ID found";
+      header("Location: unauthorized.php");
     }
   }else {
     $_SESSION['inviteCodeError'] = "Empty invitation ID found";
@@ -16,6 +19,9 @@ if (isset($_GET['inviteCode'])) {
   if (!empty($_COOKIE['DID'])) {
     if (validateInviteCode($_COOKIE['DID'])) {
       $GLOBALS['message'] = "Registered Device Found";
+    }else {
+      $_SESSION['message'] = "Invalid ID found";
+      header("Location: unauthorized.php");
     }
   }else {
     $_SESSION['inviteCodeError'] = "Empty device ID found";
