@@ -17,7 +17,7 @@ if (isset($_GET['inviteCode'])) {
   }
 }elseif (isset($_COOKIE['DID'])) {
   if (!empty($_COOKIE['DID'])) {
-    if (validateInviteCode($_COOKIE['DID'])) {
+    if (validateDID($_COOKIE['DID'])) {
       $GLOBALS['message'] = "Registered Device Found";
     }else {
       $_SESSION['message'] = "Invalid ID found";
@@ -35,18 +35,50 @@ function validateInviteCode($i){
   include($GLOBALS['encDec']);
   include($GLOBALS['dbc']);
   $decryptID = openssl_decrypt($i, $ciphering,$encryption_key, $options, $encryption_iv);
-  $sql = "SELECT deviceID FROM deviceManager WHERE deviceID = '$decryptID'";
+  $sql = "SELECT deviceID, linkStatus FROM deviceManager WHERE deviceID = '$decryptID'";
   $result = mysqli_query($db, $sql);
   if ($result) {
-    if ((boolean) mysqli_num_rows($result)) {
-      $validCode = true;
+    $row = $result->fetch_assoc();
+    if ($row['deviceID'] = $decryptID) {
+      if ((boolean)$row['linkStatus']) {
+        $validCode = true;
+      }else {
+        $validCode = false;
+        $_SESSION['inviteCodeError'] = "Invitation Code Expired";
+      }
     }else {
       $validCode = false;
-      $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID";
+      $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 2";
     }
   }else {
     $validCode = false;
-    $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID";
+    $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 1";
+  }
+  return $validCode;
+}
+
+function validateDID($i){
+  include($GLOBALS['encDec']);
+  include($GLOBALS['dbc']);
+  $decryptID = openssl_decrypt($i, $ciphering,$encryption_key, $options, $encryption_iv);
+  $sql = "SELECT deviceID, deviceStatus FROM deviceManager WHERE deviceID = '$decryptID'";
+  $result = mysqli_query($db, $sql);
+  if ($result) {
+    $row = $result->fetch_assoc();
+    if ($row['deviceID'] = $decryptID) {
+      if ((boolean)$row['deviceStatus']) {
+        $validCode = true;
+      }else {
+        $validCode = false;
+        $_SESSION['inviteCodeError'] = "Device is blocked/banned";
+      }
+    }else {
+      $validCode = false;
+      $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 2";
+    }
+  }else {
+    $validCode = false;
+    $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 1";
   }
   return $validCode;
 }

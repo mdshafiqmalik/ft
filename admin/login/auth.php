@@ -3,8 +3,8 @@ $_DOCROOT = '../../../';
 $domain = $_SERVER['DOCUMENT_ROOT'];
 include $domain.'/.htHidden/activity/checkVisitorType.php';
 
-if (isset($_POST['redirect'])) {
- $redirect = $_POST['redirect'];
+if (isset($_GET['redirect'])) {
+ $redirect = $_GET['redirect'];
 }else {
  $redirect = '/admin/';
 }
@@ -16,11 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (deviceStatus($adminID)) {
           // Making a ref session to from which
           include($GLOBALS['encDec']);
+          include($GLOBALS['dbc']);
           if (isset($_COOKIE['UID'])) {
             $refID = openssl_decrypt($_COOKIE['UID'], $ciphering,$encryption_key, $options, $encryption_iv);
             $_SESSION['refSession'] = $refID;
 
-            setcookie("UID", null, time()-3600, '/');
+            setcookie("UID", "", time()-3600, '/');
             unset($_SESSION['USI']);
 
 
@@ -28,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $refID = openssl_decrypt($_COOKIE['GID'], $ciphering,$encryption_key, $options, $encryption_iv);
             $_SESSION['refSession'] = $refID;
 
-            setcookie("GID", null, time()-3600, '/');
+            setcookie("GID", "", time()-3600, '/');
             unset($_SESSION['GSI']);
 
           }
@@ -38,7 +39,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $adID = openssl_encrypt($adminID, $ciphering, $encryption_key, $options, $encryption_iv);
           unset($_SESSION['authStatus']);
           setcookie("AID", $adID, time()+3600, '/');
-          header("Location: ../");
+
+
+
+          $deviceID = $_COOKIE['DID'];
+          $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
+          $dateAndTime = date('Y-m-d h-i-s');
+          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0, loggedStatus=1 WHERE deviceID='$decryptID'";
+          mysqli_query($db, $sql);
+          header("Location: $redirect");
 
         }
       }
@@ -213,35 +222,33 @@ function deviceStatus($userID){
         // Checking if not logged out
         $sql2 = "SELECT loggedStatus FROM deviceManager WHERE deviceID = '$decryptID'";
         $result2 = mysqli_query($db, $sql2);
-        $row = mysqli_num_rows($result2);
-        if ((boolean)$row) {
-          $deviceLogged = true;
+        $row = $result2->fetch_assoc();
+        if ((boolean)!$row['loggedStatus']) {
+          $validDevice = true;
         }else {
-          $_SESSION['authStatus'] = "Device Logged Out";
-          $deviceLogged = false;
+          $_SESSION['authStatus'] = "Device Already Logged In";
+          $validDevice = false;
           header("Location: /admin/login?err=AE10");
           exit;
         }
       }else {
         $_SESSION['authStatus'] = "Invalid Device ID";
-        $deviceLogged = false;
+        $validDevice = false;
         header("Location: /admin/login?err=AE11");
         exit;
       }
     }else {
       $_SESSION['authStatus'] ="No admin invitation found";
-      $deviceLogged = false;
+      $validDevice = false;
       header("Location: /admin/login?err=AE12");
       exit;
     }
   }else {
     $_SESSION['authStatus'] = "No admin invitation found";
-    $deviceLogged = false;
+    $validDevice = false;
     header("Location: /admin/login?err=AE13");
     exit;
   }
-  return $deviceLogged;
+  return $validDevice;
 }
-
-
 ?>

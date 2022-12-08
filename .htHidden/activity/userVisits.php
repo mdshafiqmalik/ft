@@ -62,12 +62,12 @@ function updateVisits($sessionID){
     $httpRefe = $_SERVER['HTTP_REFERER'];
     $referedByPage = preg_replace("(^https?://)", "", $httpRefe );
   }else{
-    $referedByPage = "N";
+    $referedByPage = "";
   }
   if(isset($_GET['ref']) && !empty($_GET['referer'])){
     $referedByPerson = $_GET['referer'];
   }else {
-    $referedByPerson = "N";
+    $referedByPerson = "";
   }
   $visitedPage = $_SERVER["REQUEST_URI"];
   include($GLOBALS['dbc']);
