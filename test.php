@@ -6,5 +6,5 @@ include '../secrets/db.php';
 // $result2 = mysqli_query($db, $sql2);
 // $row = $result2->fetch_assoc();
 
-va_dump($_SERVER)
+va_dump($_SERVER);
  ?>
