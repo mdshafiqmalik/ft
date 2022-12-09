@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 if (!isset($_SERVROOT)) {
-  $_SERVROOT = '../../../';
+  $_SERVROOT = '../../';
 }
 date_default_timezone_set("asia/kolkata");
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
