@@ -3,26 +3,18 @@ $_SERVROOT = '../../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
-if (isset($_SESSION['adminLoginStatus']) && !empty($_SESSION['adminLoginStatus']) && $_SESSION['adminLoginStatus']) {
-      header("Location: /admin/index.php");
-}
-
-
 if (isset($_GET['redirect'])) {
  $redirect = $_GET['redirect'];
 }else {
  $redirect = '/admin/';
 }
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
   if ($c = captchaResponse()['valid']) {
     if (userName()['valid']) {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {
         if (deviceStatus($adminID)) {
-          // Delete the other Cokkie
+          // Making a ref session to from which
           include($GLOBALS['encDec']);
           include($GLOBALS['dbc']);
           if (isset($_COOKIE['UID'])) {
@@ -39,29 +31,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             setcookie("GID", "", time()-3600, '/');
             unset($_SESSION['GSI']);
+
           }
           //--------------//
 
-          // make admin cookie and session
-          $_SESSION['AID'] = $adminID;
+          // make admin cookie
           $adID = openssl_encrypt($adminID, $ciphering, $encryption_key, $options, $encryption_iv);
           unset($_SESSION['authStatus']);
           setcookie("AID", $adID, time()+3600, '/');
 
+
+
           $deviceID = $_COOKIE['DID'];
           $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
           $dateAndTime = date('Y-m-d h-i-s');
-          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0, LogoutDateTime='0000-00-00 00-00-00' WHERE deviceID='$decryptID'";
+          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0, loggedStatus=1 WHERE deviceID='$decryptID'";
           mysqli_query($db, $sql);
-          $_SESSION['adminLoginStatus'] = true;
           header("Location: $redirect");
 
         }
       }
     }
   }
-}else {
-  header("Location: index.php");
 }
 function userName(){
   if (isset($_POST['usernameOrEMail'])) {
@@ -228,7 +219,6 @@ function deviceStatus($userID){
       $sql = "SELECT * FROM deviceManager WHERE userOrAdminID = '$userID' && deviceID = '$decryptID'";
       $result = mysqli_query($db, $sql);
       if ($result) {
-<<<<<<< HEAD
         // Checking if not logged out
         $sql2 = "SELECT loggedStatus FROM deviceManager WHERE deviceID = '$decryptID'";
         $result2 = mysqli_query($db, $sql2);
@@ -241,9 +231,6 @@ function deviceStatus($userID){
           header("Location: /admin/login");
           exit;
         }
-=======
-        $validDevice = true;
->>>>>>> test
       }else {
         $_SESSION['authStatus'] = "Invalid Device ID";
         $validDevice = false;

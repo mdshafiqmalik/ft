@@ -1,7 +1,23 @@
 <?php
-$_SERVROOT = '../../';
+$_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+
+// admin check weather it is admin session or not
+if (isset($_SESSION['adminLoginStatus'])) {
+  if (!empty($_SESSION['adminLoginStatus'])) {
+    if ($_SESSION['adminLoginStatus']) {
+      // code...
+    }else {
+      header("Location: login/index.php");
+    }
+  }else {
+    header("Location: login/index.php");
+  }
+}else {
+  header("Location: login/index.php");
+}
+
  ?>
 
 <!DOCTYPE html>
@@ -117,7 +133,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
             <li class="sideMenusList">
               <div class="mainMenu">
-                  <a class="menus"  href="/terms-privacy">Logout</a>
+                  <a class="menus"  href="/admin/logout.php">Logout</a>
                   <div class="menusIcon">
                     <img height="22px" width="22px" src="/assets/svgs/power.svg" alt="">
                   </div>
