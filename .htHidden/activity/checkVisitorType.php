@@ -8,8 +8,8 @@ if (!isset($_SERVROOT)) {
 }
 date_default_timezone_set("asia/kolkata");
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = $_DOCROOT.'htdocs/secrets/db.php';
-$GLOBALS['encDec'] = $_DOCROOT.'htdocs/secrets/encDec.php';
+$GLOBALS['dbc'] = $_DOCROOT.'/htdocs/secrets/db.php';
+$GLOBALS['encDec'] = $_DOCROOT.'/htdocs/secrets/encDec.php';
 $GLOBALS['IDcreator'] = $_DOCROOT.'/.htHidden/activity/createID.php';
 $GLOBALS['IPDEV'] = $_DOCROOT.'/.htHidden/functions/Ip&Device.php';
 
