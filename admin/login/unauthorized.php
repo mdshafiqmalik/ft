@@ -1,7 +1,7 @@
 <?php
-$_DOCROOT = '../../../';
-$domain = $_SERVER['DOCUMENT_ROOT'];
-include $domain.'/.htHidden/activity/checkVisitorType.php';
+$_SERVROOT = '../../../';
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
  ?>
 
 <!DOCTYPE html>
