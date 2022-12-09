@@ -8,10 +8,10 @@ if (!isset($_SERVROOT)) {
 }
 date_default_timezone_set("asia/kolkata");
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = $_SERVROOT.'htdocs/secrets/db.php';
-$GLOBALS['encDec'] = $_SERVROOT.'htdocs/secrets/encDec.php';
-$GLOBALS['IDcreator'] = $_DOCROOT.'/.htHidden/activity/createID.php';
-$GLOBALS['IPDEV'] = $_DOCROOT.'/.htHidden/functions/Ip&Device.php';
+$GLOBALS['dbc'] = $_DOCROOT.'htdocs/secrets/db.php';
+$GLOBALS['encDec'] = $_DOCROOT.'htdocs/secrets/encDec.php';
+$GLOBALS['IDcreator'] = $_DOCROOT.'htdocs/.htHidden/activity/createID.php';
+$GLOBALS['IPDEV'] = $_DOCROOT.'htdocs/.htHidden/functions/Ip&Device.php';
 
 if (isset($_COOKIE['UID'])) {
   if (!empty($_COOKIE['UID'])) {
@@ -35,7 +35,7 @@ if (isset($_COOKIE['UID'])) {
     include($GLOBALS['encDec']);
     $encAdminID = openssl_decrypt($adminID, $ciphering,$encryption_key, $options, $encryption_iv);
     $authAdmin = checkAuthVisitor($encAdminID, "admins", "adminID");
-    if ($authAdmin) {
+    if ($authAdmin) {clearstatcache
       include 'adminVisits.php';
     }else {
       include 'guestsVisits.php';
