@@ -8,13 +8,16 @@ if (isset($_GET['redirect'])) {
 }else {
  $redirect = '/admin/';
 }
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
   if ($c = captchaResponse()['valid']) {
     if (userName()['valid']) {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {
         if (deviceStatus($adminID)) {
-          // Making a ref session to from which
+          // Delete the other Cokkie
           include($GLOBALS['encDec']);
           include($GLOBALS['dbc']);
           if (isset($_COOKIE['UID'])) {
@@ -31,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             setcookie("GID", "", time()-3600, '/');
             unset($_SESSION['GSI']);
-
           }
           //--------------//
 
@@ -40,19 +42,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           unset($_SESSION['authStatus']);
           setcookie("AID", $adID, time()+3600, '/');
 
-
-
           $deviceID = $_COOKIE['DID'];
           $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
           $dateAndTime = date('Y-m-d h-i-s');
-          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0, loggedStatus=1 WHERE deviceID='$decryptID'";
+          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0  WHERE deviceID='$decryptID'";
           mysqli_query($db, $sql);
+          $_SESSION['adminLoginStatus'] = true;
           header("Location: $redirect");
 
         }
       }
     }
   }
+}else {
+  header("Location: index.php");
 }
 function userName(){
   if (isset($_POST['usernameOrEMail'])) {
@@ -219,18 +222,7 @@ function deviceStatus($userID){
       $sql = "SELECT * FROM deviceManager WHERE userOrAdminID = '$userID' && deviceID = '$decryptID'";
       $result = mysqli_query($db, $sql);
       if ($result) {
-        // Checking if not logged out
-        $sql2 = "SELECT loggedStatus FROM deviceManager WHERE deviceID = '$decryptID'";
-        $result2 = mysqli_query($db, $sql2);
-        $row = $result2->fetch_assoc();
-        if ((boolean)!$row['loggedStatus']) {
-          $validDevice = true;
-        }else {
-          $_SESSION['authStatus'] = "Device Already Logged In";
-          $validDevice = false;
-          header("Location: /admin/login");
-          exit;
-        }
+        $validDevice = true;
       }else {
         $_SESSION['authStatus'] = "Invalid Device ID";
         $validDevice = false;
