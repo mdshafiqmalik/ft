@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 session_start();
 date_default_timezone_set("asia/kolkata");
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = "../".$_DOCROOT.'/secrets/db.php';
-$GLOBALS['encDec'] = "../".$_DOCROOT.'/secrets/encDec.php';
+$GLOBALS['dbc'] = $_DOCROOT.'../secrets/db.php';
+$GLOBALS['encDec'] = $_DOCROOT.'../secrets/encDec.php';
 $GLOBALS['IDcreator'] = $_DOCROOT.'/.htHidden/activity/createID.php';
 $GLOBALS['IPDEV'] = $_DOCROOT.'/.htHidden/functions/Ip&Device.php';
 
