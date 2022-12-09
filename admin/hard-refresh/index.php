@@ -6,7 +6,7 @@
   </head>
   <body>
     <?php
-     $output = shell_exec("git pull www main");
+     $output = shell_exec("git pull www test");
      echo "<pre>$output</pre>";
      ?>
   </body>
