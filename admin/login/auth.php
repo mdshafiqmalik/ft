@@ -3,6 +3,11 @@ $_SERVROOT = '../../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
+if (isset($_SESSION['adminLoginStatus']) && !empty($_SESSION['adminLoginStatus']) && $_SESSION['adminLoginStatus']) {
+      header("Location: /admin/index.php");
+}
+
+
 if (isset($_GET['redirect'])) {
  $redirect = $_GET['redirect'];
 }else {
