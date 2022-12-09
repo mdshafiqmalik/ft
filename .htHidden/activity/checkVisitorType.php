@@ -3,10 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
+if (!isset($_SERVROOT)) {
+  $_SERVROOT = '../../';
+}
 date_default_timezone_set("asia/kolkata");
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = $_DOCROOT.'../secrets/db.php';
-$GLOBALS['encDec'] = $_DOCROOT.'../secrets/encDec.php';
+$GLOBALS['dbc'] = $_SERVROOT.'htdocs/secrets/db.php';
+$GLOBALS['encDec'] = $_SERVROOT.'htdocs/secrets/encDec.php';
 $GLOBALS['IDcreator'] = $_DOCROOT.'/.htHidden/activity/createID.php';
 $GLOBALS['IPDEV'] = $_DOCROOT.'/.htHidden/functions/Ip&Device.php';
 
