@@ -133,7 +133,7 @@ if (isset($_SESSION['adminLoginStatus'])) {
 
             <li class="sideMenusList">
               <div class="mainMenu">
-                  <a class="menus"  href="/terms-privacy">Logout</a>
+                  <a class="menus"  href="/admin/logout.php">Logout</a>
                   <div class="menusIcon">
                     <img height="22px" width="22px" src="/assets/svgs/power.svg" alt="">
                   </div>

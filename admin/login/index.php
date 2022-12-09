@@ -16,6 +16,7 @@ if (isset($_GET['inviteCode'])) {
       setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
     }else {
       $_SESSION['inviteCodeError'] = "Invalid ID found";
+      unset($_SESSION['message']);
     }
   }else {
     $_SESSION['inviteCodeError'] = "Empty invitation ID";
@@ -27,12 +28,15 @@ if (isset($_GET['inviteCode'])) {
       unset($_SESSION['inviteCodeError']);
     }else {
       $_SESSION['message'] = "Invalid ID found";
+      unset($_SESSION['message']);
     }
   }else {
     $_SESSION['inviteCodeError'] = "Empty device ID found";
+    unset($_SESSION['message']);
   }
 }else {
     $_SESSION['inviteCodeError'] = "No Invitation/ID found";
+    unset($_SESSION['message']);
 }
 
 function validateInviteCode($i){
@@ -49,14 +53,17 @@ function validateInviteCode($i){
       }else {
         $validCode = false;
         $_SESSION['inviteCodeError'] = "Invitation Code Expired";
+        unset($_SESSION['message']);
       }
     }else {
       $validCode = false;
       $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 2";
+      unset($_SESSION['message']);
     }
   }else {
     $validCode = false;
     $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 1";
+    unset($_SESSION['message']);
   }
   return $validCode;
 }
@@ -71,17 +78,21 @@ function validateDID($i){
     if ($row['deviceID'] == $decryptID) {
       if ((boolean)$row['deviceStatus']) {
         $validCode = true;
+        unset($_SESSION['inviteCodeError']);
       }else {
         $validCode = false;
         $_SESSION['inviteCodeError'] = "Device is blocked/banned";
+        unset($_SESSION['message']);
       }
     }else {
       $validCode = false;
       $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID";
+      unset($_SESSION['message']);
     }
   }else {
     $validCode = false;
     $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID";
+    unset($_SESSION['message']);
   }
   return $validCode;
 }

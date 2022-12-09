@@ -42,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
           //--------------//
 
-          // make admin cookie
+          // make admin cookie and session
+          $_SESSION['AID'] = $adminID;
           $adID = openssl_encrypt($adminID, $ciphering, $encryption_key, $options, $encryption_iv);
           unset($_SESSION['authStatus']);
           setcookie("AID", $adID, time()+3600, '/');
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $deviceID = $_COOKIE['DID'];
           $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
           $dateAndTime = date('Y-m-d h-i-s');
-          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0  WHERE deviceID='$decryptID'";
+          $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime',linkStatus=0, LogoutDateTime='0000-00-00 00-00-00' WHERE deviceID='$decryptID'";
           mysqli_query($db, $sql);
           $_SESSION['adminLoginStatus'] = true;
           header("Location: $redirect");
