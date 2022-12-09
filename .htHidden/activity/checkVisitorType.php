@@ -36,7 +36,7 @@ if (isset($_COOKIE['UID'])) {
     $encAdminID = openssl_decrypt($adminID, $ciphering,$encryption_key, $options, $encryption_iv);
     $authAdmin = checkAuthVisitor($encAdminID, "admins", "adminID");
     if ($authAdmin) {clearstatcache
-      include 'adminVisits.php';
+      include "adminVisits.php";
     }else {
       include 'guestsVisits.php';
     }
