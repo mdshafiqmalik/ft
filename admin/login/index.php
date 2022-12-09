@@ -1,7 +1,7 @@
 <?php
-  $_DOCROOT = '../../../';
-$domain = $_SERVER['DOCUMENT_ROOT'];
-include $domain.'/.htHidden/activity/checkVisitorType.php';
+  $_SERVROOT = '../../../';
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 if (isset($_GET['inviteCode'])) {
   if (!empty($_GET['inviteCode'])) {
     if (validateInviteCode($_GET['inviteCode'])) {

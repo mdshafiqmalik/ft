@@ -1,30 +1,17 @@
 <?php
-// Could not recognize Device
-// Any request made will be checked here
-// Request Wih cookie
-//     Returned Anonymous Visitor
-//     Returend Auth User
-//     An Admin with cookie build by him/her
-// Request Without Cookie
-//     Anonymous Visitor that can be
-//        An Auth User
-//        Admin
-// If a person login
-//    Anonymouscookie will be deleted from browser
-//    and updated with userCookie
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-if (!isset($_DOCROOT)) {
-  $_DOCROOT = '../../';
+if (!isset($_SERVROOT)) {
+  $_SERVROOT = '../../';
 }
 date_default_timezone_set("asia/kolkata");
-$domain = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['dbc'] = $_DOCROOT.'htdocs/secrets/db.php';
-$GLOBALS['encDec'] =$_DOCROOT.'htdocs/secrets/encDec.php';
-$GLOBALS['IDcreator'] = $domain.'/.htHidden/activity/createID.php';
-$GLOBALS['IPDEV'] = $domain.'/.htHidden/functions/Ip&Device.php';
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+$GLOBALS['dbc'] = $_SERVROOT.'htdocs/secrets/db.php';
+$GLOBALS['encDec'] = $_SERVROOT.'htdocs/secrets/encDec.php';
+$GLOBALS['IDcreator'] = $_DOCROOT.'/.htHidden/activity/createID.php';
+$GLOBALS['IPDEV'] = $_DOCROOT.'/.htHidden/functions/Ip&Device.php';
 
 if (isset($_COOKIE['UID'])) {
   if (!empty($_COOKIE['UID'])) {

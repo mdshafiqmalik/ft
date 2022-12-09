@@ -1,6 +1,6 @@
 <?php
-$domain = $_SERVER['DOCUMENT_ROOT'];
-include $domain.'/.htHidden/activity/checkVisitorType.php';
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

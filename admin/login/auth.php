@@ -1,7 +1,7 @@
 <?php
-$_DOCROOT = '../../../';
-$domain = $_SERVER['DOCUMENT_ROOT'];
-include $domain.'/.htHidden/activity/checkVisitorType.php';
+$_SERVROOT = '../../../';
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
 if (isset($_GET['redirect'])) {
  $redirect = $_GET['redirect'];
@@ -64,18 +64,18 @@ function userName(){
       }else {
         $userNameRes['valid'] = false;
         $_SESSION['authStatus'] = "Incorrect Username";
-        header("Location: /admin/login/index.php?err=AE01");
+        header("Location: /admin/login/index.ph?err=AE01");
       }
     }else {
       $userNameRes['valid'] = false;
       $_SESSION['authStatus'] = "Username Cannot Be Empty";
-      header("Location: /admin/login/index.php?err=AE02");
+      header("Location: /admin/login/index.php");
       exit;
     }
   }else {
     $userNameRes['valid'] = false;
     $_SESSION['authStatus'] = "Username Not Found In Form";
-    header("Location: /admin/login/index.php?err=AE03");
+    header("Location: /admin/login/index.php");
     exit;
   }
   return $userNameRes;
@@ -108,19 +108,19 @@ function passWord($adID){
       }else {
         $_SESSION['authStatus'] = "Incorrect Password";
         $passWordRes['valid'] = false;
-        header("Location: /admin/login?err=AE04");
+        header("Location: /admin/login");
         exit;
       }
     }else {
       $passWordRes['valid'] = false;
       $_SESSION['authStatus']= "Password Is Empty";
-      header("Location: /admin/login?err=AE05");
+      header("Location: /admin/login");
       exit;
     }
   }else {
     $passWordRes['valid'] = false;
     $_SESSION['authSthttp://localhost/atus']= "Password Not Included In Form";
-    header("Location: /admin/login?err=AE06");
+    header("Location: /admin/login");
     exit;
   }
   return $passWordRes;
@@ -159,19 +159,19 @@ function captchaResponse(){
         // G_recaptcha not Authorized
         $_SESSION['authStatus'] ="Captcha Not Valid";
         $captchaRes['valid'] = false;
-        header("Location: /admin/login?err=AE07");
+        header("Location: /admin/login");
         exit;
       }
     }else {
       $_SESSION['authStatus'] ="Refill The Captcha";
       $captchaRes['valid'] = false;
-      header("Location: /admin/login?err=AE08");
+      header("Location: /admin/login");
       exit;
     }
   }else {
     $_SESSION['authStatus'] ="Captcha Not Included In Form";
     $captchaRes['valid'] = false;
-    header("Location: /admin/login?err=AE09");
+    header("Location: /admin/login");
     exit;
   }
   return $captchaRes;
@@ -228,25 +228,25 @@ function deviceStatus($userID){
         }else {
           $_SESSION['authStatus'] = "Device Already Logged In";
           $validDevice = false;
-          header("Location: /admin/login?err=AE10");
+          header("Location: /admin/login");
           exit;
         }
       }else {
         $_SESSION['authStatus'] = "Invalid Device ID";
         $validDevice = false;
-        header("Location: /admin/login?err=AE11");
+        header("Location: /admin/login");
         exit;
       }
     }else {
       $_SESSION['authStatus'] ="No admin invitation found";
       $validDevice = false;
-      header("Location: /admin/login?err=AE12");
+      header("Location: /admin/login");
       exit;
     }
   }else {
     $_SESSION['authStatus'] = "No admin invitation found";
     $validDevice = false;
-    header("Location: /admin/login?err=AE13");
+    header("Location: /admin/login");
     exit;
   }
   return $validDevice;
