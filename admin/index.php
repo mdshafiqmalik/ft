@@ -4,14 +4,20 @@ $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
 // admin check weather it is admin session or not
-
-if (!isset($_SESSION['adminLoginStatus'])) {
-  header("Location: login/index.php");
-}elseif (empty($_SESSION['adminLoginStatus'])) {
-  header("Location: login/index.php");
-}elseif (!$_SESSION['adminLoginStatus']) {
+if (isset($_SESSION['adminLoginStatus'])) {
+  if (!empty($_SESSION['adminLoginStatus'])) {
+    if ($_SESSION['adminLoginStatus']) {
+      // code...
+    }else {
+      header("Location: login/index.php");
+    }
+  }else {
+    header("Location: login/index.php");
+  }
+}else {
   header("Location: login/index.php");
 }
+
  ?>
 
 <!DOCTYPE html>
