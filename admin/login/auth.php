@@ -17,7 +17,7 @@ if (isset($_GET['redirect'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  if ($c = captchaResponse()['valid']) {
+  if (captchaResponse()['valid']) {
     if (userName()['valid']) {
       $adminID = userName()['AID'];
       if (passWord($adminID)['valid']) {

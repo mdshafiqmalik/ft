@@ -20,6 +20,12 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Create a new account</span>
         <span class="messageAndErrors">All fields required*</span>
+        <?php
+
+        if (isset($_SESSION['authStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['authStatus'].'</span></div>';
+        }
+         ?>
       </div>
       <form class="loginElements loginForm" action="validate.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Username i.e. your_name, rakesh90">
