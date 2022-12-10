@@ -34,7 +34,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
         <span id="ESB" ></span>
         <input onkeyup="checkEmail()" id="email" class="fields" type="email" name="emailAddress" value="" placeholder="Email* i.e. name@domain.com" required>
         <span id="PSB" ></span>
-        <div class="spPassword">
+        <div class="spPassword" id="spPassword">
           <input id="newPassword" onkeyup="checkPassword()" class="fields" type="password" name="userPassword" value="" placeholder="Password* (Min. 8 Chars)" required>
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">

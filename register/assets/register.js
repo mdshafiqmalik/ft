@@ -22,6 +22,15 @@ function openEye(){
   }
 }
 
+if (checkUsername() && checkEmail() && checkPassword()) {
+  let registerButton =  document.getElementById("submit");
+  registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+  // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+}else {
+  let registerButton =  document.getElementById("submit");
+  registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
+  // background: linear-gradient(to right, #917ba2, #8f6285);
+}
 
 function checkUsername(){
   let userInputField = document.getElementById('username');
@@ -29,7 +38,12 @@ function checkUsername(){
   let userInput = userInputField.value;
   const registerAPI =`/.htHidden/API/Internal/register.php?username=${userInput}`;
   let uValid;
-  if (userInput.length < 8) {
+  if (userInput.length === 0) {
+    uValid = false;
+    userError.innerHTML = "Username is required";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (userInput.length < 8) {
     uValid = false;
     userError.innerHTML = "Username Too Short";
     userError.style.color = "red";
@@ -69,18 +83,26 @@ function checkEmail(){
   var re = /\S+@\S+\.\S+/;
   var isMail = re.test(userInput);
   const registerAPI =`/.htHidden/API/Internal/register.php?email=${userInput}`;
-  if (hasWhiteSpace(userInput)) {
+  if (userInput.length === 0) {
+    uValid = false;
+    userError.innerHTML = "Email is required";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (hasWhiteSpace(userInput)) {
     userError.innerHTML = "Spaces not allowed";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
+    eValid =false;
   }else if (!isMail) {
     userError.innerHTML = "Invalid Email";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
+    eValid =false;
   }else if (hasSpecialChars(userInput)) {
     userError.innerHTML = `Invalid Email`;
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
+    eValid =false;
   }else {
     checkEmailExists(registerAPI);
     async function checkEmailExists(url){
@@ -91,38 +113,82 @@ function checkEmail(){
         userError.innerHTML = "Email Taken";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
+        eValid = false;
       }else {
         userError.innerHTML = "Email OK";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+        eValid = true;
       }
     }
   }
+  return eValid;
 }
 
 
 function checkPassword(){
-  let userInputField = document.getElementById('password');
+  let userInputField = document.getElementById('spPassword');
+  let userIn = document.getElementById('newPassword');
   let userError = document.getElementById('PSB');
-  let userInput = userInputField.value;
+  let userInput = userIn.value;
   let pValid;
-  if (userInput.length < 8) {
-    userError.innerHTML = "Password Too Short";
+  if (userInput.length === 0) {
+    uValid = false;
+    userError.innerHTML = "Password is required";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (userInput.length < 8) {
+    userError.innerHTML = "Minimum 8 chars";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+    pValid = false;
   }else if ( hasWhiteSpace(userInput)) {
     userError.innerHTML = "Spaces not allowed";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
-  }else {
-    
+    pValid = false;
+  }else if (hasNumber(userInput) && hasAllSpecialChars(userInput) && hasUpperandLowerCase(userInput)) {
+    userError.innerHTML = "Strong Password";
+    userError.style.color = "green";
+    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+    pValid = true;
+  }else if (hasUpperandLowerCase(userInput)) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
+  }else if ((hasUpperandLowerCase(userInput) && hasAllSpecialChars(userInput))) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
+  }else if ((hasAllSpecialChars(userInput) && hasNumber(userInput))) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
   }
+  else if ((hasUpperandLowerCase(userInput) && hasNumber(userInput))) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+    pValid = true;
+  }else {
+    userError.innerHTML = "Weak Password";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+    pValid = true;
+  }
+  return pValid;
 }
 
 function hasNumber(string){
   return /\d/.test(string);
 }
-
+function hasUpperandLowerCase(str){
+  const upandlow = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
+  return upandlow.test(str);
+}
 function hasWhiteSpace(data){
   return data.includes(' ');
 }
