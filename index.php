@@ -27,7 +27,7 @@ include '.htHidden/activity/checkVisitorType.php';
 
         <div id="nav-G2" class="nav-G2">
           <div id="nav-profile">
-            <img id="nav-profile-img" src="../assets/images/face1.jpg" alt="">
+            <img id="nav-profile-img" src="../assets/svgs/user.svg" alt="">
           </div>
           <div id="fullscreen">
             <img id="fullscreen-icon" src="../assets/svgs/fullscreen.svg" alt="">
@@ -43,7 +43,7 @@ include '.htHidden/activity/checkVisitorType.php';
             <li class="sideMenusList" id="sideMenu-profile" >
               <a id="sideProfile" href="#">
                 <div class="image">
-                  <img src="../assets/images/face1.jpg" alt="">
+                  <img src="../assets/svgs/user.svg" alt="">
                 </div>
                 <div class="about">
                   <span class="name">Anonymous</span>

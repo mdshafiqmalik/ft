@@ -29,7 +29,7 @@
   float: right;
   display: block;
   font-family: "ubuntu-medium",sans-serif;
-  margin-bottom: 3px;
+  margin: 0 0 5px 5px;
 }
 /*  */
 @media (max-width: 570px){
