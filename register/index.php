@@ -19,13 +19,13 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Create a new account</span>
-        <span class="messageAndErrors">All fields required</span>
+        <span class="messageAndErrors">All fields required*</span>
       </div>
-      <form class="loginElements loginForm" action="" method="post">
-        <input class="fields" type="text" name="username" value="" placeholder="Username">
-        <input class="fields" type="email" name="username" value="" placeholder="Email">
+      <form class="loginElements loginForm" action="validate.php" method="post">
+        <input class="fields" type="text" name="username" value="" placeholder="Username i.e. your_name, rakesh90">
+        <input class="fields" type="email" name="emailAddress" value="" placeholder="Email i.e. username@gmail.com">
         <div class="spPassword">
-          <input id="newPassword" class="fields" type="password" name="password" value="" placeholder="Password">
+          <input id="newPassword" class="fields" type="password" name="userPassword" value="" placeholder="Password">
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">
         </div>
