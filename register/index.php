@@ -30,21 +30,22 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       </div>
       <form class="loginElements loginForm" action="validate.php" method="post">
         <span id="USB" ></span>
-        <input onkeyup="checkUsername()" id="username" class="fields" type="text" name="username" placeholder="Username* i.e. RAKESH, your_name, ">
+        <input onkeyup="checkUsername()" id="username" class="fields" type="text" name="username" placeholder="Username* i.e. RAKESH, jhon_doe" required>
         <span id="ESB" ></span>
-        <input onkeyup="checkEmail()" id="email" class="fields" type="email" name="emailAddress" value="" placeholder="Email* i.e. username@gmail.com">
+        <input onkeyup="checkEmail()" id="email" class="fields" type="email" name="emailAddress" value="" placeholder="Email* i.e. name@domain.com" required>
+        <span id="PSB" ></span>
         <div class="spPassword">
-          <input id="newPassword" class="fields" type="password" name="userPassword" value="" placeholder="Password*">
+          <input id="newPassword" onkeyup="checkPassword()" class="fields" type="password" name="userPassword" value="" placeholder="Password* (Min. 8 Chars)" required>
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">
         </div>
-          <select id="Gender" class="selection" name="Gender">
-            <option value="">Choose Gender</option>
+          <!-- <select id="Gender" class="selection" name="Gender" required>
+            <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Others">Others</option>
           </select>
-        <input onkeyup="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
+        <input onkeyup="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)"> -->
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
         <br>
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">

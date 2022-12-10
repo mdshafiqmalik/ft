@@ -101,6 +101,28 @@ function checkEmail(){
 }
 
 
+function checkPassword(){
+  let userInputField = document.getElementById('password');
+  let userError = document.getElementById('PSB');
+  let userInput = userInputField.value;
+  let pValid;
+  if (userInput.length < 8) {
+    userError.innerHTML = "Password Too Short";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if ( hasWhiteSpace(userInput)) {
+    userError.innerHTML = "Spaces not allowed";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else {
+    
+  }
+}
+
+function hasNumber(string){
+  return /\d/.test(string);
+}
+
 function hasWhiteSpace(data){
   return data.includes(' ');
 }
@@ -110,6 +132,10 @@ function hasSpecialChars(str) {
   return specialChars.test(str);
 }
 
+function hasAllSpecialChars(str) {
+  const specialChars = /[`!#@$%^&*()_+\-=\[\]{};':"\\|.,<>\/?~]/;
+  return specialChars.test(str);
+}
 
 function hideError(a){
   let error = document.getElementById('adminErros');
