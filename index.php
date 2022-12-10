@@ -43,7 +43,7 @@ include '.htHidden/activity/checkVisitorType.php';
             <li class="sideMenusList" id="sideMenu-profile" >
               <a id="sideProfile" href="#">
                 <div class="image">
-                  <img src="../assets/images/face1.jpg" alt="">
+                  <img src="../assets/svgs/user.svg" alt="">
                 </div>
                 <div class="about">
                   <span class="name">Anonymous</span>
