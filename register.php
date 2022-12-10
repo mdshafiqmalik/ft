@@ -1,16 +1,25 @@
 <?php
 header('content-type:application/json');
-$dbc = $_SERVER['DOCUMENT_ROOT'].'/.htpasswd/db.php';
+if (!isset($_SERVROOT)) {
+  $_SERVROOT = '../../';
+}
+
+$dbc = $_SERVROOT.'htdocs/secrets/db.php';
+$cnf = $_SERVROOT.'htdocs/secrets/config.php';
 include($dbc);
+include($cnf);
+$dom = $domain;
 $db = new mysqli("$hostName","$userName","$passWord","$dbName");
 if($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 $thisHttp = $_SERVER['HTTP_REFERER'];
-$url1 = "http://"."$domain"."/register/";
-$url2 = "https://"."$domain"."/register/";
-$url3 = "http://www"."$domain"."/register/";
-$url4 = "https://www"."$domain"."/register/";
+$url1 = "http://"."$dom"."/register/index.php";
+$url2 = "https://"."$dom"."/register/index.php";
+$url3 = "http://www"."$dom"."/register/index.php";
+$url4 = "https://www"."$dom"."/register/index.php";
+$url5 = "http://testing"."$dom"."/register/index.php";
+$url6 = "https://testing"."$dom"."/register/index.php";
 
-if ($thisHttp == $url1 || $thisHttp == $url2 || $thisHttp == $url3 || $thisHttp == $url4) {
+if ($thisHttp == $url1 || $thisHttp == $url2 || $thisHttp == $url3 || $thisHttp == $url4 || $thisHttp == $url5 || $thisHttp == $url6) {
     if (isset($_GET["username"])) {
       $inputValue = $_GET["username"];
       $userDataSql =  "SELECT * FROM fast_users Where  BINARY userName = '".$inputValue."' ";

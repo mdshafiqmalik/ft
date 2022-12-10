@@ -32,7 +32,7 @@ function checkUsername(){
   let userError = document.getElementById('USB');
   let userInput = userInputField.value;
   let uValid = false;
-  if (userInput.length < 6) {
+  if (userInput.length < 8) {
     uValid = false;
     userError.innerHTML = "Username Too Short";
     userError.style.color = "red";
@@ -41,11 +41,6 @@ function checkUsername(){
     if (hasWhiteSpace(userInput)) {
       uValid = false;
       userError.innerHTML = "Spaces Not Allowed ";
-      userError.style.color = "red";
-      userInputField.style.boxShadow = "0px 0px 3px 0px red";
-    }else if (hasNumber(userInput)) {
-      uValid = false;
-      userError.innerHTML = "Numbers Not Allowed";
       userError.style.color = "red";
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
     }else {
@@ -62,9 +57,6 @@ function checkUsername(){
 function hasWhiteSpace(data){
   return data.includes(' ');
 }
-function hasNumber(string){
-  return /\d/.test(string);
-}
 
 function hasSpecialChars(str) {
   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -74,5 +66,4 @@ function hasSpecialChars(str) {
 function hideError(a){
   let error = document.getElementById('adminErros');
   error.style.display = "none";
-
 }

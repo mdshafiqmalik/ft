@@ -10,3 +10,10 @@
   padding: .7rem;
   border-radius: 5px;
 }
+#USB,#PSB{
+  font-size: x-small;
+  float: right;
+  display: block;
+  font-family: "ubuntu-medium",sans-serif;
+  margin-bottom: 3px;
+}
