@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $deviceID = $_COOKIE['DID'];
           $decryptID = openssl_decrypt($deviceID, $ciphering,$encryption_key, $options, $encryption_iv);
           $dateAndTime = date('Y-m-d h-i-s');
+          // // WARNING: linstatus =0
           $sql = "UPDATE deviceManager SET loggedDateTime='$dateAndTime', LogoutDateTime='0000-00-00 00-00-00' WHERE deviceID='$decryptID'";
           mysqli_query($db, $sql);
           $_SESSION['adminLoginStatus'] = true;
