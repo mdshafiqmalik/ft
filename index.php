@@ -27,7 +27,7 @@ include '.htHidden/activity/checkVisitorType.php';
 
         <div id="nav-G2" class="nav-G2">
           <div id="nav-profile">
-            <img id="nav-profile-img" src="../assets/images/face1.jpg" alt="">
+            <img id="nav-profile-img" src="../assets/svgs/user.jpg" alt="">
           </div>
           <div id="fullscreen">
             <img id="fullscreen-icon" src="../assets/svgs/fullscreen.svg" alt="">
