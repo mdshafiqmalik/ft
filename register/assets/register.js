@@ -1,5 +1,3 @@
-
-
 function openEye(){
   var closed = document.getElementById('eyeClosed').style.display;
   var opened = document.getElementById('eyeOpened').style.display;
@@ -29,7 +27,8 @@ function checkUsername(){
   let userInputField = document.getElementById('username');
   let userError = document.getElementById('USB');
   let userInput = userInputField.value;
-  let uValid = false;
+  const registerAPI =`/.htHidden/API/Internal/register.php?username=${userInput}`;
+  let uValid;
   if (userInput.length < 8) {
     uValid = false;
     userError.innerHTML = "Username Too Short";
@@ -41,22 +40,64 @@ function checkUsername(){
       userError.style.color = "red";
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else {
-    uValid = true;
-    userError.innerHTML = "Username OK";
-    userError.style.color = "green";
-    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+    checkUsernameExists(registerAPI);
+    async function checkUsernameExists(url){
+      const response = await fetch(url);
+      var data = await response.json();
+      uValid = data.Result;
+      if (uValid) {
+        userError.innerHTML = "Username Taken";
+        userError.style.color = "red";
+        userInputField.style.boxShadow = "0px 0px 3px 0px red";
+      }else {
+        userError.innerHTML = "Username OK";
+        userError.style.color = "green";
+        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      }
+    }
   }
   return uValid;
 }
 
 
-checkUsernameExists();
 
-function checkUsernameExists(){
-  var response = $.getJSON('/register.php?email=mdshafiqmalik98@gmail.com', function(data){
-    console.log(data.result);
-    console.log("heello");
-  });
+function checkEmail(){
+  let userInputField = document.getElementById('email');
+  let userError = document.getElementById('ESB');
+  let userInput = userInputField.value;
+  let eValid;
+  var re = /\S+@\S+\.\S+/;
+  var isMail = re.test(userInput);
+  const registerAPI =`/.htHidden/API/Internal/register.php?email=${userInput}`;
+  if (hasWhiteSpace(userInput)) {
+    userError.innerHTML = "Spaces not allowed";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (!isMail) {
+    userError.innerHTML = "Invalid Email";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (hasSpecialChars(userInput)) {
+    userError.innerHTML = `Invalid Email`;
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else {
+    checkEmailExists(registerAPI);
+    async function checkEmailExists(url){
+      const response = await fetch(url);
+      var data = await response.json();
+      eValid = data.Result;
+      if (eValid) {
+        userError.innerHTML = "Email Taken";
+        userError.style.color = "red";
+        userInputField.style.boxShadow = "0px 0px 3px 0px red";
+      }else {
+        userError.innerHTML = "Email OK";
+        userError.style.color = "green";
+        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      }
+    }
+  }
 }
 
 
@@ -65,9 +106,10 @@ function hasWhiteSpace(data){
 }
 
 function hasSpecialChars(str) {
-  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  const specialChars = /[`!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
   return specialChars.test(str);
 }
+
 
 function hideError(a){
   let error = document.getElementById('adminErros');

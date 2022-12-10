@@ -20,7 +20,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Create a new account</span>
-        <span class="messageAndErrors">All fields required*</span>
+        <span class="messageAndErrors">(*) All fields required</span>
         <?php
 
         if (isset($_SESSION['authStatus'])) {
@@ -30,16 +30,24 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       </div>
       <form class="loginElements loginForm" action="validate.php" method="post">
         <span id="USB" ></span>
-        <input onkeyup="checkUsername()" id="username" class="fields" type="text"  onkeyup="checkUsername()" name="username" placeholder="Username i.e. RAKESH, your_name, ">
-        <input id="email" class="fields" type="email" name="emailAddress" value="" placeholder="Email i.e. username@gmail.com">
+        <input onkeyup="checkUsername()" id="username" class="fields" type="text" name="username" placeholder="Username* i.e. RAKESH, your_name, ">
+        <span id="ESB" ></span>
+        <input onkeyup="checkEmail()" id="email" class="fields" type="email" name="emailAddress" value="" placeholder="Email* i.e. username@gmail.com">
         <div class="spPassword">
-          <input id="newPassword" class="fields" type="password" name="userPassword" value="" placeholder="Password">
+          <input id="newPassword" class="fields" type="password" name="userPassword" value="" placeholder="Password*">
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">
         </div>
+          <select id="Gender" class="selection" name="Gender">
+            <option value="">Choose Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select>
 
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
         <br>
+        <input onkeyup="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
         <div class="loginElements additional">
           <p id="acceptTC" >By clicking register, you agree to our <a href="#">Terms of Service</a> and that you read our <a href="#">Privacy Policy</a> </p>
