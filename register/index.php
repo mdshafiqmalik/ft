@@ -44,10 +44,9 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
             <option value="Female">Female</option>
             <option value="Others">Others</option>
           </select>
-
+        <input onkeyup="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
         <br>
-        <input onkeyup="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
         <input id="submit" class="submit" type="submit" name="Submit" value="Register">
         <div class="loginElements additional">
           <p id="acceptTC" >By clicking register, you agree to our <a href="#">Terms of Service</a> and that you read our <a href="#">Privacy Policy</a> </p>
