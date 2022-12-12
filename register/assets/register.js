@@ -182,6 +182,10 @@ function checkPassword(){
   return pValid;
 }
 
+function hasLowerCase(string){
+
+}
+
 function hasNumber(string){
   return /\d/.test(string);
 }
