@@ -174,10 +174,12 @@ serInput) && hasUpperandLowerCase(userInput)) {             userError.innerHTML 
   return pValid;
 }
 
-function hasLowerCase(str){                               return str.match(/^[a-z]*$/);
+function hasLowerCase(str){
+  return str.match(/^[a-z]*$/);
 }
 
-function hasUpperCase(str){                               return str.match(/^[A-Z]*$/);
+function hasUpperCase(str){
+  return str.match(/^[A-Z]*$/);
 }
 
 function hasNumber(string){
