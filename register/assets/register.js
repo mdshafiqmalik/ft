@@ -185,7 +185,6 @@ function hasNumber(string){
 }
 function hasUpperandLowerCase(str){
   return (hasLowerCase(str) && hasUpperCase(str));
-  const upandlow = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
 }
 function hasWhiteSpace(data){
   return data.includes(' ');
