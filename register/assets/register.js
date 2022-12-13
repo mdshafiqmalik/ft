@@ -147,14 +147,9 @@ function checkPassword(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = false;
-  }else if (hasUpperandLowerCase(userInput)) {              userError.innerHTML = "Medium Password";                userError.style.color = "orange";                       userInputField.style.boxShadow = "0px 0px 3px 0px orange";
-    pValid = true;                                        }
-   else if (hasNumber(userInput) && hasAllSpecialChars(userInput) && hasUpperandLowerCase(userInput)) {
-    userError.innerHTML = "Strong Password";
-    userError.style.color = "green";
-    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
-    pValid = true;
-  }else if ((hasUpperandLowerCase(userInput) && hasAllSpecialChars(userInput))) {
+}else if (hasNumber(userInput) && hasAllSpecialChars(u
+serInput) && hasUpperandLowerCase(userInput)) {             userError.innerHTML = "Strong Password";                userError.style.color = "green";                        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";                                                     pValid = true;                                        }else if (hasUpperandLowerCase(userInput)) {              userError.innerHTML = "Medium Password";                userError.style.color = "orange";                       userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;                                        }else if ((hasUpperandLowerCase(userInput) && hasAllSpecialChars(userInput))) {
     userError.innerHTML = "Medium Password";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
