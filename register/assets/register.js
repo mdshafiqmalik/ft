@@ -182,14 +182,17 @@ function checkPassword(){
   return pValid;
 }
 
-function hasLowerCase(string){
+function hasLowerCase(str){                               return str.match(/^[a-z]*$/);
+}
 
+function hasUpperCase(str){                               return str.match(/^[A-Z]*$/);
 }
 
 function hasNumber(string){
   return /\d/.test(string);
 }
 function hasUpperandLowerCase(str){
+  return (hasLowerCase(str) && hasUpperCase(str));
   const upandlow = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
   return upandlow.test(str);
 }
