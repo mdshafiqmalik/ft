@@ -22,15 +22,7 @@ function openEye(){
   }
 }
 
-if (checkUsername() && checkEmail() && checkPassword()) {
-  let registerButton =  document.getElementById("submit");
-  registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
-  // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
-}else {
-  let registerButton =  document.getElementById("submit");
-  registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-  // background: linear-gradient(to right, #917ba2, #8f6285);
-}
+
 
 function checkUsername(){
   let userInputField = document.getElementById('username');
@@ -207,4 +199,14 @@ function hasAllSpecialChars(str) {
 function hideError(a){
   let error = document.getElementById('adminErros');
   error.style.display = "none";
+}
+
+if (checkUsername() && checkEmail() && checkPassword()) {
+  let registerButton =  document.getElementById("submit");
+  registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+  // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+}else {
+  let registerButton =  document.getElementById("submit");
+  registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
+  // background: linear-gradient(to right, #917ba2, #8f6285);
 }
