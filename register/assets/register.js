@@ -2,15 +2,16 @@ let registerButton =  document.getElementById("submit");
 registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
 
 function onSubmit(token){
+  
   if (!checkUsername()) {
     let registerButton =  document.getElementById("submit");
     registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
     // background: linear-gradient(to right, #917ba2, #8f6285);
-  }else if (!checkPassword()) {
+  }else if (!checkEmail()) {
     let registerButton =  document.getElementById("submit");
     registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
     // background: linear-gradient(to right, #917ba2, #8f6285);
-  }else if (!checkEmail()) {
+  }else if (!checkPassword()) {
     let registerButton =  document.getElementById("submit");
     registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
     // background: linear-gradient(to right, #917ba2, #8f6285);
