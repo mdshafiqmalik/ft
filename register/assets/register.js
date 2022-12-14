@@ -2,24 +2,28 @@ let registerButton =  document.getElementById("submit");
 registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
 
 function onSubmit(token){
-  
-  if (!checkUsername()) {
-    let registerButton =  document.getElementById("submit");
-    registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-    // background: linear-gradient(to right, #917ba2, #8f6285);
-  }else if (!checkEmail()) {
-    let registerButton =  document.getElementById("submit");
-    registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-    // background: linear-gradient(to right, #917ba2, #8f6285);
-  }else if (!checkPassword()) {
-    let registerButton =  document.getElementById("submit");
-    registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-    // background: linear-gradient(to right, #917ba2, #8f6285);
+
+  if (checkUsername()) {
+    if (checkEmail()) {
+      if (checkPassword()) {
+        let registerButton =  document.getElementById("submit");
+        registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
+      }else {
+        let registerButton =  document.getElementById("submit");
+        registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+        // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+      }
+    }else {
+      let registerButton =  document.getElementById("submit");
+      registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+      // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+    }
   }else {
     let registerButton =  document.getElementById("submit");
     registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
     // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
   }
+
 }
 
 function openEye(){

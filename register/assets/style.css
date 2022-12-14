@@ -23,9 +23,15 @@
   box-shadow: none;
 }
 
-select {
+.advance{
+  margin-bottom: .9rem;
+  font-family: "ubuntu-medium",sans-serif;
+}
+.advance:hover{
+  cursor: pointer;
+}
 
-  /* styling */
+select {
   background-color: white;
   border-color: #666;
   border-radius: 4px;
@@ -36,7 +42,6 @@ select {
   font-family: "ubuntu-medium",sans-serif;
   color: #666;
   margin-bottom: 1rem;
-  /* reset */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

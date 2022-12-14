@@ -39,6 +39,9 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">
         </div>
+        <div class="advance">
+          <p> Other Options</p>
+        </div>
           <!-- <select id="Gender" class="selection" name="Gender" required>
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
