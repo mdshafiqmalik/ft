@@ -103,8 +103,8 @@ function validateDID($i){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo getenv('cssVersion'); ?>">
-    <link rel="stylesheet" href="assets/login.css?v=<?php echo getenv('cssVersion'); ?>">
+    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="assets/login.css?v=<?php echo $cssVersion; ?>">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Fastreed: Admin Login</title>
   </head>
@@ -147,6 +147,6 @@ function validateDID($i){
         <a href="/login">User Login</a>
       </div>
     </div>
-    <script src="assets/login.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
+    <script src="assets/login.js?v=<?php echo $cssVersion; ?>" charset="utf-8"></script>
   </body>
 </html>
