@@ -1,11 +1,20 @@
-if (checkUsername() && checkEmail() && checkPassword()) {
-  let registerButton =  document.getElementById("submit");
-  registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
-  // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
-}else {
-  let registerButton =  document.getElementById("submit");
-  registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-  // background: linear-gradient(to right, #917ba2, #8f6285);
+
+
+
+function onSubmit(token){
+  if (checkUsername()) {
+    if (checkPassword()) {
+      if (checkUsername() && checkEmail() && checkPassword()) {
+        let registerButton =  document.getElementById("submit");
+        registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+        // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+      }else {
+        let registerButton =  document.getElementById("submit");
+        registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
+        // background: linear-gradient(to right, #917ba2, #8f6285);
+      }
+    }
+  }
 }
 
 function openEye(){
@@ -31,7 +40,6 @@ function openEye(){
     }
   }
 }
-
 
 
 function checkUsername(){
