@@ -55,6 +55,11 @@ function checkUsername(){
       userError.innerHTML = "Spaces Not Allowed ";
       userError.style.color = "red";
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (hasUnameSC(userInput)) {
+      uValid = false;
+      userError.innerHTML = "This char is not allowed <br>( _ ) underscore is allowed only";
+      userError.style.color = "red";
+      userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else {
     checkUsernameExists(registerAPI);
     async function checkUsernameExists(url){
@@ -101,7 +106,7 @@ function checkEmail(){
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
   }else if (hasSpecialChars(userInput)) {
-    userError.innerHTML = `Invalid Email`;
+    userError.innerHTML = "Invalid Email";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
@@ -167,7 +172,7 @@ function checkPassword(){
   }else {
     userError.innerHTML = "Weak Password";
     userError.style.color = "red";
-    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = true;
   }
   return pValid;
@@ -197,9 +202,15 @@ function hasWhiteSpace(data){
 }
 
 function hasSpecialChars(str) {
+  const specialChars = /[`!#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
+  return specialChars.test(str);
+}
+
+function hasUnameSC(str) {
   const specialChars = /[`!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?~]/;
   return specialChars.test(str);
 }
+
 
 function hasAllSpecialChars(str) {
   const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
