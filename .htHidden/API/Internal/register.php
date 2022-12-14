@@ -10,6 +10,7 @@ include($dbc);
 include($cnf);
 if (isset($_SERVER['HTTP_REFERER'])) {
   $thisHttp = $_SERVER['HTTP_REFERER'];
+  echo $thisHttp;
   $url1 = "http://"."$domain"."/register/";
   $url2 = "https://"."$domain"."/register/";
   $url3 = "http://www"."$domain"."/register/";
