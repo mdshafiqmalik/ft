@@ -147,31 +147,20 @@ function checkPassword(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = false;
-  }else if (hasNumber(userInput) && hasAllSpecialChars(userInput) && hasUpperandLowerCase(userInput)) {
+  }else if (hasUpperandLowerCase(userInput) &&  hasAllSpecialChars(userInput) && hasNumber(userInput)) {
     userError.innerHTML = "Strong Password";
     userError.style.color = "green";
     userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
    }else if (hasUpperandLowerCase(userInput)) {
-    userError.innerHTML = "Medium Password";
-    userError.style.color = "orange";
-    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
-    pValid = true;
-  }else if ((hasUpperandLowerCase(userInput) && hasAllSpecialChars(userInput))) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password 1";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ((hasAllSpecialChars(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password 3";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
-    pValid = true;
-  }
-  else if ((hasUpperandLowerCase(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password";
-    userError.style.color = "orange";
-    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
   }else {
     userError.innerHTML = "Weak Password";
@@ -182,31 +171,36 @@ function checkPassword(){
   return pValid;
 }
 
-function hasLowerCase(str){
-  return str.match(/^[a-z]*$/);
-}
-
-function hasUpperCase(str){
-  return str.match(/^[A-Z]*$/);
-}
 
 function hasNumber(string){
   return /\d/.test(string);
 }
-function hasUpperandLowerCase(str){
-  return (hasLowerCase(str) && hasUpperCase(str));
+function hasLowerCase(str){
+  let x = /[A-Z]/.test(str);
+  return x;
 }
+
+function hasUpperCase(str){
+  let x = /[a-z]/.test(str);
+  return x;
+}
+
+function hasUpperandLowerCase(str){
+  let has = (hasLowerCase(str) && hasUpperCase(str));
+  return has;
+}
+
 function hasWhiteSpace(data){
   return data.includes(' ');
 }
 
 function hasSpecialChars(str) {
-  const specialChars = /[`!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
+  const specialChars = /[`!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?~]/;
   return specialChars.test(str);
 }
 
 function hasAllSpecialChars(str) {
-  const specialChars = /[`!#@$%^&*()_+\-=\[\]{};':"\\|.,<>\/?~]/;
+  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   return specialChars.test(str);
 }
 
