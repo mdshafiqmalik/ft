@@ -108,7 +108,7 @@ function checkEmail(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
-  }else if (hasSpecialChars(userInput)) {
+  }else if (hasEmailChars(userInput)) {
     userError.innerHTML = "Invalid Email";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
@@ -207,13 +207,13 @@ function hasWhiteSpace(data){
   return data.includes(' ');
 }
 
-function hasSpecialChars(str) {
+function hasEmailChars(str) {
   const specialChars = /[`!#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
   return specialChars.test(str);
 }
 
 function hasUnameSC(str) {
-  const specialChars = /[`!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?~]/;
+  const specialChars = /[`!@#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
   return specialChars.test(str);
 }
 
