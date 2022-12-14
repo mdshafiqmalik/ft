@@ -65,6 +65,7 @@ function checkUsername(){
     async function checkUsernameExists(url){
       userError.innerHTML = " Checking....";
       userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      userError.style.color = "green";
       const response = await fetch(url);
       var data = await response.json();
       uValid = data.Result;
@@ -117,6 +118,7 @@ function checkEmail(){
     async function checkEmailExists(url){
       userError.innerHTML = " Checking....";
       userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      userError.style.color = "green";
       const response = await fetch(url);
       var data = await response.json();
       eValid = data.Result;
