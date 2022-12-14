@@ -58,7 +58,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       </div>
     </div>
       <script src="/assets/js/jquery-3.6.0.js" charset="utf-8"></script>
-    <script src="assets/register.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
+    <script src="assets/register.js?v=<?php echo getenv('cssVersion');?>" charset="utf-8"></script>
 
   </body>
 </html>
