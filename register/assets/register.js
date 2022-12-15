@@ -102,7 +102,7 @@ function checkUsername(){
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
       }else {
-        userError.innerHTML = "Username OK";
+        userError.innerHTML = "Username Available";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
       }
@@ -200,7 +200,7 @@ function checkEmail(){
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
         eValid = false;
       }else {
-        userError.innerHTML = "Email OK";
+        userError.innerHTML = "Valid Email";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
         eValid = true;
