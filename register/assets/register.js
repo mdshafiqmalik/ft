@@ -111,6 +111,10 @@ function checkUsername(){
   return uValid;
 }
 
+
+if (document.getElementById('inviteID').value.length != 0) {
+  checkInviteID();
+}
 function checkInviteID(){
   let userInputField = document.getElementById('inviteID');
   let userInput = userInputField.value;
@@ -138,13 +142,15 @@ function checkInviteID(){
       var data = await response.json();
       iValid = data.Result;
       if (iValid) {
-        userError.innerHTML = "Invite Code Found";
-        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
-        userError.style.color = "green";
-      }else {
         userError.innerHTML = "Invalid Invite Code";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
+      }else {
+        userError.innerHTML = "Invite Code Found";
+        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+        userError.style.color = "green";
+
+
       }
     }
   }

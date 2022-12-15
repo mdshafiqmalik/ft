@@ -59,8 +59,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
             <option value="Old">50+ Years</option>
           </select>
           <span id="EII" ></span>
-          <input onkeyup="checkInviteID()" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
-
+          <input onkeyup="checkInviteID()" value="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
 
         </div>
 
