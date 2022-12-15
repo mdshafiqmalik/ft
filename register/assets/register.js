@@ -231,13 +231,23 @@ function checkPassword(){
     userError.style.color = "green";
     userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
-   }else if (hasUpperandLowerCase(userInput)) {
-    userError.innerHTML = "Medium Password 1";
+  }else if (hasLowerCase(userInput) && hasUpperCase(userInput) ) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
+  }else if ( (hasLowerCase(userInput) || hasUpperCase(userInput))&& hasAllSpecialChars(userInput)) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
+  }else if ( (hasLowerCase(userInput) || hasUpperCase(userInput))&& hasNumber(userInput)) {
+    userError.innerHTML = "Medium Password";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ((hasAllSpecialChars(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password 3";
+    userError.innerHTML = "Medium Password";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
