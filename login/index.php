@@ -8,8 +8,8 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo getenv('cssVersion'); ?>">
-    <link rel="stylesheet" href="assets/style.css?v=<?php echo getenv('cssVersion'); ?>">
+    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="assets/style.css?v=<?php echo $cssVersion; ?>">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Fastreed: User Login</title>
   </head>

@@ -7,7 +7,7 @@ include '.htHidden/activity/checkVisitorType.php';
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo getenv('cssVersion'); ?>">
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo $cssVersion; ?>">
     <title>Fastreed Dashboard</title>
   </head>
   <body>
@@ -128,5 +128,5 @@ include '.htHidden/activity/checkVisitorType.php';
       </div>
     </div>
   </body>
-  <script src="/assets/js/all.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
+  <script src="/assets/js/all.js?v=<?php echo $cssVersion; ?>" charset="utf-8"></script>
 </html>

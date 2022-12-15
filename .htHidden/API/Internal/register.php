@@ -10,12 +10,12 @@ include($dbc);
 include($cnf);
 if (isset($_SERVER['HTTP_REFERER'])) {
   $thisHttp = $_SERVER['HTTP_REFERER'];
-  $url1 = "http://"."$domain"."/register/index.php";
-  $url2 = "https://"."$domain"."/register/index.php";
-  $url3 = "http://www"."$domain"."/register/index.php";
-  $url4 = "https://www"."$domain"."/register/index.php";
-  $url5 = "http://testing"."$domain"."/register/index.php";
-  $url6 = "https://testing"."$domain"."/register/index.php";
+  $url1 = "http://"."$domain"."/register/";
+  $url2 = "https://"."$domain"."/register/";
+  $url3 = "http://www."."$domain"."/register/";
+  $url4 = "https://www."."$domain"."/register/";
+  $url5 = "http://testing."."$domain"."/register/";
+  $url6 = "https://testing."."$domain"."/register/";
   if ($thisHttp == $url1 || $thisHttp == $url2 || $thisHttp == $url3 || $thisHttp == $url4 || $thisHttp == $url5 || $thisHttp == $url6) {
       if (isset($_GET["username"])) {
         $inputValue = $_GET["username"];

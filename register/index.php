@@ -8,8 +8,8 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo getenv('cssVersion'); ?>">
-    <link rel="stylesheet" href="assets/style.css?v=<?php echo getenv('cssVersion'); ?>">
+    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="assets/style.css?v=<?php echo $cssVersion; ?>">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Fastreed: User Regsitration</title>
   </head>
@@ -39,6 +39,9 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
           <img id="eyeClosed" style="display:block;" onclick="openEye()"  src="/assets/svgs/eye_closed.svg" alt="">
           <img id="eyeOpened" style="display:none;"  onclick="openEye()"  src="/assets/svgs/eye_show.svg" alt="">
         </div>
+        <div class="advance">
+          <p> Other Options</p>
+        </div>
           <!-- <select id="Gender" class="selection" name="Gender" required>
             <option value="">Select Gender</option>
             <option value="Male">Male</option>
@@ -58,7 +61,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
       </div>
     </div>
       <script src="/assets/js/jquery-3.6.0.js" charset="utf-8"></script>
-    <script src="assets/register.js?v=<?php echo getenv('cssVersion'); ?>" charset="utf-8"></script>
+    <script src="assets/register.js?v=<?php echo $cssVersion;?>" charset="utf-8"></script>
 
   </body>
 </html>

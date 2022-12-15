@@ -1,3 +1,31 @@
+let registerButton =  document.getElementById("submit");
+registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
+
+function onSubmit(token){
+
+  if (checkUsername()) {
+    if (checkEmail()) {
+      if (checkPassword()) {
+        let registerButton =  document.getElementById("submit");
+        registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
+      }else {
+        let registerButton =  document.getElementById("submit");
+        registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+        // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+      }
+    }else {
+      let registerButton =  document.getElementById("submit");
+      registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+      // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+    }
+  }else {
+    let registerButton =  document.getElementById("submit");
+    registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
+    // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
+  }
+
+}
+
 function openEye(){
   var closed = document.getElementById('eyeClosed').style.display;
   var opened = document.getElementById('eyeOpened').style.display;
@@ -22,15 +50,6 @@ function openEye(){
   }
 }
 
-if (checkUsername() && checkEmail() && checkPassword()) {
-  let registerButton =  document.getElementById("submit");
-  registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
-  // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
-}else {
-  let registerButton =  document.getElementById("submit");
-  registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-  // background: linear-gradient(to right, #917ba2, #8f6285);
-}
 
 function checkUsername(){
   let userInputField = document.getElementById('username');
@@ -53,9 +72,17 @@ function checkUsername(){
       userError.innerHTML = "Spaces Not Allowed ";
       userError.style.color = "red";
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else if (hasUnameSC(userInput)) {
+      uValid = false;
+      userError.innerHTML = "This char is not allowed <br>( _ ) underscore is allowed only";
+      userError.style.color = "red";
+      userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else {
     checkUsernameExists(registerAPI);
     async function checkUsernameExists(url){
+      userError.innerHTML = " Checking....";
+      userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      userError.style.color = "green";
       const response = await fetch(url);
       var data = await response.json();
       uValid = data.Result;
@@ -98,14 +125,17 @@ function checkEmail(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
-  }else if (hasSpecialChars(userInput)) {
-    userError.innerHTML = `Invalid Email`;
+  }else if (hasEmailChars(userInput)) {
+    userError.innerHTML = "Invalid Email";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
   }else {
     checkEmailExists(registerAPI);
     async function checkEmailExists(url){
+      userError.innerHTML = " Checking....";
+      userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      userError.style.color = "green";
       const response = await fetch(url);
       var data = await response.json();
       eValid = data.Result;
@@ -147,59 +177,66 @@ function checkPassword(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = false;
-  }else if (hasNumber(userInput) && hasAllSpecialChars(userInput) && hasUpperandLowerCase(userInput)) {
+  }else if (hasUpperandLowerCase(userInput) &&  hasAllSpecialChars(userInput) && hasNumber(userInput)) {
     userError.innerHTML = "Strong Password";
     userError.style.color = "green";
     userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
-  }else if (hasUpperandLowerCase(userInput)) {
-    userError.innerHTML = "Medium Password";
-    userError.style.color = "orange";
-    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
-    pValid = true;
-  }else if ((hasUpperandLowerCase(userInput) && hasAllSpecialChars(userInput))) {
-    userError.innerHTML = "Medium Password";
+   }else if (hasUpperandLowerCase(userInput)) {
+    userError.innerHTML = "Medium Password 1";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ((hasAllSpecialChars(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password 3";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
-    pValid = true;
-  }
-  else if ((hasUpperandLowerCase(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password";
-    userError.style.color = "orange";
-    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
   }else {
     userError.innerHTML = "Weak Password";
     userError.style.color = "red";
-    userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = true;
   }
   return pValid;
 }
 
+
 function hasNumber(string){
   return /\d/.test(string);
 }
-function hasUpperandLowerCase(str){
-  const upandlow = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/;
-  return upandlow.test(str);
+function hasLowerCase(str){
+  let x = /[A-Z]/.test(str);
+  return x;
 }
+
+function hasUpperCase(str){
+  let x = /[a-z]/.test(str);
+  return x;
+}
+
+function hasUpperandLowerCase(str){
+  let has = (hasLowerCase(str) && hasUpperCase(str));
+  return has;
+}
+
 function hasWhiteSpace(data){
   return data.includes(' ');
 }
 
-function hasSpecialChars(str) {
-  const specialChars = /[`!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
+function hasEmailChars(str) {
+  const specialChars = /[`!#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
   return specialChars.test(str);
 }
 
+function hasUnameSC(str) {
+  const specialChars = /[`!@#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
+  return specialChars.test(str);
+}
+
+
 function hasAllSpecialChars(str) {
-  const specialChars = /[`!#@$%^&*()_+\-=\[\]{};':"\\|.,<>\/?~]/;
+  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   return specialChars.test(str);
 }
 
