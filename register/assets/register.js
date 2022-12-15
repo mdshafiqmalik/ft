@@ -135,7 +135,7 @@ function checkInviteID(){
     const registerAPI =`/.htHidden/API/Internal/register.php?inviteID=${userInput}`;
     checkInviteID(registerAPI);
     async function checkInviteID(url){
-      userError.innerHTML = " Checking....";
+      userError.innerHTML = "Validating....";
       userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
       userError.style.color = "green";
       const response = await fetch(url);
