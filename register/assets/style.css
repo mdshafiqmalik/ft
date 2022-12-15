@@ -14,7 +14,7 @@
   border-radius: 5px;
 }
 #USB,#PSB,#ESB, #EII{
-  font-size: x-small;
+  font-size: small;
   float: right;
   display: block;
   font-family: "ubuntu-medium",sans-serif;
