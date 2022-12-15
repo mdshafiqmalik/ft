@@ -195,7 +195,7 @@ function checkEmail(){
       var data = await response.json();
       eValid = data.Result;
       if (eValid) {
-        userError.innerHTML = "Email Taken";
+        userError.innerHTML = "Email Already Exist";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
         eValid = false;
