@@ -48,7 +48,7 @@
 #optionalFields{
   display: none;
   flex-direction: column;
-
+  transition: opacity 4s;
 }
 select {
   background-color: white;
