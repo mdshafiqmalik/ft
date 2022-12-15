@@ -15,11 +15,11 @@ if (isset($_GET['inviteCode'])) {
       setcookie("DID",$_GET["inviteCode"], time()+(86400*365), '/');
       setcookie("inviteCodeError","", time()-3600, '/');
     }else {
-      setcookie("inviteCodeError","Invalid ID found", time()+10, '/');
+      setcookie("inviteCodeError","Invalid ID found", time()+1000, '/');
       unset($GLOBALS['inviteIdFound']);
     }
   }else {
-    setcookie("inviteCodeError","Empty invitation ID", time()+10, '/');
+    setcookie("inviteCodeError","Empty invitation ID", time()+1000, '/');
     unset($GLOBALS['inviteIdFound']);
   }
 }elseif (isset($_COOKIE['DID'])) {
@@ -28,15 +28,15 @@ if (isset($_GET['inviteCode'])) {
       $GLOBALS['inviteIdFound'] = "Registered Device Found";
       setcookie("inviteCodeError","", time()-3600, '/');
     }else {
-      setcookie("inviteCodeError","Invalid ID found", time()+10, '/');
+      setcookie("inviteCodeError","Invalid ID found", time()+1000, '/');
       unset($GLOBALS['inviteIdFound']);
     }
   }else {
-    setcookie("inviteCodeError","Empty device ID found", time()+10, '/');
+    setcookie("inviteCodeError","Empty device ID found", time()+1000, '/');
     unset($GLOBALS['inviteIdFound']);
   }
 }else {
-    setcookie("inviteCodeError","No Invitation/ID found", time()+100, '/');
+    setcookie("inviteCodeError","No Invitation/ID found", time()+1000, '/');
     unset($GLOBALS['inviteIdFound']);
 }
 
