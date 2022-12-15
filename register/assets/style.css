@@ -13,7 +13,7 @@
   padding: .7rem;
   border-radius: 5px;
 }
-#USB,#PSB,#ESB{
+#USB,#PSB,#ESB, #EII{
   font-size: x-small;
   float: right;
   display: block;

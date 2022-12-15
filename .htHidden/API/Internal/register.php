@@ -55,8 +55,27 @@ if (isset($_SERVER['HTTP_REFERER'])) {
             $cantReadDecode = json_encode($cantRead);
             echo "$cantReadDecode";
           }
+      }else if(isset($_GET["inviteID"])) {
+          $inputValue = $_GET["inviteID"];
+          $userDataSql =  "SELECT * FROM  users_credentials Where BINARY inviteCode = '".$inputValue."' ";
+          if (mysqli_query($db, $userDataSql)) {
+            $result = mysqli_query($db, $userDataSql);
+            if (mysqli_num_rows($result)) {
+              $found = array("Result"=>true, "Status"=>"Invite ID found");
+              $foundJSON = json_encode($found);
+              echo "$foundJSON";
+            }else {
+              $notFound = array("Result"=>false,"Status"=>"Invite ID not found");
+              $notFoundJSON = json_encode($notFound);
+              echo "$notFoundJSON";
+            }
+          }else {
+            $cantRead = array("Status"=>"Cannot Access Database", "Result"=>true);
+            $cantReadDecode = json_encode($cantRead);
+            echo "$cantReadDecode";
+          }
       }else {
-          $cantRead = array("Status"=>"No arguments used", "Result"=>true);
+          $cantRead = array("Status"=>"Invalid or No argument found", "Result"=>true);
           $cantReadDecode = json_encode($cantRead);
           echo "$cantReadDecode";
       }

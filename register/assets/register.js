@@ -111,7 +111,45 @@ function checkUsername(){
   return uValid;
 }
 
-
+function checkInviteID(){
+  let userInputField = document.getElementById('inviteID');
+  let userInput = userInputField.value;
+  let userError = document.getElementById('EII');
+  let iValid;
+  if (userInput.length === 0) {
+    iValid = true; // No Invite ID
+    userError.style.display = "none";
+  }
+  else if (userInput.length < 10) {
+    iValid = false; // No Invite ID
+    userError.style.display = "block";
+    userError.innerHTML = "10 Chars needed";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else {
+    userError.style.display = "block";
+    const registerAPI =`/.htHidden/API/Internal/register.php?inviteID=${userInput}`;
+    checkInviteID(registerAPI);
+    async function checkInviteID(url){
+      userError.innerHTML = " Checking....";
+      userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      userError.style.color = "green";
+      const response = await fetch(url);
+      var data = await response.json();
+      iValid = data.Result;
+      if (iValid) {
+        userError.innerHTML = "Invite Code Found";
+        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+        userError.style.color = "green";
+      }else {
+        userError.innerHTML = "Invalid Invite Code";
+        userError.style.color = "red";
+        userInputField.style.boxShadow = "0px 0px 3px 0px red";
+      }
+    }
+  }
+  return iValid;
+}
 
 function checkEmail(){
   let userInputField = document.getElementById('email');

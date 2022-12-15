@@ -1,6 +1,6 @@
 <?php
 
-$cssVersion = "2.9.2";
+$cssVersion = "2.9.3";
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

@@ -50,7 +50,8 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
             <option value="Female">Female</option>
             <option value="Others">Others</option>
           </select>
-          <input onkeyup="" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
+          <span id="EII" ></span>
+          <input onkeyup="checkInviteID()" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
         </div>
 
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
