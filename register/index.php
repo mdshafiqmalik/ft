@@ -44,8 +44,8 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
           <img id="optArrow" style="transform: rotateX(0deg);" src="/assets/svgs/dropdown.svg" alt="">
         </div>
         <div id="optionalFields">
-          <select id="Gender" class="selection" name="Gender" required>
-            <option value="">Select Gender</option>
+          <select id="Gender" class="selection" name="Gender">
+            <option value="None">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Others">Others</option>
