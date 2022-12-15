@@ -50,8 +50,18 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
             <option value="Female">Female</option>
             <option value="Others">Others</option>
           </select>
+          <select class="selection" name="age">
+            <option value="None">Select Age Range</option>
+            <option value="Child">05 - 12 Years</option>
+            <option value="Young">12 - 20 Years</option>
+            <option value="Adult">20 - 35 Years</option>
+            <option value="Mature">35 - 50 Years</option>
+            <option value="Old">50+ Years</option>
+          </select>
           <span id="EII" ></span>
           <input onkeyup="checkInviteID()" id="inviteID" class="fields" type="text" name="inviteID" placeholder="Invite ID (Optional)">
+
+
         </div>
 
         <div class="g-recaptcha" data-callback='onSubmit' data-sitekey="6LfHsUkjAAAAAI7vWP697QK0n8EMTwY1OqZSk1wC"></div>
