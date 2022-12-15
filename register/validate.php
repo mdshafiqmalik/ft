@@ -2,6 +2,17 @@
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
   header("Location: /register/index.php");
 }
+
+if (!captchaResponse()) {
+  // code...
+}else if(!usernameCheck()) {
+
+}else if(!emailCheck() {
+
+}else if(!passWordCheck()) {
+
+}
+
 function captchaResponse(){
   if (isset($_POST['g-recaptcha-response'])) {
     $g_captcha = $_POST['g-recaptcha-response'];

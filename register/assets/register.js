@@ -50,6 +50,17 @@ function openEye(){
   }
 }
 
+function optionalView(){
+  var closed = document.getElementById('optArrow').style.transform;
+  var optionalFields = document.getElementById('optionalFields').style;
+  if (closed == 'rotateX(0deg)') {
+    document.getElementById('optArrow').style.transform = "rotateX(180deg)";
+    optionalFields.display = "flex";
+  }else {
+    document.getElementById('optArrow').style.transform = "rotateX(0deg)";
+    optionalFields.display = "none";
+  }
+}
 
 function checkUsername(){
   let userInputField = document.getElementById('username');

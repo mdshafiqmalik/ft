@@ -1,3 +1,6 @@
+:root{
+  --svg-text-color: invert(28%) sepia(2%) saturate(6222%) hue-rotate(185deg) brightness(90%) contrast(88%);
+}
 .others{
   display: flex;
   justify-content: center;
@@ -26,11 +29,27 @@
 .advance{
   margin-bottom: .9rem;
   font-family: "ubuntu-medium",sans-serif;
+  display: flex;
+  align-items: center;
 }
 .advance:hover{
   cursor: pointer;
 }
+.advance p{
+  display: inline;
+}
+.advance img{
+  margin-left: 1rem;
+  width: 15px;
+  height: 12px;
+  filter: var(--svg-text-color);
+  transition: transform .4s;
+}
+#optionalFields{
+  display: none;
+  flex-direction: column;
 
+}
 select {
   background-color: white;
   border-color: #666;
