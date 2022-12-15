@@ -11,6 +11,8 @@ if (!captchaResponse()) {
 
 }else if(!passWordCheck()) {
 
+}else {
+  // code...
 }
 
 function captchaResponse(){
