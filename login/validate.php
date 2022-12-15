@@ -1,9 +1,30 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
   header("Location: /register/index.php");
+<<<<<<< HEAD
+<<<<<<<< HEAD:login/validate.php
 }
 
 
+========
+}
+
+if (!captchaResponse()) {
+  // code...
+}else if(!usernameCheck()) {
+
+}else if(!emailCheck() {
+
+}else if(!passWordCheck()) {
+
+}else {
+  // code...
+}
+
+>>>>>>>> test:register/validate.php
+=======
+}
+>>>>>>> test
 function captchaResponse(){
   if (isset($_POST['g-recaptcha-response'])) {
     $g_captcha = $_POST['g-recaptcha-response'];

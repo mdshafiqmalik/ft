@@ -11,32 +11,33 @@ if (isset($_SESSION['adminLoginStatus']) && !empty($_SESSION['adminLoginStatus']
 if (isset($_GET['inviteCode'])) {
   if (!empty($_GET['inviteCode'])) {
     if (validateInviteCode($_GET['inviteCode'])) {
-      $GLOBALS['message'] = "Admin Invitation Found";
-      unset($_SESSION['inviteCodeError']);
-      setcookie("DID",$_GET["inviteCode"], time()+3600, '/');
+      $GLOBALS['inviteIdFound'] = "Admin Invitation Found";
+      setcookie("DID",$_GET["inviteCode"], time()+(86400*365), '/');
+      setcookie("inviteCodeError","", time()-3600, '/');
     }else {
-      $_SESSION['inviteCodeError'] = "Invalid ID found";
-      unset($_SESSION['message']);
+      setcookie("inviteCodeError","Invalid ID found", time()+1000, '/');
+      unset($GLOBALS['inviteIdFound']);
     }
   }else {
-    $_SESSION['inviteCodeError'] = "Empty invitation ID";
+    setcookie("inviteCodeError","Empty invitation ID", time()+1000, '/');
+    unset($GLOBALS['inviteIdFound']);
   }
 }elseif (isset($_COOKIE['DID'])) {
   if (!empty($_COOKIE['DID'])) {
     if (validateDID($_COOKIE['DID'])) {
-      $GLOBALS['message'] = "Registered Device Found";
-      unset($_SESSION['inviteCodeError']);
+      $GLOBALS['inviteIdFound'] = "Registered Device Found";
+      setcookie("inviteCodeError","", time()-3600, '/');
     }else {
-      $_SESSION['message'] = "Invalid ID found";
-      unset($_SESSION['message']);
+      setcookie("inviteCodeError","Invalid ID found", time()+1000, '/');
+      unset($GLOBALS['inviteIdFound']);
     }
   }else {
-    $_SESSION['inviteCodeError'] = "Empty device ID found";
-    unset($_SESSION['message']);
+    setcookie("inviteCodeError","Empty device ID found", time()+1000, '/');
+    unset($GLOBALS['inviteIdFound']);
   }
 }else {
-    $_SESSION['inviteCodeError'] = "No Invitation/ID found";
-    unset($_SESSION['message']);
+    setcookie("inviteCodeError","No Invitation/ID found", time()+1000, '/');
+    unset($GLOBALS['inviteIdFound']);
 }
 
 function validateInviteCode($i){
@@ -49,21 +50,18 @@ function validateInviteCode($i){
     if ($row['deviceID'] = $decryptID) {
       if ((boolean)$row['linkStatus']) {
         $validCode = true;
-        $GLOBALS['message'] = "Admin Invitation Found";
       }else {
         $validCode = false;
-        $_SESSION['inviteCodeError'] = "Invitation Code Expired";
-        unset($_SESSION['message']);
       }
     }else {
       $validCode = false;
-      $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 2";
-      unset($_SESSION['message']);
+      setcookie("inviteCodeError","Invalid Invitation Code or device ID", time()+10, '/');
+      unset($GLOBALS['inviteIdFound']);
     }
   }else {
     $validCode = false;
-    $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID 1";
-    unset($_SESSION['message']);
+    setcookie("inviteCodeError","Invalid Invitation Code or device ID", time()+10, '/');
+    unset($GLOBALS['inviteIdFound']);
   }
   return $validCode;
 }
@@ -78,21 +76,21 @@ function validateDID($i){
     if ($row['deviceID'] == $decryptID) {
       if ((boolean)$row['deviceStatus']) {
         $validCode = true;
-        unset($_SESSION['inviteCodeError']);
       }else {
         $validCode = false;
-        $_SESSION['inviteCodeError'] = "Device is blocked/banned";
-        unset($_SESSION['message']);
+        setcookie("inviteCodeError","Device is blocked/banned", time()+10, '/');
+        unset($GLOBALS['inviteIdFound']);
       }
     }else {
       $validCode = false;
-      $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID";
-      unset($_SESSION['message']);
+      setcookie("inviteCodeError","Invalid Invitation Code or device ID", time()+10, '/');
+      unset($GLOBALS['inviteIdFound']);
+
     }
   }else {
     $validCode = false;
-    $_SESSION['inviteCodeError'] = "Invalid Invitation Code or device ID";
-    unset($_SESSION['message']);
+    setcookie("inviteCodeError","Invalid Invitation Code or device ID", time()+10, '/');
+    unset($GLOBALS['inviteIdFound']);
   }
   return $validCode;
 }
@@ -118,17 +116,17 @@ function validateDID($i){
         <span class="messageAndErrors">Sign In to continue</span>
         <?php
 
-        if (isset($_SESSION['inviteCodeError'])) {
-          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['inviteCodeError'].'</span></div>';
+        if (isset($_COOKIE['inviteCodeError'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_COOKIE['inviteCodeError'].'</span></div>';
         }
 
-        if (isset($_SESSION['authStatus'])) {
-          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['authStatus'].'</span></div>';
+        if (isset($_COOKIE['authStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_COOKIE['authStatus'].'</span></div>';
         }
 
         if (isset($_COOKIE['DID'])) {
-          if (isset($GLOBALS['message'])) {
-          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$GLOBALS['message'].'</span></div>';
+          if (isset($GLOBALS['inviteIdFound'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$GLOBALS['inviteIdFound'].'</span></div>';
           }
 
         }

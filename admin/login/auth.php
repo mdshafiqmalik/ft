@@ -73,18 +73,21 @@ function userName(){
         $userNameRes['AID'] = validateUsername()['AID'];
       }else {
         $userNameRes['valid'] = false;
-        $_SESSION['authStatus'] = "Incorrect Username";
+        // $_SESSION['authStatus'] = "Incorrect Username";
+        setcookie("authStatus","Incorrect Username", time()+10, '/');
         header("Location: /admin/login/index.ph?err=AE01");
       }
     }else {
       $userNameRes['valid'] = false;
-      $_SESSION['authStatus'] = "Username Cannot Be Empty";
+      // $_SESSION['authStatus'] = "Username Cannot Be Empty";
+      setcookie("authStatus","Username Cannot Be Empty", time()+10, '/');
       header("Location: /admin/login/index.php");
       exit;
     }
   }else {
     $userNameRes['valid'] = false;
-    $_SESSION['authStatus'] = "Username Not Found In Form";
+    // $_SESSION['authStatus'] = "Username Not Found In Form";
+    setcookie("authStatus","Username Not Found In Form", time()+10, '/');
     header("Location: /admin/login/index.php");
     exit;
   }
@@ -116,20 +119,23 @@ function passWord($adID){
       if ($pWordMatched) {
         $passWordRes['valid'] = true;
       }else {
-        $_SESSION['authStatus'] = "Incorrect Password";
+        // $_SESSION['authStatus'] = "Incorrect Password";
+        setcookie("authStatus","Incorrect Password", time()+10, '/');
         $passWordRes['valid'] = false;
         header("Location: /admin/login");
         exit;
       }
     }else {
       $passWordRes['valid'] = false;
-      $_SESSION['authStatus']= "Password Is Empty";
+      // $_SESSION['authStatus']= "Password Is Empty";
+      setcookie("authStatus","Password Is Empty", time()+10, '/');
       header("Location: /admin/login");
       exit;
     }
   }else {
     $passWordRes['valid'] = false;
-    $_SESSION['authSthttp://localhost/atus']= "Password Not Included In Form";
+    // $_SESSION['authSthttp://localhost/atus']= "Password Not Included In Form";
+    setcookie("authStatus","Password Not Included In Form", time()+10, '/');
     header("Location: /admin/login");
     exit;
   }
@@ -167,19 +173,22 @@ function captchaResponse(){
       }else {
         // WARNING: Potential sapammer
         // G_recaptcha not Authorized
-        $_SESSION['authStatus'] ="Captcha Not Valid";
+        // $_SESSION['authStatus'] ="Captcha Not Valid";
+        setcookie("authStatus","Captcha Not Valid", time()+10, '/');
         $captchaRes['valid'] = false;
         header("Location: /admin/login");
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="Refill The Captcha";
+      // $_SESSION['authStatus'] ="Refill The Captcha";
+      setcookie("authStatus","Refill The Captcha", time()+10, '/');
       $captchaRes['valid'] = false;
       header("Location: /admin/login");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] ="Captcha Not Included In Form";
+    // $_SESSION['authStatus'] ="Captcha Not Included In Form";
+    setcookie("authStatus","Captcha Not Included In Form", time()+10, '/');
     $captchaRes['valid'] = false;
     header("Location: /admin/login");
     exit;
@@ -246,19 +255,23 @@ function deviceStatus($userID){
         $validDevice = true;
 >>>>>>> test
       }else {
-        $_SESSION['authStatus'] = "Invalid Device ID";
+        // $_SESSION['authStatus'] = "Invalid Device ID";
+        setcookie("authStatus","Invalid Device ID", time()+10, '/');
         $validDevice = false;
         header("Location: /admin/login");
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="No admin invitation found";
+      // $_SESSION['authStatus'] ="No admin invitation found";
+      setcookie("authStatus","No admin invitation found", time()+10, '/');
       $validDevice = false;
       header("Location: /admin/login");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] = "No admin invitation found";
+    // $_SESSION['authStatus'] = "No admin invitation found";
+    setcookie("authStatus","No admin invitation found", time()+10, '/');
+
     $validDevice = false;
     header("Location: /admin/login");
     exit;

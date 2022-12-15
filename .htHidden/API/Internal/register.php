@@ -10,13 +10,13 @@ include($dbc);
 include($cnf);
 if (isset($_SERVER['HTTP_REFERER'])) {
   $thisHttp = $_SERVER['HTTP_REFERER'];
-  $url1 = "http://"."$domain"."/register/";
-  $url2 = "https://"."$domain"."/register/";
-  $url3 = "http://www."."$domain"."/register/";
-  $url4 = "https://www."."$domain"."/register/";
-  $url5 = "http://testing."."$domain"."/register/";
-  $url6 = "https://testing."."$domain"."/register/";
-  if ($thisHttp == $url1 || $thisHttp == $url2 || $thisHttp == $url3 || $thisHttp == $url4 || $thisHttp == $url5 || $thisHttp == $url6) {
+  $u1Check = (boolean) strpos($thisHttp, "http://"."$domain"."/register/");
+  $u2Check = (boolean) strpos($thisHttp, "https://"."$domain"."/register/");
+  $u3Check = (boolean) strpos($thisHttp, "http://www."."$domain"."/register/");
+  $u4Check = (boolean) strpos($thisHttp, "https://www."."$domain"."/register/");
+  $u5Check = (boolean) strpos($thisHttp, "http://testing."."$domain"."/register/");
+  $u6Check = (boolean) strpos($thisHttp, "https://testing."."$domain"."/register/");
+  if (!$u1Check || !$u2Check || !$u3Check || !$u4Check || !$u5Check || !$u6Check) {
       if (isset($_GET["username"])) {
         $inputValue = $_GET["username"];
         $userDataSql =  "SELECT * FROM users Where  BINARY userName = '".$inputValue."' ";
@@ -55,8 +55,27 @@ if (isset($_SERVER['HTTP_REFERER'])) {
             $cantReadDecode = json_encode($cantRead);
             echo "$cantReadDecode";
           }
+      }else if(isset($_GET["inviteID"])) {
+          $inputValue = $_GET["inviteID"];
+          $userDataSql =  "SELECT * FROM  users_credentials Where BINARY inviteCode = '".$inputValue."' ";
+          if (mysqli_query($db, $userDataSql)) {
+            $result = mysqli_query($db, $userDataSql);
+            if (mysqli_num_rows($result)) {
+              $found = array("Result"=>false, "Status"=>"Invite ID found");
+              $foundJSON = json_encode($found);
+              echo "$foundJSON";
+            }else {
+              $notFound = array("Result"=>true,"Status"=>"Invite ID not found");
+              $notFoundJSON = json_encode($notFound);
+              echo "$notFoundJSON";
+            }
+          }else {
+            $cantRead = array("Status"=>"Cannot Access Database", "Result"=>true);
+            $cantReadDecode = json_encode($cantRead);
+            echo "$cantReadDecode";
+          }
       }else {
-          $cantRead = array("Status"=>"No arguments used", "Result"=>true);
+          $cantRead = array("Status"=>"Invalid or No argument found", "Result"=>true);
           $cantReadDecode = json_encode($cantRead);
           echo "$cantReadDecode";
       }

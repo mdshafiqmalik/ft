@@ -1,5 +1,5 @@
 <?php
-$_SERVROOT = '../../../../';
+$_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
  ?>
@@ -15,7 +15,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
   <body>
     <div class="loginOuterDiv">
       <div class="loginElements brandLogo">
-        <a href="/">FastReed <br> <span>Password Reset</span> </a>
+        <a href="/">FastReed <br> <span>authenticatiom</span> </a>
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Check your mail box</span>

@@ -50,6 +50,17 @@ function openEye(){
   }
 }
 
+function optionalView(){
+  var closed = document.getElementById('optArrow').style.transform;
+  var optionalFields = document.getElementById('optionalFields').style;
+  if (closed == 'rotateX(0deg)') {
+    document.getElementById('optArrow').style.transform = "rotateX(180deg)";
+    optionalFields.display = "flex";
+  }else {
+    document.getElementById('optArrow').style.transform = "rotateX(0deg)";
+    optionalFields.display = "none";
+  }
+}
 
 function checkUsername(){
   let userInputField = document.getElementById('username');
@@ -91,7 +102,7 @@ function checkUsername(){
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
       }else {
-        userError.innerHTML = "Username OK";
+        userError.innerHTML = "Username Available";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
       }
@@ -101,6 +112,50 @@ function checkUsername(){
 }
 
 
+if (document.getElementById('inviteID').value.length != 0) {
+  checkInviteID();
+}
+function checkInviteID(){
+  let userInputField = document.getElementById('inviteID');
+  let userInput = userInputField.value;
+  let userError = document.getElementById('EII');
+  let iValid;
+  if (userInput.length === 0) {
+    iValid = true; // No Invite ID
+    userError.style.display = "none";
+  }
+  else if (userInput.length < 10) {
+    iValid = false; // No Invite ID
+    userError.style.display = "block";
+    userError.innerHTML = "10 Chars needed";
+    userError.style.color = "red";
+    userInputField.style.boxShadow = "0px 0px 3px 0px red";
+  }else {
+    userError.style.display = "block";
+    const registerAPI =`/.htHidden/API/Internal/register.php?inviteID=${userInput}`;
+    checkInviteID(registerAPI);
+    async function checkInviteID(url){
+      userError.innerHTML = "Validating....";
+      userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+      userError.style.color = "green";
+      const response = await fetch(url);
+      var data = await response.json();
+      iValid = data.Result;
+      if (iValid) {
+        userError.innerHTML = "Invalid Invite Code";
+        userError.style.color = "red";
+        userInputField.style.boxShadow = "0px 0px 3px 0px red";
+      }else {
+        userError.innerHTML = "Invite Code Found";
+        userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
+        userError.style.color = "green";
+
+
+      }
+    }
+  }
+  return iValid;
+}
 
 function checkEmail(){
   let userInputField = document.getElementById('email');
@@ -140,12 +195,12 @@ function checkEmail(){
       var data = await response.json();
       eValid = data.Result;
       if (eValid) {
-        userError.innerHTML = "Email Taken";
+        userError.innerHTML = "Email Already Exist";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
         eValid = false;
       }else {
-        userError.innerHTML = "Email OK";
+        userError.innerHTML = "Valid Email";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
         eValid = true;
@@ -182,13 +237,23 @@ function checkPassword(){
     userError.style.color = "green";
     userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
-   }else if (hasUpperandLowerCase(userInput)) {
-    userError.innerHTML = "Medium Password 1";
+  }else if (hasLowerCase(userInput) && hasUpperCase(userInput) ) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
+  }else if ( (hasLowerCase(userInput) || hasUpperCase(userInput))&& hasAllSpecialChars(userInput)) {
+    userError.innerHTML = "Medium Password";
+    userError.style.color = "orange";
+    userInputField.style.boxShadow = "0px 0px 3px 0px orange";
+    pValid = true;
+  }else if ( (hasLowerCase(userInput) || hasUpperCase(userInput))&& hasNumber(userInput)) {
+    userError.innerHTML = "Medium Password";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ((hasAllSpecialChars(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password 3";
+    userError.innerHTML = "Medium Password";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
