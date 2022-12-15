@@ -91,7 +91,7 @@ function checkUsername(){
   }else {
     checkUsernameExists(registerAPI);
     async function checkUsernameExists(url){
-      userError.innerHTML = " Validating....";
+      userError.innerHTML = " Checking....";
       userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
       userError.style.color = "green";
       const response = await fetch(url);
