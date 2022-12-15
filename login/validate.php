@@ -1,15 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
   header("Location: /register/index.php");
-}elseif () {
-  // code...
 }
 
 
-
-
-
-//
 function captchaResponse(){
   if (isset($_POST['g-recaptcha-response'])) {
     $g_captcha = $_POST['g-recaptcha-response'];
@@ -46,7 +40,6 @@ function validateCaptcha($res, $captchaKey){
       $data = ['secret'   => $captchaKey,
                'response' => $res,
                'remoteip' => $_SERVER['REMOTE_ADDR']];
-
       $options = [
           'http' => [
               'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -54,7 +47,6 @@ function validateCaptcha($res, $captchaKey){
               'content' => http_build_query($data)
           ]
       ];
-
       $context  = stream_context_create($options);
       $result = file_get_contents($url, false, $context);
       return json_decode($result)->success;
@@ -63,12 +55,10 @@ function validateCaptcha($res, $captchaKey){
       return null;
   }
 }
-
 function sanitizeData($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-
  ?>
