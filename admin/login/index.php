@@ -125,8 +125,8 @@ function validateDID($i){
         }
 
         if (isset($_COOKIE['DID'])) {
-          if (isset($GLOBALS['message'])) {
-          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$GLOBALS['message'].'</span></div>';
+          if (isset($GLOBALS['inviteIdFound'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$GLOBALS['inviteIdFound'].'</span></div>';
           }
 
         }
