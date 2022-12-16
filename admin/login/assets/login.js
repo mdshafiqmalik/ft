@@ -20,7 +20,7 @@ function checkPassword(){
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else {
     uValid = true;
-    userError.innerHTML = "Password OK";
+    userError.innerHTML = "Password &#10004;";
     userError.style.color = "green";
     userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
   }
@@ -45,7 +45,7 @@ function checkUsername(){
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
     }else {
       uValid = true;
-      userError.innerHTML = "Username OK";
+      userError.innerHTML = "Username &#10004;";
       userError.style.color = "green";
       userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     }

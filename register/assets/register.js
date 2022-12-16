@@ -70,22 +70,22 @@ function checkUsername(){
   let uValid;
   if (userInput.length === 0) {
     uValid = false;
-    userError.innerHTML = "Username is required";
+    userError.innerHTML = "Username is required &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else if (userInput.length < 8) {
     uValid = false;
-    userError.innerHTML = "Username Too Short";
+    userError.innerHTML = "Username Too Short &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else if (hasWhiteSpace(userInput)) {
       uValid = false;
-      userError.innerHTML = "Spaces Not Allowed ";
+      userError.innerHTML = "Spaces Not Allowed  &#10006;";
       userError.style.color = "red";
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else if (hasUnameSC(userInput)) {
       uValid = false;
-      userError.innerHTML = "This char is not allowed <br>( _ ) underscore is allowed only";
+      userError.innerHTML = "This char is not allowed  &#10006;<br>( _ ) underscore is allowed only";
       userError.style.color = "red";
       userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else {
@@ -98,11 +98,11 @@ function checkUsername(){
       var data = await response.json();
       uValid = data.Result;
       if (uValid) {
-        userError.innerHTML = "Username Taken";
+        userError.innerHTML = "Username Taken &#10006;";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
       }else {
-        userError.innerHTML = "Username Available";
+        userError.innerHTML = "Username Available &#10004;";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
       }
@@ -127,7 +127,7 @@ function checkInviteID(){
   else if (userInput.length < 10) {
     iValid = false; // No Invite ID
     userError.style.display = "block";
-    userError.innerHTML = "10 Chars needed";
+    userError.innerHTML = "10 Chars needed &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else {
@@ -142,11 +142,11 @@ function checkInviteID(){
       var data = await response.json();
       iValid = data.Result;
       if (iValid) {
-        userError.innerHTML = "Invalid Invite Code";
+        userError.innerHTML = "Invalid Invite Code &#10006;";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
       }else {
-        userError.innerHTML = "Invite Code Found";
+        userError.innerHTML = "Invite Code Found &#10004;";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
         userError.style.color = "green";
 
@@ -171,17 +171,17 @@ function checkEmail(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else if (hasWhiteSpace(userInput)) {
-    userError.innerHTML = "Spaces not allowed";
+    userError.innerHTML = "Spaces not allowed &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
   }else if (!isMail) {
-    userError.innerHTML = "Invalid Email";
+    userError.innerHTML = "Invalid Email &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
   }else if (hasEmailChars(userInput)) {
-    userError.innerHTML = "Invalid Email";
+    userError.innerHTML = "Invalid Email &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     eValid =false;
@@ -195,12 +195,12 @@ function checkEmail(){
       var data = await response.json();
       eValid = data.Result;
       if (eValid) {
-        userError.innerHTML = "Email Already Exist";
+        userError.innerHTML = "Email Already Exist &#10006;";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
         eValid = false;
       }else {
-        userError.innerHTML = "Valid Email";
+        userError.innerHTML = "Valid Email &#10004;";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
         eValid = true;
@@ -223,42 +223,42 @@ function checkPassword(){
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
   }else if (userInput.length < 8) {
-    userError.innerHTML = "Minimum 8 chars";
+    userError.innerHTML = "Minimum 8 chars &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = false;
   }else if ( hasWhiteSpace(userInput)) {
-    userError.innerHTML = "Spaces not allowed";
+    userError.innerHTML = "Spaces not allowed &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = false;
   }else if (hasUpperandLowerCase(userInput) &&  hasAllSpecialChars(userInput) && hasNumber(userInput)) {
-    userError.innerHTML = "Strong Password";
+    userError.innerHTML = "Strong Password &#10004;";
     userError.style.color = "green";
     userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
     pValid = true;
   }else if (hasLowerCase(userInput) && hasUpperCase(userInput) ) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password &#10004;";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ( (hasLowerCase(userInput) || hasUpperCase(userInput))&& hasAllSpecialChars(userInput)) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password &#10004;";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ( (hasLowerCase(userInput) || hasUpperCase(userInput))&& hasNumber(userInput)) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password &#10004;";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else if ((hasAllSpecialChars(userInput) && hasNumber(userInput))) {
-    userError.innerHTML = "Medium Password";
+    userError.innerHTML = "Medium Password &#10004;";
     userError.style.color = "orange";
     userInputField.style.boxShadow = "0px 0px 3px 0px orange";
     pValid = true;
   }else {
-    userError.innerHTML = "Weak Password";
+    userError.innerHTML = "Weak Password &#10004;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
     pValid = true;
