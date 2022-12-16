@@ -23,8 +23,8 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
         <span class="messageAndErrors">(*) All fields required</span>
         <?php
 
-        if (isset($_SESSION['authStatus'])) {
-          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['authStatus'].'</span></div>';
+        if (isset($_COOKIE['authStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_COOKIE['authStatus'].'</span></div>';
         }
          ?>
       </div>

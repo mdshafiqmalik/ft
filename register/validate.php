@@ -26,6 +26,8 @@ if (!captchaResponse()) {
     $inviteCode = sanitizeData($_POST['inviteID']);
   }
 
+  
+
 }
 
 function captchaResponse(){
