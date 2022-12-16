@@ -100,7 +100,7 @@ function validateDID($i){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <!-- <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
     <link rel="stylesheet" href="assets/login.css?v=<?php echo $cssVersion; ?>">
