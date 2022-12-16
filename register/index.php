@@ -23,14 +23,14 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
         <span class="messageAndErrors">(*) All fields required</span>
         <?php
 
-        if (isset($_SESSION['authStatus'])) {
-          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_SESSION['authStatus'].'</span></div>';
+        if (isset($_COOKIE['authStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="errors"> <span id="" >'.$_COOKIE['authStatus'].'</span></div>';
         }
          ?>
       </div>
       <form class="loginElements loginForm" action="validate.php" method="post">
         <span id="USB" ></span>
-        <input onkeyup="checkUsername()" id="username" class="fields" type="text" name="username" placeholder="Username* i.e. RAKESH, jhon_doe" required>
+        <input onkeyup="checkUsername()" id="username" class="fields" type="text" name="username" placeholder="Username* i.e. Jhon_doe123" required>
         <span id="ESB" ></span>
         <input onkeyup="checkEmail()" id="email" class="fields" type="email" name="emailAddress" value="" placeholder="Email* i.e. name@domain.com" required>
         <span id="PSB" ></span>

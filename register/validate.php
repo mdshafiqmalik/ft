@@ -1,18 +1,33 @@
 <?php
+$_SERVROOT = "../../../";
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
   header("Location: /register/index.php");
 }
 
 if (!captchaResponse()) {
-  // code...
+  header("Location: /register/index.php");
 }else if(!usernameCheck()) {
-
-}else if(!emailCheck() {
-
+  header("Location: /register/index.php");
+}else if(!emailCheck()) {
+  header("Location: /register/index.php");
 }else if(!passWordCheck()) {
-
+  header("Location: /register/index.php");
 }else {
-  // code...
+  $userName = sanitizeData($_POST['username']);
+  $Email = sanitizeData($_POST['emailAddress']);
+  $password = sanitizeData($_POST['userPassword']);
+  $Gender = $_POST['Gender'];
+  $ageRange = $_POST['age'];
+  if (strlen($_POST['inviteID']) < 8) {
+    $inviteCode = "";
+  }else {
+    $inviteCode = sanitizeData($_POST['inviteID']);
+  }
+
+  
+
 }
 
 function captchaResponse(){
@@ -25,21 +40,21 @@ function captchaResponse(){
       }else {
         // WARNING: Potential sapammer
         // G_recaptcha not Authorized
-        $_SESSION['authStatus'] ="Captcha Not Valid";
+        setcookie("authStatus","Captcha Not Valid", time()+10, '/');
         $captchaRes['valid'] = false;
-        header("Location: /admin/login");
+        header("Location: /register/");
         exit;
       }
     }else {
-      $_SESSION['authStatus'] ="Refill The Captcha";
+      setcookie("authStatus","Refill The Captcha", time()+10, '/');
       $captchaRes['valid'] = false;
-      header("Location: /admin/login");
+      header("Location: /register/");
       exit;
     }
   }else {
-    $_SESSION['authStatus'] ="Captcha Not Included In Form";
+    setcookie("authStatus","Captcha Not Included In Form", time()+10, '/');
     $captchaRes['valid'] = false;
-    header("Location: /admin/login");
+    header("Location: /register/");
     exit;
   }
   return $captchaRes;
@@ -66,11 +81,70 @@ function validateCaptcha($res, $captchaKey){
       return null;
   }
 }
+
+
+function usernameCheck(){
+  if (!isset($_POST['username'])) {
+    $vUsername = false;
+    setcookie("authStatus","Username not found", time()+10, '/');
+    // username empty found
+  }elseif (!strlen($_POST['username']) >= 6) {
+    $vUsername = false;
+    setcookie("authStatus","Username short", time()+10, '/');
+  }else {
+    include($GLOBALS['dbc']);
+    $Username = sanitizeData($_POST['username']);
+    $sql = "SELECT * FROM users WHERE BINARY userName  = '".$Username."'";
+    $result = mysqli_query($db, $sql);
+    if (mysqli_num_rows($result)) {
+      $vUsername = false;
+      setcookie("authStatus","Username Already Exist", time()+10, '/');
+    }else {
+      $vUsername = true;
+    }
+  }
+  return $vUsername;
+}
+
+function emailCheck(){
+  if (!isset($_POST['emailAddress'])) {
+    $vEmail = false;
+    setcookie("authStatus","Email not found", time()+10, '/');
+  }elseif (!strlen($_POST['emailAddress']) >= 6) {
+    $vEmail = false;
+    setcookie("authStatus","Invalid Email", time()+10, '/');
+  }else {
+    $Email = sanitizeData($_POST['emailAddress']);
+    include($GLOBALS['dbc']);
+    $sql = "SELECT * FROM users WHERE userName  = '$Email'";
+    $result = mysqli_query($db, $sql);
+    if (mysqli_num_rows($result)) {
+      $vEmail = false;
+      setcookie("authStatus","Email Already Exist", time()+10, '/');
+    }else {
+      $vEmail = true;
+    }
+  }
+  return $vEmail;
+}
+
+function passWordCheck(){
+  if (!isset($_POST['userPassword'])) {
+    $vPassword = false;
+    setcookie("authStatus","No password found", time()+10, '/');
+  }elseif (!strlen($_POST['userPassword']) >= 8) {
+    $vPassword = false;
+    setcookie("authStatus","Password should be 8 chars", time()+10, '/');
+  }else {
+    $vPassword = true;
+  }
+  return $vPassword;
+}
+
 function sanitizeData($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-
  ?>

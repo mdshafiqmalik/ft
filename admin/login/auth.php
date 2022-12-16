@@ -13,10 +13,7 @@ if (isset($_GET['redirect'])) {
 }else {
  $redirect = '/admin/';
 }
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
   if (captchaResponse()['valid']) {
     if (userName()['valid']) {
       $adminID = userName()['AID'];
