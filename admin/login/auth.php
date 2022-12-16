@@ -13,20 +13,12 @@ if (isset($_GET['redirect'])) {
 }else {
  $redirect = '/admin/';
 }
-
-$GLOBALS['process'] = "Checking Form Validity";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $GLOBALS['process'] = "Validating Captcha";
   if (captchaResponse()['valid']) {
-    $GLOBALS['process'] = "Validating Username";
     if (userName()['valid']) {
       $adminID = userName()['AID'];
-      $GLOBALS['process'] = "Validating Password";
       if (passWord($adminID)['valid']) {
-        $GLOBALS['process'] = "Validating Device ID with Admin";
         if (deviceStatus($adminID)) {
-          $GLOBALS['process'] = "Logged In Successfully";
-
           // Delete the other Cokkie
           include($GLOBALS['encDec']);
           include($GLOBALS['dbc']);
@@ -46,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unset($_SESSION['GSI']);
           }
           //--------------//
-          $GLOBALS['process'] = "Starting Admin Session";
+
           // make admin cookie and session
           $_SESSION['AID'] = $adminID;
           $adID = openssl_encrypt($adminID, $ciphering, $encryption_key, $options, $encryption_iv);
@@ -62,20 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $_SESSION['adminLoginStatus'] = true;
           header("Location: $redirect");
 
-        }else {
-          $GLOBALS['process'] = "Device Problem Found";
         }
-      }else {
-        $GLOBALS['process'] = "Password Problem Found";
       }
-    }else {
-      $GLOBALS['process'] = "Username Problem Found";
     }
-  }else {
-    $GLOBALS['process'] = "Captcha Problem Found";
   }
 }else {
-  $GLOBALS['process'] = "Malfunctioned Form";
   header("Location: index.php");
 }
 function userName(){
@@ -278,34 +261,3 @@ function deviceStatus($userID){
   return $validDevice;
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
-    <link rel="stylesheet" href="assets/login.css?v=<?php echo $cssVersion; ?>">
-    <style media="screen">
-      body{
-        height:100vh;
-      }
-      @media (max-width: 570px){
-        .loginOuterDiv{
-          width: auto;
-          min-height: auto;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="process" class="loginOuterDiv">
-      <div class="loginElements headingsAndErrors">
-        <span class="greetHeading">
-      <?php if (isset($GLOBALS['process'])) {
-        echo $GLOBALS['process'];
-      } ?>
-       </span>
-     </div>
-    </div>
-  </body>
-</html>

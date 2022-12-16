@@ -73,7 +73,7 @@ function checkUsername(){
     userError.innerHTML = "Username is required &#10006;";
     userError.style.color = "red";
     userInputField.style.boxShadow = "0px 0px 3px 0px red";
-  }else if (userInput.length < 8) {
+  }else if (userInput.length < 6) {
     uValid = false;
     userError.innerHTML = "Username Too Short &#10006;";
     userError.style.color = "red";
