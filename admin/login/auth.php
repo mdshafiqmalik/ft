@@ -235,7 +235,7 @@ function deviceStatus($userID){
       $sql = "SELECT * FROM deviceManager WHERE userOrAdminID = '$userID' && deviceID = '$decryptID'";
       $result = mysqli_query($db, $sql);
       if ($result) {
-<<<<<<< HEAD
+
         // Checking if not logged out
         $sql2 = "SELECT loggedStatus FROM deviceManager WHERE deviceID = '$decryptID'";
         $result2 = mysqli_query($db, $sql2);
@@ -248,9 +248,7 @@ function deviceStatus($userID){
           header("Location: /admin/login");
           exit;
         }
-=======
         $validDevice = true;
->>>>>>> test
       }else {
         // $_SESSION['authStatus'] = "Invalid Device ID";
         setcookie("authStatus","Invalid Device ID", time()+10, '/');

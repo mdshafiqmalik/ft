@@ -21,13 +21,25 @@ if (!captchaResponse()) {
   $Gender = $_POST['Gender'];
   $ageRange = $_POST['age'];
   if (strlen($_POST['inviteID']) < 8) {
-    $inviteCode = "";
+    $inviteCode = "NULL";
   }else {
     $inviteCode = sanitizeData($_POST['inviteID']);
   }
-
-  
-
+  include($GLOBALS['IPDEV']);
+  $userIP = getIp();
+  if (isset($_SESSION['GSI'])) {
+    $currentSession = $_SESSION['GSI'];
+  }elseif ($_SESSION['ASI']) {
+    $currentSession = $_SESSION['ASI'];
+  }elseif ($_SESSION['USI']) {
+    $currentSession = $_SESSION['USI'];
+  }
+  include($GLOBALS['dbc']);
+  $sql = "SELECT * FROM users_register WHERE sessionID = '$currentSession'";
+  $result = mysqli_query($db, $sql);
+  if (mysqli_num_rows($result)) {
+    echo "string";
+  }
 }
 
 function captchaResponse(){
