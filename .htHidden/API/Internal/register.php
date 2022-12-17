@@ -20,9 +20,11 @@ if (isset($_SERVER['HTTP_REFERER'])) {
       if (isset($_GET["username"])) {
         $inputValue = $_GET["username"];
         $userDataSql =  "SELECT * FROM users Where  BINARY userName = '".$inputValue."' ";
+        $userSql =  "SELECT * FROM users_register Where  BINARY userName = '".$inputValue."' ";
           if (mysqli_query($db, $userDataSql)) {
             $result = mysqli_query($db, $userDataSql);
-            if (mysqli_num_rows($result)) {
+            $result1 = mysqli_query($db, $userSql);
+            if (mysqli_num_rows($result) || mysqli_num_rows($result1)) {
               $found = array("Result"=>true, "Status"=>"Username Already Exist");
               $foundJSON = json_encode($found);
               echo "$foundJSON";
@@ -39,9 +41,11 @@ if (isset($_SERVER['HTTP_REFERER'])) {
       }else if(isset($_GET["email"])) {
           $inputValue = $_GET["email"];
         $userDataSql =  "SELECT * FROM users Where userEmail = '".$inputValue."' ";
+        $userSql =  "SELECT * FROM users_register Where userEmail = '".$inputValue."' ";
           if (mysqli_query($db, $userDataSql)) {
             $result = mysqli_query($db, $userDataSql);
-            if (mysqli_num_rows($result)) {
+            $result1 = mysqli_query($db, $userSql);
+            if (mysqli_num_rows($result1)) {
               $found = array("Result"=>true, "Status"=>"Email Already Exist");
               $foundJSON = json_encode($found);
               echo "$foundJSON";

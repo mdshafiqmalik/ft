@@ -15,19 +15,41 @@ if (!captchaResponse()) {
 }else if(!passWordCheck()) {
   header("Location: /register/index.php");
 }else {
-  $userName = sanitizeData($_POST['username']);
+  $NewUserName = sanitizeData($_POST['username']);
   $Email = sanitizeData($_POST['emailAddress']);
   $password = sanitizeData($_POST['userPassword']);
   $Gender = $_POST['Gender'];
   $ageRange = $_POST['age'];
   if (strlen($_POST['inviteID']) < 8) {
-    $inviteCode = "";
+    $inviteCode = '';
   }else {
     $inviteCode = sanitizeData($_POST['inviteID']);
   }
+  if (isset($_SESSION['GSI'])) {
+    $currentSession = $_SESSION['GSI'];
+  }elseif ($_SESSION['ASI']) {
+    $currentSession = $_SESSION['ASI'];
+  }elseif ($_SESSION['USI']) {
+    $currentSession = $_SESSION['USI'];
+  }
+  include($GLOBALS['dbc']);
+  $sql = "SELECT * FROM users_register WHERE sessionID = '$currentSession'";
+  $result = mysqli_query($db, $sql);
 
-  
+  $slq1 = "SELECT * FROM users_register WHERE  userEmail = '$Email' AND BINARY userName = '".$NewUserName."'";
+  $result1 = mysqli_query($db, $slq1);
 
+
+  if (mysqli_num_rows($result)) {
+    $sql2 = "UPDATE users_register SET userName = '$NewUserName', userEmail = '$Email', Gender='$Gender', ageRange='$ageRange',inviteCode = '$inviteCode', passWord = '$password' WHERE sessionID = '$currentSession' ";
+    $result2 = mysqli_query($db, $sql2);
+  }elseif (mysqli_num_rows($result1)) {
+    $sql2 = "UPDATE users_register SET sessionID = '$currentSession', Gender='$Gender', ageRange='$ageRange',inviteCode = '$inviteCode', passWord = '$password' WHERE  userEmail = '$Email' AND BINARY userName = '".$NewUserName."'";
+    $result2 = mysqli_query($db, $sql2);
+  }else {
+    $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ('$currentSession','$NewUserName','$Email','$Gender','$ageRange','$inviteCode','$password')";
+    $result2 = mysqli_query($db, $sql2);
+  }
 }
 
 function captchaResponse(){
@@ -94,8 +116,10 @@ function usernameCheck(){
   }else {
     include($GLOBALS['dbc']);
     $Username = sanitizeData($_POST['username']);
+    // Checking if username found in users table
     $sql = "SELECT * FROM users WHERE BINARY userName  = '".$Username."'";
     $result = mysqli_query($db, $sql);
+
     if (mysqli_num_rows($result)) {
       $vUsername = false;
       setcookie("authStatus","Username Already Exist", time()+10, '/');
