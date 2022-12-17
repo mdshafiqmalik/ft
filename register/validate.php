@@ -2,15 +2,17 @@
 $_SERVROOT = "../../../";
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+include $_DOCROOT.'/.htHidden/functions/generateOTP.php';
+include $_DOCROOT.'/.htHidden/functions/deleteExpireOTP.php';
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
   header("Location: /register/index.php");
 }
 
 if (!captchaResponse()) {
   header("Location: /register/index.php");
-}else if(!usernameCheck()) {
+}else if(!uernameAvailability()) {
   header("Location: /register/index.php");
-}else if(!emailCheck()) {
+}else if(!emailAvailability()) {
   header("Location: /register/index.php");
 }else if(!passWordCheck()) {
   header("Location: /register/index.php");
@@ -32,24 +34,18 @@ if (!captchaResponse()) {
   }elseif ($_SESSION['USI']) {
     $currentSession = $_SESSION['USI'];
   }
+  $sentTime = time();
+  $RANOTP = generateOTP(6);
   include($GLOBALS['dbc']);
   $sql = "SELECT * FROM users_register WHERE sessionID = '$currentSession'";
   $result = mysqli_query($db, $sql);
 
-  $slq1 = "SELECT * FROM users_register WHERE  userEmail = '$Email' AND BINARY userName = '".$NewUserName."'";
-  $result1 = mysqli_query($db, $slq1);
+  $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ('$currentSession','$NewUserName','$Email','$Gender','$ageRange','$inviteCode','$password')";
+  $result2 = mysqli_query($db, $sql2);
 
+  $storeOTPsql = "INSERT INTO OTP (sessionID, OTP, sentTime, otpPurpose) VALUES ('$currentSession', '$RANOTP', '$sentTime', 'NR')";
+  $result3 = mysqli_query($db, $storeOTPsql);
 
-  if (mysqli_num_rows($result)) {
-    $sql2 = "UPDATE users_register SET userName = '$NewUserName', userEmail = '$Email', Gender='$Gender', ageRange='$ageRange',inviteCode = '$inviteCode', passWord = '$password' WHERE sessionID = '$currentSession' ";
-    $result2 = mysqli_query($db, $sql2);
-  }elseif (mysqli_num_rows($result1)) {
-    $sql2 = "UPDATE users_register SET sessionID = '$currentSession', Gender='$Gender', ageRange='$ageRange',inviteCode = '$inviteCode', passWord = '$password' WHERE  userEmail = '$Email' AND BINARY userName = '".$NewUserName."'";
-    $result2 = mysqli_query($db, $sql2);
-  }else {
-    $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ('$currentSession','$NewUserName','$Email','$Gender','$ageRange','$inviteCode','$password')";
-    $result2 = mysqli_query($db, $sql2);
-  }
 }
 
 function captchaResponse(){
@@ -105,12 +101,12 @@ function validateCaptcha($res, $captchaKey){
 }
 
 
-function usernameCheck(){
+function uernameAvailability(){
   if (!isset($_POST['username'])) {
     $vUsername = false;
     setcookie("authStatus","Username not found", time()+10, '/');
     // username empty found
-  }elseif (!strlen($_POST['username']) >= 6) {
+  }elseif (!strlen($_POST['username']) >  6) {
     $vUsername = false;
     setcookie("authStatus","Username short", time()+10, '/');
   }else {
@@ -120,9 +116,19 @@ function usernameCheck(){
     $sql = "SELECT * FROM users WHERE BINARY userName  = '".$Username."'";
     $result = mysqli_query($db, $sql);
 
+    $sql1 = "SELECT * FROM users_register WHERE BINARY userName  = '".$Username."'";
+    $result1 = mysqli_query($db, $sql1);
     if (mysqli_num_rows($result)) {
       $vUsername = false;
       setcookie("authStatus","Username Already Exist", time()+10, '/');
+    }elseif (mysqli_num_rows($result1)) {
+      $OTPexpiredAndDeleted = checkOTPEd($Username, "BINARY userName");
+      if ($OTPexpiredAndDeleted) {
+        $vUsername = true;
+      }else {
+        $vUsername = false;
+        setcookie("authStatus","Someone is creating account  <br> with this username Try again <br>after 5 mins. to check availability", time()+10, '/');
+      }
     }else {
       $vUsername = true;
     }
@@ -130,7 +136,7 @@ function usernameCheck(){
   return $vUsername;
 }
 
-function emailCheck(){
+function emailAvailability(){
   if (!isset($_POST['emailAddress'])) {
     $vEmail = false;
     setcookie("authStatus","Email not found", time()+10, '/');
@@ -140,11 +146,21 @@ function emailCheck(){
   }else {
     $Email = sanitizeData($_POST['emailAddress']);
     include($GLOBALS['dbc']);
-    $sql = "SELECT * FROM users WHERE userName  = '$Email'";
+    $sql = "SELECT * FROM users WHERE userEmail  = '$Email'";
+    $sql1 = "SELECT * FROM users_register WHERE userEmail  = '$Email'";
     $result = mysqli_query($db, $sql);
+    $result1 = mysqli_query($db, $sql1);
     if (mysqli_num_rows($result)) {
       $vEmail = false;
       setcookie("authStatus","Email Already Exist", time()+10, '/');
+    }elseif (mysqli_num_rows($result1)) {
+      $OTPexpiredAndDeleted = checkOTPEd($inputValue, "userEmail");
+      if ($OTPexpiredAndDeleted) {
+        $vEmail = true;
+      }else {
+        $vEmail = false;
+        setcookie("authStatus","Someone is creating <br>account with this email", time()+10, '/');
+      }
     }else {
       $vEmail = true;
     }
