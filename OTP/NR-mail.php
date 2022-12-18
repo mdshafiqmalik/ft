@@ -69,7 +69,7 @@ function sendOTP($userEmail, $randOTP, $userName){
               <span id='cpOTP'>".$randOTP." </span>
             </div>
             <div>This OTP is sent with timestamp
-              <b>".$time."</b>verify timestamp in case of multiple OTP.
+              <b>".$time."</b> verify timestamp in case of multiple OTP.
             </div><br>
         </div><hr>
         <div>You can create your channel and publish your content. To know more about us please have a visit at our website:
