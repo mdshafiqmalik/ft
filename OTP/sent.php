@@ -26,18 +26,18 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
        header("Location: /OTP/index.php");
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
       }else {
-       // header("Location: /register");
+       header("Location: /register");
         setcookie("authStatus","Cannot send OTP", time()+10, '/');
       }
     }elseif ($OTPPurpose == 'PR') {
       echo " ";
     }
   }else {
-   // header("Location: /register");
+   header("Location: /register");
     setcookie("authStatus","Cannot send OTP", time()+10, '/');
   }
 }else {
- // header("Location: /register");
+ header("Location: /register");
   setcookie("authStatus","Cannot send OTP", time()+10, '/');
 }
 
