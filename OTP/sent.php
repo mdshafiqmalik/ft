@@ -16,13 +16,14 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
     if ($OTPPurpose == 'NR') {
       // If OTP sent by new registration
       // get user_register details
-      $getUserRegisterDetSql = "SELECT * FROM user_register WHERE userEmail = '$sessionEmail'";
+      $getUserRegisterDetSql = "SELECT * FROM users_register WHERE userEmail = '$sessionEmail'";
       $result = mysqli_query($db, $getUserRegisterDetSql);
       $row = mysqli_fetch_assoc($result);
       $userName = $row['userName'];
       // Sent otp and get timestamp
+      include 'NR-mail.php';
       if ($timestamp = sendOTP($sessionEmail, $OTPSENT, $userName)) {
-       // header("Location: /OTP/");
+       header("Location: /OTP/index.php");
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
       }else {
        // header("Location: /register");
