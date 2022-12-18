@@ -1,6 +1,7 @@
 <?php
 // Send OTP
-function sendOTP($userEmail, $randOTP, $userName, $timeStamp){
+function sendOTP($userEmail, $randOTP, $userName){
+  $time = date('h:i:s a');
   $message = "
   <html>
     <head>
@@ -67,6 +68,9 @@ function sendOTP($userEmail, $randOTP, $userName, $timeStamp){
             <div id='OTP'>
               <span id='cpOTP'>".$randOTP." </span>
             </div>
+            <div>This OTP is sent with timestamp
+              <b>".$time."</b>verify timestamp in case of multiple OTP.
+            </div><br>
         </div><hr>
         <div>You can create your channel and publish your content. To know more about us please have a visit at our website:
         </div><br>
@@ -83,7 +87,7 @@ function sendOTP($userEmail, $randOTP, $userName, $timeStamp){
   $headers = "From: Fastreed OTP Authentication <no-reply@fastreed.com>" . "\r\n" ."CC: support@fastreed.com"."\r\n"."Content-type: text/html";
   $mailDeliverd =  mail($userEmail,$subject,$message,$headers);
   if ($mailDeliverd) {
-    $mailStatus = true;
+    $mailStatus = $time;
   }else {
     $mailStatus = false;
   }

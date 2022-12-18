@@ -2,31 +2,6 @@
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
-
-if (isset($_SESSION['sno']) && !empty($_SESSION['sno'])) {
-  $sessionSNo = $_SESSION['sno'];
-  $OTPPurpose = $_SESSION['OTPPurpose'];
-  include($dbc);
-  $getUniqueID = "SELECT * FROM OTP WHERE sno = '$sessionSNo' AND otpPurpose = '$OTPPurpose'";
-  $result4 = mysqli_query($db, $getUniqueID);
-  if (mysqli_num_rows($result4)) {
-    if ($OTPPurpose == 'NR') {
-      include 'NR-mail.php';
-      $row = mysqli_fetch_assoc($result4);
-      $sessionID = 
-      sendOTP();
-    }elseif ($OTPPurpose == 'PR') {
-      echo " ";
-    }
-  }else {
-    header("Location: /register");
-    setcookie("authStatus","Cannot send OTP", time()+10, '/');
-  }
-}else {
-  header("Location: /register");
-  setcookie("authStatus","Cannot send OTP", time()+10, '/');
-}
-
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -45,6 +20,14 @@ if (isset($_SESSION['sno']) && !empty($_SESSION['sno'])) {
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Check your mail box</span>
         <span class="messageAndErrors">Enter 6 digit OTP sent to you </span>
+        <?php
+
+        if (isset($_COOKIE['sucessStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$_COOKIE['sucessStatus'].'</span></div>';
+        }elseif (isset($_COOKIE['authStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="Error"> <span id="" >'.$_COOKIE['authStatus'].'</span></div>';
+        }
+         ?>
       </div>
       <form class="loginElements loginForm" action="create-password.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Enter 6 digit OTP">
