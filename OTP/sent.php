@@ -6,7 +6,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
   $sessionEmail = $_SESSION['email'];
   $OTPPurpose = $_SESSION['OTPPurpose'];
-  include($dbc);
+  include($GLOBALS['dbc']);
   $getUniqueID = "SELECT * FROM OTP WHERE userEmail = '$sessionEmail' AND otpPurpose = '$OTPPurpose'";
   $result4 = mysqli_query($db, $getUniqueID);
   if (mysqli_num_rows($result4)) {
