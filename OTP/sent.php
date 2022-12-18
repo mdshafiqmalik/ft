@@ -1,6 +1,7 @@
 <?php
+
 $_SERVROOT = '../../../'; 
- $_DOCROOT = $_SERVER['DOCUMENT_ROOT']; 
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT']; 
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
 if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
