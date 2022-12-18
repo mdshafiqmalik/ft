@@ -1,4 +1,7 @@
 <?php
+$_SERVROOT = '../../../'; 
+ $_DOCROOT = $_SERVER['DOCUMENT_ROOT']; 
+include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
 if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
   $sessionEmail = $_SESSION['email'];
@@ -19,21 +22,21 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
       $userName = $row['userName'];
       // Sent otp and get timestamp
       if ($timestamp = sendOTP($sessionEmail, $OTPSENT, $userName)) {
-        header("Location: /OTP/");
+       // header("Location: /OTP/");
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
       }else {
-        header("Location: /register");
+       // header("Location: /register");
         setcookie("authStatus","Cannot send OTP", time()+10, '/');
       }
     }elseif ($OTPPurpose == 'PR') {
       echo " ";
     }
   }else {
-    header("Location: /register");
+   // header("Location: /register");
     setcookie("authStatus","Cannot send OTP", time()+10, '/');
   }
 }else {
-  header("Location: /register");
+ // header("Location: /register");
   setcookie("authStatus","Cannot send OTP", time()+10, '/');
 }
 
