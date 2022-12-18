@@ -2,6 +2,31 @@
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+
+if (isset($_SESSION['sno']) && !empty($_SESSION['sno'])) {
+  $sessionSNo = $_SESSION['sno'];
+  $OTPPurpose = $_SESSION['OTPPurpose'];
+  include($dbc);
+  $getUniqueID = "SELECT * FROM OTP WHERE sno = '$sessionSNo' AND otpPurpose = '$OTPPurpose'";
+  $result4 = mysqli_query($db, $getUniqueID);
+  if (mysqli_num_rows($result4)) {
+    if ($OTPPurpose == 'NR') {
+      include 'NR-mail.php';
+      $row = mysqli_fetch_assoc($result4);
+      $sessionID = 
+      sendOTP();
+    }elseif ($OTPPurpose == 'PR') {
+      echo " ";
+    }
+  }else {
+    header("Location: /register");
+    setcookie("authStatus","Cannot send OTP", time()+10, '/');
+  }
+}else {
+  header("Location: /register");
+  setcookie("authStatus","Cannot send OTP", time()+10, '/');
+}
+
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -15,7 +40,7 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
   <body>
     <div class="loginOuterDiv">
       <div class="loginElements brandLogo">
-        <a href="/">FastReed <br> <span>authenticatiom</span> </a>
+        <a href="/">FastReed <br> <span>authentication</span> </a>
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Check your mail box</span>

@@ -43,8 +43,16 @@ if (!captchaResponse()) {
   $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ('$currentSession','$NewUserName','$Email','$Gender','$ageRange','$inviteCode','$password')";
   $result2 = mysqli_query($db, $sql2);
 
-  $storeOTPsql = "INSERT INTO OTP (sessionID, OTP, sentTime, otpPurpose) VALUES ('$currentSession', '$RANOTP', '$sentTime', 'NR')";
+  $storeOTPsql = "INSERT INTO OTP (sessionID, userEmail, OTP, sentTime, otpPurpose) VALUES ('$currentSession', '$Email', '$RANOTP', '$sentTime', 'NR')";
   $result3 = mysqli_query($db, $storeOTPsql);
+
+  $getUniqueID = "SELECT sno FROM OTP WHERE sessionID = '$currentSession'";
+  $result4 = mysqli_query($db, $getUniqueID);
+  $row = mysqli_fetch_assoc($result4);
+  $SNO = $row['sno'];
+  $_SESSION['sno'] = $Email;
+  $_SESSION['OTPPurpose'] = "NR";
+  header("Location: /OTP/index.php");
 
 }
 
