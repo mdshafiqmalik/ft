@@ -43,7 +43,7 @@ class SentOTP
     $userName = $OTPexist['userName'];
     $SENTOTP = $OTPexist['OTP'];
     if ($OTPexist) {
-      if ($OTP_EMAIL_DISABLED) {
+      if (OTP_EMAIL_DISABLED) {
         $timestamp = date('h:i:s');
         header("Location: /OTP/index.php");
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');

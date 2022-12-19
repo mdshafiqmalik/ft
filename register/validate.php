@@ -3,6 +3,10 @@ $_SERVROOT = "../../../";
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
 
+include_once($GLOBALS['DB']);
+include_once($GLOBALS['BASIC_FUNC']);
+include_once($GLOBALS['DEV_OPTIONS'] );
+
 class ValidateSingUp
 {
   private $USER_NAME;
@@ -12,16 +16,17 @@ class ValidateSingUp
   private $INVITE_CODE;
   private $AGE_RANGE;
   private $DB;
+  private $BF;
 
   function __construct()
   {
-
     $DB_CONNECT = new Database();
-    $this->DB = $DB_CONNECT->DBConnection;
+    $this->DB = $DB_CONNECT->DBConnection();
+    $this->BF = new BasicFunctions();
 
     if ($_SERVER["REQUEST_METHOD"] != "POST") {
       header("Location: /register/index.php");
-    }else if(!$RECAPTCHA_DISABLED && !$this->captchaResponse()) {
+    }else if(!RECAPTCHA_DISABLED && !$this->captchaResponse()) {
       header("Location: /register/index.php");
     }else if(!$this->uernameAvailability()) {
       header("Location: /register/index.php");
@@ -30,6 +35,7 @@ class ValidateSingUp
     }else if(!$this->passWordCheck()) {
       header("Location: /register/index.php");
     }else {
+      echo "string";
       $this->USER_NAME = $this->sanitizeData($_POST['username']);
       $this->EMAIL_ADDR = $this->sanitizeData($_POST['emailAddress']);
       $this->PASS_WORD = $this->sanitizeData($_POST['userPassword']);
@@ -50,10 +56,7 @@ class ValidateSingUp
   public function dbStoriing(){
     $SESSION_ID = $this->getSessionID();
     $sentTime = time();
-    $RANOTP = BasicFunctions::generateOTP(6);
-    $sql = "SELECT * FROM users_register WHERE sessionID = '$SESSION_ID'";
-     mysqli_query($this->DB, $sql);
-
+    $RANOTP = $this->BF->generateOTP(6);
     $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ('$currentSession','$NewUserName','$this->EMAIL_ADDR','$this->GENDER','$this->AGE_RANGE','$this->INVITE_CODE','$this->PASS_WORD')";
     mysqli_query($this->DB, $sql2);
 
@@ -74,11 +77,12 @@ class ValidateSingUp
   }
 
 
-  function captchaResponse(){
+public function captchaResponse(){
+
     if (isset($_POST['g-recaptcha-response'])) {
       $g_captcha = $_POST['g-recaptcha-response'];
       if (!empty($g_captcha)) {
-        if ((boolean) $this->validateCaptcha($g_captcha, $G_RECAPTCHA)) {
+        if ((boolean) $this->validateCaptcha($g_captcha, G_RECAPTCHA)) {
           $captchaRes['valid'] = true;
         }else {
           // WARNING: Potential sapammer
@@ -103,7 +107,7 @@ class ValidateSingUp
     return $captchaRes;
   }
 
-  function validateCaptcha($res, $captchaKey){
+public function validateCaptcha($res, $captchaKey){
     try {
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = ['secret'   => $captchaKey,
@@ -126,7 +130,7 @@ class ValidateSingUp
   }
 
 
-  function uernameAvailability(){
+public function uernameAvailability(){
     if (!isset($_POST['username'])) {
       $vUsername = false;
       setcookie("authStatus","Username not found", time()+10, '/');
@@ -147,7 +151,7 @@ class ValidateSingUp
         $vUsername = false;
         setcookie("authStatus","Username Already Exist", time()+10, '/');
       }elseif (mysqli_num_rows($result1)) {
-        $OTPexpiredAndDeleted = checkOTPEd($Username, "BINARY userName");
+        $OTPexpiredAndDeleted = $this->BF->checkOTPEd($Username, "BINARY userName");
         if ($OTPexpiredAndDeleted) {
           $vUsername = true;
         }else {
@@ -161,7 +165,7 @@ class ValidateSingUp
     return $vUsername;
   }
 
-  function emailAvailability(){
+public function emailAvailability(){
     if (!isset($_POST['emailAddress'])) {
       $vEmail = false;
       setcookie("authStatus","Email not found", time()+10, '/');
@@ -179,7 +183,7 @@ class ValidateSingUp
         $vEmail = false;
         setcookie("authStatus","Email Already Exist", time()+10, '/');
       }elseif (mysqli_num_rows($result1)) {
-        $OTPexpiredAndDeleted = BasicFunctions::checkOTPEd($inputValue, "userEmail");
+        $OTPexpiredAndDeleted = $this->BF->checkOTPEd($inputValue, "userEmail");
         if ($OTPexpiredAndDeleted) {
           $vEmail = true;
         }else {
@@ -193,7 +197,7 @@ class ValidateSingUp
     return $vEmail;
   }
 
-  function passWordCheck(){
+ public function  passWordCheck(){
     if (!isset($_POST['userPassword'])) {
       $vPassword = false;
       setcookie("authStatus","No password found", time()+10, '/');
@@ -206,7 +210,7 @@ class ValidateSingUp
     return $vPassword;
   }
 
-  function sanitizeData($data) {
+ public function sanitizeData($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -214,8 +218,6 @@ class ValidateSingUp
   }
 
 }
-
-
 
 
  ?>
