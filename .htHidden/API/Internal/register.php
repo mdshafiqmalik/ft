@@ -4,28 +4,48 @@ if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../../../../';
 }
 
-$dbc = $_SERVROOT.'htdocs/secrets/db.php';
-$cnf = $_SERVROOT.'htdocs/secrets/config.php';
-include($dbc);
-include($cnf);
+include($_SERVROOT.'htdocs/secrets/DB_CONNECT.php');
+include( $_SERVROOT.'htdocs/secrets/BASIC_FUNC.php');
+include( $_SERVROOT.'htdocs/secrets/DEV_OPTIONS.php');
+
+
+$DB_CONNECTION = new Database();
+$DB = $DB_CONNECTION->DBConnection();
+$BF = new BasicFunctions();
+
 if (isset($_SERVER['HTTP_REFERER'])) {
   $thisHttp = $_SERVER['HTTP_REFERER'];
-  $u1Check = (boolean) strpos($thisHttp, "http://"."$domain"."/register/");
-  $u2Check = (boolean) strpos($thisHttp, "https://"."$domain"."/register/");
-  $u3Check = (boolean) strpos($thisHttp, "http://www."."$domain"."/register/");
-  $u4Check = (boolean) strpos($thisHttp, "https://www."."$domain"."/register/");
-  $u5Check = (boolean) strpos($thisHttp, "http://testing."."$domain"."/register/");
-  $u6Check = (boolean) strpos($thisHttp, "https://testing."."$domain"."/register/");
+  $u1Check = (boolean) strpos($thisHttp, "http://"."$DOMAIN"."/register/");
+  $u2Check = (boolean) strpos($thisHttp, "https://"."$DOMAIN"."/register/");
+  $u3Check = (boolean) strpos($thisHttp, "http://www."."$DOMAIN"."/register/");
+  $u4Check = (boolean) strpos($thisHttp, "https://www."."$DOMAIN"."/register/");
+  $u5Check = (boolean) strpos($thisHttp, "http://testing."."$DOMAIN"."/register/");
+  $u6Check = (boolean) strpos($thisHttp, "https://testing."."$DOMAIN"."/register/");
   if (!$u1Check || !$u2Check || !$u3Check || !$u4Check || !$u5Check || !$u6Check) {
       if (isset($_GET["username"])) {
         $inputValue = $_GET["username"];
+        $inputValue = sanitizeData($inputValue);
         $userDataSql =  "SELECT * FROM users Where  BINARY userName = '".$inputValue."' ";
-          if (mysqli_query($db, $userDataSql)) {
-            $result = mysqli_query($db, $userDataSql);
+        $userSql =  "SELECT * FROM users_register Where  BINARY userName = '".$inputValue."' ";
+          if (mysqli_query($DB, $userDataSql)) {
+            $result = mysqli_query($DB, $userDataSql);
+            $result1 = mysqli_query($DB, $userSql);
             if (mysqli_num_rows($result)) {
               $found = array("Result"=>true, "Status"=>"Username Already Exist");
               $foundJSON = json_encode($found);
               echo "$foundJSON";
+            }elseif(mysqli_num_rows($result1)) {
+              // Delete OTP if expired
+              $OTPexpiredAndDeleted = $BF->checkOTPEd($inputValue, "BINARY userName");
+              if ($OTPexpiredAndDeleted) {
+                $notFound = array("Result"=>false, "Status"=>"Username Alotted");
+                $notFoundJSON = json_encode($notFound);
+                echo "$notFoundJSON";
+              }else {
+                $found = array("Result"=>true, "Status"=>"Someone is creating account<br>with this username Try again<br>after 5 mins. to check availability");
+                $foundJSON = json_encode($found);
+                echo "$foundJSON";
+              }
             }else {
               $notFound = array("Result"=>false, "Status"=>"Username Available");
               $notFoundJSON = json_encode($notFound);
@@ -39,12 +59,26 @@ if (isset($_SERVER['HTTP_REFERER'])) {
       }else if(isset($_GET["email"])) {
           $inputValue = $_GET["email"];
         $userDataSql =  "SELECT * FROM users Where userEmail = '".$inputValue."' ";
-          if (mysqli_query($db, $userDataSql)) {
-            $result = mysqli_query($db, $userDataSql);
+        $userSql =  "SELECT * FROM users_register Where userEmail = '".$inputValue."' ";
+          if (mysqli_query($DB, $userDataSql)) {
+            $result = mysqli_query($DB, $userDataSql);
+            $result1 = mysqli_query($DB, $userSql);
             if (mysqli_num_rows($result)) {
               $found = array("Result"=>true, "Status"=>"Email Already Exist");
               $foundJSON = json_encode($found);
               echo "$foundJSON";
+            }elseif (mysqli_num_rows($result1)) {
+              // Delete OTP if expired
+              $OTPexpiredAndDeleted = $BF->checkOTPEd($inputValue, "userEmail");
+              if ($OTPexpiredAndDeleted) {
+                $notFound = array("Result"=>false, "Status"=>"Email Alotted");
+                $notFoundJSON = json_encode($notFound);
+                echo "$notFoundJSON";
+              }else {
+                $found = array("Result"=>true, "Status"=>"Someone is creating <br>account with this email");
+                $foundJSON = json_encode($found);
+                echo "$foundJSON";
+              }
             }else {
               $notFound = array("Result"=>false,"Status"=>"Email Available");
               $notFoundJSON = json_encode($notFound);
@@ -58,8 +92,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
       }else if(isset($_GET["inviteID"])) {
           $inputValue = $_GET["inviteID"];
           $userDataSql =  "SELECT * FROM  users_credentials Where BINARY inviteCode = '".$inputValue."' ";
-          if (mysqli_query($db, $userDataSql)) {
-            $result = mysqli_query($db, $userDataSql);
+          if (mysqli_query($DB, $userDataSql)) {
+            $result = mysqli_query($DB, $userDataSql);
             if (mysqli_num_rows($result)) {
               $found = array("Result"=>false, "Status"=>"Invite ID found");
               $foundJSON = json_encode($found);
@@ -90,4 +124,10 @@ if (isset($_SERVER['HTTP_REFERER'])) {
   echo "$cantReadDecode";
 }
 
+function sanitizeData($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
  ?>

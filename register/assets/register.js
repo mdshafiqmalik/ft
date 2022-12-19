@@ -3,27 +3,13 @@ registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
 
 function onSubmit(token){
 
-  if (checkUsername()) {
-    if (checkEmail()) {
-      if (checkPassword()) {
-        let registerButton =  document.getElementById("submit");
-        registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
-      }else {
-        let registerButton =  document.getElementById("submit");
-        registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
-        // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
-      }
-    }else {
-      let registerButton =  document.getElementById("submit");
-      registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
-      // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
-    }
+  if (checkUsername() && checkEmail() && checkPassword()) {
+    let registerButton =  document.getElementById("submit");
+    registerButton.style.background = "Linear-gradient(to right, #917ba2, #8f6285)";
   }else {
     let registerButton =  document.getElementById("submit");
     registerButton.style.background = "linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82))";
-    // background: linear-gradient(to right, rgb(79, 0, 141), rgb(104, 3, 82));
   }
-
 }
 
 function openEye(){
@@ -68,6 +54,7 @@ function checkUsername(){
   let userInput = userInputField.value;
   const registerAPI =`/.htHidden/API/Internal/register.php?username=${userInput}`;
   let uValid;
+  let messageStatus;
   if (userInput.length === 0) {
     uValid = false;
     userError.innerHTML = "Username is required &#10006;";
@@ -97,12 +84,13 @@ function checkUsername(){
       const response = await fetch(url);
       var data = await response.json();
       uValid = data.Result;
+      messageStatus = data.Status;
       if (uValid) {
-        userError.innerHTML = "Username Taken &#10006;";
+        userError.innerHTML = messageStatus+" &#10006;";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
       }else {
-        userError.innerHTML = "Username Available &#10004;";
+        userError.innerHTML = messageStatus+" &#10004;";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
       }
@@ -194,13 +182,14 @@ function checkEmail(){
       const response = await fetch(url);
       var data = await response.json();
       eValid = data.Result;
+      var status  = data.Status;
       if (eValid) {
-        userError.innerHTML = "Email Already Exist &#10006;";
+        userError.innerHTML = status+" &#10006;";
         userError.style.color = "red";
         userInputField.style.boxShadow = "0px 0px 3px 0px red";
         eValid = false;
       }else {
-        userError.innerHTML = "Valid Email &#10004;";
+        userError.innerHTML = status+" &#10004;";
         userError.style.color = "green";
         userInputField.style.boxShadow = "0px 0px 3px 0px #1dff00";
         eValid = true;

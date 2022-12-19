@@ -15,13 +15,21 @@ include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
   <body>
     <div class="loginOuterDiv">
       <div class="loginElements brandLogo">
-        <a href="/">FastReed <br> <span>authenticatiom</span> </a>
+        <a href="/">FastReed <br> <span>authentication</span> </a>
       </div>
       <div class="loginElements headingsAndErrors">
         <span class="greetHeading">Check your mail box</span>
         <span class="messageAndErrors">Enter 6 digit OTP sent to you </span>
+        <?php
+
+        if (isset($_COOKIE['sucessStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="success"> <span id="" >'.$_COOKIE['sucessStatus'].'</span></div>';
+        }elseif (isset($_COOKIE['authStatus'])) {
+          echo '<div id="adminErros"  onclick="hideError()" class="Error"> <span id="" >'.$_COOKIE['authStatus'].'</span></div>';
+        }
+         ?>
       </div>
-      <form class="loginElements loginForm" action="create-password.php" method="post">
+      <form class="loginElements loginForm" action="OTP-AUTH.php" method="post">
         <input class="fields" type="text" name="username" value="" placeholder="Enter 6 digit OTP">
         <input id="submit" type="submit" name="Submit" value="Verify">
       </form>
