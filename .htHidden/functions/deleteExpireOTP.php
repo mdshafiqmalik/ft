@@ -39,7 +39,6 @@ function checkOTPEd($inputValue, $dat){
       // OTP not expired
       $OTPed = false;
     }
-
   }else {
     // DELETE DATA FROM OTP TABLE
     $deleteFromUsersRegisterSql = "DELETE FROM users_register WHERE sessionID = '$sessionID'";
