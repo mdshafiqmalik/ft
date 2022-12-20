@@ -20,6 +20,9 @@ include_once($GLOBALS['AUTH']);
 include_once($GLOBALS['BASIC_FUNC']);
 include_once($GLOBALS['DEV_OPTIONS'] );
 
+include_once($GLOBALS['ADMIN_VISIT'] );
+include_once($GLOBALS['USER_VISIT'] );
+include_once($GLOBALS['GUEST_VISIT'] );
 
 class CheckVisitorType
 {
