@@ -3,12 +3,6 @@ include_once($GLOBALS['DB']);
 include_once($GLOBALS['AUTH']);
 include_once($GLOBALS['BASIC_FUNC']);
 
-$db_connect = new Database();
-$db = $db_connect->DBConnection();
-
-/**
- *
- */
 class AdminVisits
 {
   private $DB_CONNECT;
@@ -18,11 +12,16 @@ class AdminVisits
 
   function __construct()
   {
+
+    new HandleError("There is problem to capture Admin Activity");
+
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();
     $this->BASIC_FUNC = new BasicFunctions();
     $this->DB = $this->DB_CONNECT->DBConnection();
+  }
 
+  public function adminVisited(){
     if ($this->sessionExist()["bool"]) {
       $sessionID = $this->sessionExist()["id"];
       $this->updateVisits($sessionID);
@@ -30,7 +29,6 @@ class AdminVisits
       $this->makeSession($encAdminID);
     }
   }
-
   public function sessionExist(){
     if (isset($_SESSION["ASI"])) {
       $sess = $_SESSION["ASI"];

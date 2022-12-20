@@ -5,7 +5,7 @@ include_once($GLOBALS['AUTH']);
 
 
 
-class userVisits
+class UsersVisits
 {
   private $DB_CONNECT;
   private $AUTH;
@@ -15,11 +15,16 @@ class userVisits
   function __construct(argument)
   {
 
+    new HandleError("There is problem to capture User Activity");
+
+
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();
     $this->BASIC_FUNC = new BasicFunctions();
     $this->DB = $this->DB_CONNECT->DBConnection();
+  }
 
+  public function userVisited(){
     if ($this->sessionExist()["bool"]) {
       $sessionID = $this->sessionExist()["id"];
       $this->updateVisits($pagesViews,$sessionID);
@@ -27,9 +32,6 @@ class userVisits
       $this->makeSession($encUserID);
     }
   }
-
-
-
 
   function public sessionExist(){
     if (isset($_SESSION["USI"])) {
