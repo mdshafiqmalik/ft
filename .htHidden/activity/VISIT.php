@@ -10,9 +10,9 @@ include_once($GLOBALS['DD']);
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php';
 $GLOBALS['DB'] = $_SERVROOT.'htdocs/'.SECRETS.'/DB_CONNECT.php';
 $GLOBALS['AUTH'] = $_SERVROOT.'htdocs/'.SECRETS.'/AUTH.php';
-$GLOBALS['BASIC_FUNC'] = $_SERVROOT.'htdocs/'.SECRETS.'/BASIC_FUNC.php';
-$GLOBALS['ERROR_HANDLER'] = $_SERVROOT.'htdocs/'.SECRETS.'/ERROR_HANDLER.php';
 
+$GLOBALS['BASIC_FUNC'] = $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php';
+$GLOBALS['ERROR_HANDLER'] = $_DOCROOT.'/.htHidden/functions/ERROR_HANDLER.php';
 $GLOBALS['ADMIN_VISIT'] = $_DOCROOT.'/.htHidden/activity/ADMIN_VISIT.php';
 $GLOBALS['USER_VISIT'] = $_DOCROOT.'/.htHidden/activity/USER_VISIT.php';
 $GLOBALS['GUEST_VISIT'] = $_DOCROOT.'/.htHidden/activity/GUEST_VISIT.php';
