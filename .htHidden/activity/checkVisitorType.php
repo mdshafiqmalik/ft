@@ -4,11 +4,15 @@ if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../';
 }
 
-$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/secrets/DEV_OPTIONS.php';
-$GLOBALS['DB'] = $_SERVROOT.'htdocs/secrets/DB_CONNECT.php';
-$GLOBALS['AUTH'] = $_SERVROOT.'htdocs/secrets/AUTH.php';
-$GLOBALS['BASIC_FUNC'] = $_SERVROOT.'htdocs/secrets/BASIC_FUNC.php';
+$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php';
+$GLOBALS['DB'] = $_SERVROOT.'htdocs/'.SECRETS.'/DB_CONNECT.php';
+$GLOBALS['AUTH'] = $_SERVROOT.'htdocs/'.SECRETS.'/AUTH.php';
+$GLOBALS['BASIC_FUNC'] = $_SERVROOT.'htdocs/'.SECRETS.'/BASIC_FUNC.php';
+$GLOBALS['ERROR_HANDLER'] = $_SERVROOT.'htdocs/'.SECRETS.'/ERROR_HANDLER.php';
+
+$GLOBALS['ADMIN_VISIT'] = $_DOCROOT.'/.htHidden/actity/ADMIN_VISIT.php';
+$GLOBALS['USER_VISIT'] = $_DOCROOT.'/.htHidden/activity/USER_VISIT.php';
+$GLOBALS['GUEST_VISIT'] = $_DOCROOT.'/.htHidden/activity/GUEST_VISIT.php';
 
 // Include Important File
 include_once($GLOBALS['DB']);
