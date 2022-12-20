@@ -1,9 +1,4 @@
 <?php
-include_once($GLOBALS['DB']);
-include_once($GLOBALS['BASIC_FUNC']);
-include_once($GLOBALS['AUTH']);
-include_once($GLOBALS['DEV_OPTIONS'] );
-
 class GuestsVisits
 {
   private $DB_CONNECT;
@@ -23,7 +18,6 @@ class GuestsVisits
 
   public function guestVisited()
   {
-    $cookie; $guestID; $sessionID;
     // Authenticate with Cookie
       $cookie =  $this->checkCookie();
       if ($cookie['bool']) { // if user Exist

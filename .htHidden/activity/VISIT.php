@@ -29,7 +29,7 @@ include_once($GLOBALS['USER_VISIT'] );
 include_once($GLOBALS['GUEST_VISIT'] );
 
 
-class CheckVisitorType
+class VisitorActivity
 {
 
   private $DB_CONNECT;

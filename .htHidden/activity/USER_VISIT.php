@@ -1,10 +1,4 @@
 <?php
-include_once($GLOBALS['DB']);
-include_once($GLOBALS['BASIC_FUNC']);
-include_once($GLOBALS['AUTH']);
-
-
-
 class UsersVisits
 {
   private $DB_CONNECT;

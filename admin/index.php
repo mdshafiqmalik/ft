@@ -2,7 +2,7 @@
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/VISIT.php';
-
+new VisitorActivity();
 // admin check weather it is admin session or not
 if (isset($_SESSION['adminLoginStatus'])) {
   if (!empty($_SESSION['adminLoginStatus'])) {

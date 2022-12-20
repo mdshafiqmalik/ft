@@ -1,8 +1,4 @@
 <?php
-include_once($GLOBALS['DB']);
-include_once($GLOBALS['AUTH']);
-include_once($GLOBALS['BASIC_FUNC']);
-
 class AdminVisits
 {
   private $DB_CONNECT;

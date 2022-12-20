@@ -67,6 +67,7 @@ class BasicFunctions
   }
 
   public function generateOTP($y){
+    $DB = $this->DB_CONNECT->DBConnection();
     $randOTP ="";
    for ($x = 1; $x <= $y; $x++) {
        // Set each digit
@@ -74,9 +75,8 @@ class BasicFunctions
    }
 
    $OTP = "";
-   include '../../secrets/db.php';
    $sql = "SELECT * FROM OTP WHERE OTP = '$randOTP'";
-   $result = mysqli_query($db, $sql);
+   $result = mysqli_query($DB, $sql);
      if (mysqli_num_rows($result)) {
        generateOTP($x);
      }else {
@@ -127,7 +127,7 @@ class BasicFunctions
    }else {
      // DELETE DATA FROM OTP TABLE
      $deleteFromUsersRegisterSql = "DELETE FROM users_register WHERE sessionID = '$sessionID'";
-     $deleteFromUsersRegister = mysqli_query($db, $deleteFromUsersRegisterSql);
+     $deleteFromUsersRegister = mysqli_query($DB, $deleteFromUsersRegisterSql);
      if ($deleteFromUsersRegister) {
        // OTP expired and sucessfuly deleted
        $OTPed = true;

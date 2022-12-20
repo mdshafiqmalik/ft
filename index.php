@@ -1,7 +1,7 @@
 <?php
 $_DOCROOT = '../';
 include '.htHidden/activity/VISIT.php';
-new CheckVisitorType();
+new VisitorActivity();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
