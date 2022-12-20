@@ -3,6 +3,9 @@ session_start();
 if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../';
 }
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+$GLOBALS['DD'] = $_DOCROOT.'/DIRECTORY_LOCATION.php';
+include_once($GLOBALS['DD']);
 
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php';
 $GLOBALS['DB'] = $_SERVROOT.'htdocs/'.SECRETS.'/DB_CONNECT.php';
