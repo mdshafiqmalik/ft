@@ -7,6 +7,7 @@ if (!isset($_SERVROOT)) {
 include($_SERVROOT.'htdocs/secrets/DB_CONNECT.php');
 include( $_SERVROOT.'htdocs/secrets/BASIC_FUNC.php');
 include( $_SERVROOT.'htdocs/secrets/DEV_OPTIONS.php');
+include( $_SERVROOT.'htdocs/secrets/ERROR_HANDLER.php');
 
 
 $DB_CONNECTION = new Database();

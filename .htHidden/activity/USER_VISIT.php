@@ -12,7 +12,7 @@ class UsersVisits
   private $BASIC_FUNC;
   private $DB;
 
-  function __construct(argument)
+  function __construct()
   {
 
     new HandleError("There is problem to capture User Activity");
@@ -33,7 +33,7 @@ class UsersVisits
     }
   }
 
-  function public sessionExist(){
+  public function sessionExist(){
     if (isset($_SESSION["USI"])) {
       $sess = $_SESSION["USI"];
       if ($this->checkSession($sess)["bool"]) {
@@ -49,7 +49,8 @@ class UsersVisits
     }
     return $sessionPresent;
   }
-  function public checkSession($sess){
+
+  public function checkSession($sess){
     $sql = "SELECT * FROM users_sessions WHERE sessionID = '$sess'";
     $result = mysqli_query($this->DB, $sql);
     if ($result) {
@@ -66,7 +67,7 @@ class UsersVisits
     }
     return $sessionPresent;
   }
-  function public makeSession($userID){
+  public function makeSession($userID){
     $userIP = $this->BASIC_FUNC->getIp();
     $date = date('Y-m-d');
     $dateTime = time();
@@ -79,7 +80,7 @@ class UsersVisits
     mysqli_query($this->DB, $sql2);
   }
 
-  function public updateVisits($sessionID){
+  public function updateVisits($sessionID){
     $visitTime = time();
     if (isset($_SERVER['HTTP_REFERER'])) {
       $httpRefe = $_SERVER['HTTP_REFERER'];

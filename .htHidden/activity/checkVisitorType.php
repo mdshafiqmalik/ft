@@ -3,16 +3,16 @@ session_start();
 if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../';
 }
-
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/secrets/DEV_OPTIONS.php';
 $GLOBALS['DB'] = $_SERVROOT.'htdocs/secrets/DB_CONNECT.php';
 $GLOBALS['AUTH'] = $_SERVROOT.'htdocs/secrets/AUTH.php';
 $GLOBALS['BASIC_FUNC'] = $_SERVROOT.'htdocs/secrets/BASIC_FUNC.php';
 $GLOBALS['ERROR_HANDLER'] = $_SERVROOT.'htdocs/secrets/ERROR_HANDLER.php';
 
-$GLOBALS['ERROR_HANDLER'] = $_SERV.'htdocs/secrets/ERROR_HANDLER.php';
-$GLOBALS['ERROR_HANDLER'] = $_SERVROOT.'htdocs/secrets/ERROR_HANDLER.php';
-$GLOBALS['ERROR_HANDLER'] = $_SERVROOT.'htdocs/secrets/ERROR_HANDLER.php';
+$GLOBALS['ADMIN_VISIT'] = $_DOCROOT.'/.htHidden/activity/ADMIN_VISIT.php';
+$GLOBALS['USER_VISIT'] = $_DOCROOT.'/.htHidden/activity/USER_VISIT.php';
+$GLOBALS['GUEST_VISIT'] = $_DOCROOT.'/.htHidden/activity/GUEST_VISIT.php';
 
 // Include Important File
 include_once($GLOBALS['DB']);
@@ -61,18 +61,15 @@ class CheckVisitorType
         $encUserID = $this->AUTH->encrypt($userID);
         $authUser = $this->checkAuthVisitor($encUserID, "users", "userID");
         if ($authUser) {
-          include 'userVisits.php';
           $this->USER_VISITED->userVisited();
         }else {
           setcookie("UID",FALSE,time()-3600);
-          include 'guestsVisits.php';
-          $this->GUEST_VISITED->guestsVisited();
+          $this->GUEST_VISITED->guestVisited();
         }
       }else {
         // No Cookie value Mean an anonymous user
         setcookie("UID",FALSE,time()-3600);
-        include 'guestsVisits.php';
-        $this->GUEST_VISITED->guestsVisited();
+        $this->GUEST_VISITED->guestVisited();
       }
     }elseif (isset($_COOKIE['AID'])) {
       if (!empty($_COOKIE['AID'])) {
@@ -80,24 +77,20 @@ class CheckVisitorType
         $encAdminID = $this->AUTH->decrypt($adminID);
         $authAdmin = $this->checkAuthVisitor($encAdminID, "admins", "adminID");
         if ($authAdmin) {
-          include 'adminVisits.php';
           $this->ADMIN_VISITED->adminVisited();
         }else {
           // Wrong Cookie means anonymous User
           setcookie("AID",FALSE,time()-3600);
-          include 'guestsVisits.php';
-          $this->GUEST_VISITED->guestsVisited();
+          $this->GUEST_VISITED->guestVisited();
         }
       }else {
         // Empty Cookie value means anonymous user
         setcookie("AID",FALSE,time()-3600);
-        include 'guestsVisits.php';
-        $this->GUEST_VISITED->guestsVisited();
+        $this->GUEST_VISITED->guestVisited();
       }
     }else {
       // No Cookie means anonymous user
-      include 'guestsVisits.php';
-      $this->GUEST_VISITED->guestsVisited();
+      $this->GUEST_VISITED->guestVisited();
     }
   }
   private function checkAuthVisitor($id, $table, $parameter){
