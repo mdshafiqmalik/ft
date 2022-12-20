@@ -1,7 +1,7 @@
 <?php
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+include $_DOCROOT.'/.htHidden/activity/VISIT.php';
 
 // admin check weather it is admin session or not
 if (isset($_SESSION['adminLoginStatus'])) {

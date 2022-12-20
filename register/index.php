@@ -1,7 +1,7 @@
 <?php
 $_SERVROOT = "../../../";
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+include $_DOCROOT.'/.htHidden/activity/VISIT.php';
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

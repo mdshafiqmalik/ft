@@ -1,6 +1,6 @@
 <?php
 $_DOCROOT = '../';
-include '.htHidden/activity/checkVisitorType.php';
+include '.htHidden/activity/VISIT.php';
 new CheckVisitorType();
 ?>
 <!DOCTYPE html>
