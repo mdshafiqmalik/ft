@@ -35,7 +35,7 @@ class ValidateSingUp
     }else if(!$this->passWordCheck()) {
       header("Location: /register/index.php");
     }else {
-      echo "string";
+
       $this->USER_NAME = $this->sanitizeData($_POST['username']);
       $this->EMAIL_ADDR = $this->sanitizeData($_POST['emailAddress']);
       $this->PASS_WORD = $this->sanitizeData($_POST['userPassword']);
@@ -55,12 +55,18 @@ class ValidateSingUp
 
   public function dbStoriing(){
     $SESSION_ID = $this->getSessionID();
+    $USER_NAME = $this->USER_NAME;
+    $EMAIL_ADDR = $this->EMAIL_ADDR;
+    $GENDER = $this->GENDER;
+    $AGE_RANGE = $this->AGE_RANGE;
+    $INVITE_CODE = $this->INVITE_CODE;
+    $PASS_WORD = $this->PASS_WORD;
     $sentTime = time();
     $RANOTP = $this->BF->generateOTP(6);
-    $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ('$currentSession','$NewUserName','$this->EMAIL_ADDR','$this->GENDER','$this->AGE_RANGE','$this->INVITE_CODE','$this->PASS_WORD')";
+    $sql2 = "INSERT INTO users_register (sessionID,  userName,userEmail, Gender, ageRange, inviteCode, passWord)  VALUES ("$SESSION_ID",'$USER_NAME','$EMAIL_ADDR','$GENDER','$AGE_RANGE','$INVITE_CODE','$PASS_WORD')";
     mysqli_query($this->DB, $sql2);
 
-    $sql3 = "INSERT INTO OTP (sessionID, userEmail, OTP, sentTime, otpPurpose) VALUES ('$SESSION_ID()', '$this->EMAIL_ADDR', '$RANOTP', '$sentTime', 'NR')";
+    $sql3 = "INSERT INTO OTP (sessionID, userEmail, OTP, sentTime, otpPurpose) VALUES ('$SESSION_ID()', '$EMAIL_ADDR', '$RANOTP', '$sentTime', 'NR')";
     mysqli_query($this->DB, $sql3);
   }
 

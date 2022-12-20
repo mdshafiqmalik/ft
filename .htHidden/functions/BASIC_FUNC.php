@@ -4,6 +4,7 @@ class BasicFunctions
 {
   private $DB_CONNECT;
   private $DB;
+  private $AUTH;
 
   function __construct()
   {

@@ -4,7 +4,7 @@ if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../';
 }
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['DD'] = $_DOCROOT.'/DIRECTORY_LOCATION.php';
+$GLOBALS['DD'] = $_DOCROOT.'/.htHidden/functions/DIRECTORY_LOCATION.php';
 include_once($GLOBALS['DD']);
 
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php';
