@@ -5,8 +5,6 @@ if (!isset($_SERVROOT)) {
 }
 
 
-$GLOBALS['PATH_HELPER'] = '/homepages/40/d918784663/htdocs/PATH_HELPER.php';
-
 include_once($GLOBALS['PATH_HELPER']);
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.MY_LOC.'/secrets/DEV_OPTIONS.php';
