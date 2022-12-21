@@ -3,13 +3,13 @@ session_start();
 if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../../';
 }
-
-
-include_once($GLOBALS['PATH_HELPER']);
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.MY_LOC.'/secrets/DEV_OPTIONS.php';
-$GLOBALS['DB'] = $_SERVROOT.MY_LOC.'/secrets/DB_CONNECT.php';
-$GLOBALS['AUTH'] = $_SERVROOT.MY_LOC.'/secrets/AUTH.php';
+
+$myPATH = myPath();
+
+$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php';
+$GLOBALS['DB'] = $_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php';
+$GLOBALS['AUTH'] = $_SERVROOT.$myPATH.'/secrets/AUTH.php';
 
 $GLOBALS['BASIC_FUNC'] = $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php';
 $GLOBALS['ERROR_HANDLER'] = $_DOCROOT.'/.htHidden/functions/ERROR_HANDLER.php';
