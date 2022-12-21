@@ -36,14 +36,14 @@ class SentOTP
 
   public function sendOTP(){
     $OTPexist = $this->authOTP();
-    if ($OTPexist['bool']) {
-      $OTP = $OTPexist['data']['OTP'];
-      $userName = $OTPexist['data']['userName'];
+    if ($OTPexist) {
+      $OTP = $OTPexist['OTP'];
+      $userName = $OTPexist['userName'];
       if (OTP_EMAIL_DISABLED) {
         $timestamp = date('h:i:s');
         header("Location: /OTP/");
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
-      }else if ($OTPexist['data']['otpPurpose'] == 'NR') {
+      }else if ($OTPexist['otpPurpose'] == 'NR') {
         $timestamp = $this->sendToNR($this->EMAIL_ADDR, $OTP, $userName);
         if ($timestamp) {
           header("Location: /OTP/");
@@ -52,7 +52,7 @@ class SentOTP
           header("Location: /register/");
           setcookie("authStatus","Cannot send OTP", time()+10, '/');
         }
-      }elseif ($OTPexist['data']['otpPurpose'] == 'PR') {
+      }elseif ($OTPexist['otpPurpose'] == 'PR') {
         $this->passWordRecovery();
       }
     }else {
@@ -71,8 +71,7 @@ class SentOTP
       $otpSession = $row['sessionID'];
       $userEmail = $row['userEmail'];
       $getUsername = $this->getUsername($otpSession, $userEmail);
-      $return['bool'] = true;
-      $return['data'] = $row;
+      $return= $row;
     }else {
       $return['bool'] = false;
     }
