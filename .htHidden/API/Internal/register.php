@@ -8,9 +8,11 @@ $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 $GLOBALS['DD'] = $_DOCROOT.'/.htHidden/functions/DIRECTORY_LOCATION.php';
 include_once($GLOBALS['DD']);
 
-include($_SERVROOT.'htdocs/'.SECRETS.'/DB_CONNECT.php');
-include($_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php');
-include($_SERVROOT.'htdocs/'.SECRETS.'/AUTH.php');
+$myPATH = myPath();
+
+$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php';
+$GLOBALS['DB'] = $_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php';
+$GLOBALS['AUTH'] = $_SERVROOT.$myPATH.'/secrets/AUTH.php';
 
 include( $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php');
 include( $_DOCROOT.'/.htHidden/functions/ERROR_HANDLER.php');
@@ -136,5 +138,20 @@ function sanitizeData($data) {
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+
+function myPath(){
+  $domain = $_SERVER['HTTP_HOST'];
+  // For testing.fastreed.com
+  if ($domain == 'testing.fastreed.com') {
+    $myPATH = "testing";
+    // For www.fastreed.com and fastreed.com
+  }elseif ($domain == 'www.fastreed.com' || $domain == 'fastreed.com') {
+    $myPATH = "production";
+    // For Localhost
+  }elseif ($domain == 'localhost') {
+    $myPATH = "local";
+  }
+  return $myPATH;
 }
  ?>
