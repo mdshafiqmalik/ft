@@ -4,10 +4,6 @@ if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../../../../';
 }
 
-$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['DD'] = $_DOCROOT.'/.htHidden/functions/DIRECTORY_LOCATION.php';
-include_once($GLOBALS['DD']);
-
 $myPATH = myPath();
 
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php';
@@ -15,7 +11,6 @@ $GLOBALS['DB'] = $_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php';
 $GLOBALS['AUTH'] = $_SERVROOT.$myPATH.'/secrets/AUTH.php';
 
 include( $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php');
-include( $_DOCROOT.'/.htHidden/functions/ERROR_HANDLER.php');
 
 
 $DB_CONNECTION = new Database();
