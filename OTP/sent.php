@@ -36,6 +36,7 @@ class SentOTP
 
   public function sendOTP(){
     $OTPexist = $this->authOTP();
+    var_dump($OTPexist);
     if ($OTPexist) {
       $OTP = $OTPexist['OTP'];
       $userName = $OTPexist['userName'];
@@ -64,14 +65,14 @@ class SentOTP
   }
 
   public function authOTP(){
-    $sql = "SELECT userName, OTP , sessionID FROM OTP WHERE userEmail = '$this->EMAIL_ADDR' AND otpPurpose = '$this->OTP_PURPOSE'";
+    $sql = "SELECT userEmail, OTP , sessionID FROM OTP WHERE userEmail = '$this->EMAIL_ADDR' AND otpPurpose = '$this->OTP_PURPOSE'";
     $result = mysqli_query($this->DB, $sql);
     if (mysqli_num_rows($result)) {
       $row = mysqli_fetch_assoc($result);
       $otpSession = $row['sessionID'];
       $userEmail = $row['userEmail'];
       $getUsername = $this->getUsername($otpSession, $userEmail);
-      $return= $row;
+      $return= $row +$getUsername;
     }else {
       $return['bool'] = false;
     }
