@@ -37,8 +37,8 @@ class SentOTP
   public function sendOTP(){
     $OTPexist = $this->authOTP();
     $SENTOTP = $OTPexist['OTP'];
-    if ($OTPexist) {
-      $userName = $OTPexist['userName'];
+    if ($OTPexist['bool']) {
+      $userName = $OTPexist['data'];
       if (OTP_EMAIL_DISABLED) {
         $timestamp = date('h:i:s');
         header("Location: /OTP/");
@@ -68,9 +68,10 @@ class SentOTP
     $result = mysqli_query($this->DB, $sql);
     if (mysqli_num_rows($result)) {
       $row = mysqli_fetch_assoc($result);
-      $OTPFOUND = $row;
+      $OTPFOUND['bool'] = true;
+      $OTPFOUND['data'] = $row['userName'];
     }else {
-      $OTPFOUND = false;
+      $OTPFOUND['bool'] = false;
     }
     return $OTPFOUND;
   }
