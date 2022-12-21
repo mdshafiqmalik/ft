@@ -9,8 +9,8 @@ new VisitorActivity();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
-    <link rel="stylesheet" href="assets/style.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo CSS_VERSION; ?>">
+    <link rel="stylesheet" href="assets/style.css?v=<?php echo CSS_VERSION; ?>">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Fastreed: User Regsitration</title>
   </head>
@@ -76,7 +76,7 @@ new VisitorActivity();
       </div>
     </div>
       <script src="/assets/js/jquery-3.6.0.js" charset="utf-8"></script>
-    <script src="assets/register.js?v=<?php echo $cssVersion;?>" charset="utf-8"></script>
+    <script src="assets/register.js?v=<?php echo CSS_VERSION;?>" charset="utf-8"></script>
 
   </body>
 </html>

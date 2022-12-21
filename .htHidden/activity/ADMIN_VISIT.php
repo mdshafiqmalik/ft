@@ -21,9 +21,11 @@ class AdminVisits
       $sessionID = $this->sessionExist()["id"];
       $this->updateVisits($sessionID);
     }else {
+      $encAdminID = $_COOKIE['AID'];
       $this->makeSession($encAdminID);
     }
   }
+
   public function sessionExist(){
     if (isset($_SESSION["ASI"])) {
       $sess = $_SESSION["ASI"];
@@ -44,7 +46,7 @@ class AdminVisits
 
   public function checkSession($sess){
     $sql = "SELECT * FROM admins_sessions WHERE sessionID = '$sess'";
-    $result = mysqli_query($$this->DB, $sql);
+    $result = mysqli_query($this->DB, $sql);
     if ($result) {
       $isPresent = mysqli_num_rows($result);
       if ($isPresent) {

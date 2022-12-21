@@ -8,7 +8,7 @@ new VisitorActivity();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo CSS_VERSION; ?>">
     <title>Fastreed Dashboard</title>
   </head>
   <body>
@@ -129,5 +129,5 @@ new VisitorActivity();
       </div>
     </div>
   </body>
-  <script src="/assets/js/all.js?v=<?php echo $cssVersion; ?>" charset="utf-8"></script>
+  <script src="/assets/js/all.js?v=<?php echo CSS_VERSION; ?>" charset="utf-8"></script>
 </html>

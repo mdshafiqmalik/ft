@@ -1,31 +1,8 @@
 <?php
 $_SERVROOT = '../../../';
-include $DOCROOT.'/.htHidden/activity/VISIT.php';
+include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/activity/VISIT.php';
 new VisitorActivity();
-new GetOTP();
 
-
-class GetOTP
-{
-  private $SESSION;
-  private $VA;
-
-  function __construct()
-  {
-    $this->SESSION = $this->getSessionID();
-  }
-
-  public function getSessionID(){
-    if (isset($_SESSION['GSI'])) {
-      $currentSession = $_SESSION['GSI'];
-    }elseif ($_SESSION['ASI']) {
-      $currentSession = $_SESSION['ASI'];
-    }elseif ($_SESSION['USI']) {
-      $currentSession = $_SESSION['USI'];
-    }
-    return $currentSession;
-  }
-}
 
  ?>
 <!DOCTYPE html>
@@ -33,8 +10,8 @@ class GetOTP
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo $cssVersion; ?>">
-    <link rel="stylesheet" href="/login/assets/style.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="/assets/css/login.css?v=<?php echo CSS_VERSION;?>">
+    <link rel="stylesheet" href="/login/assets/style.css?v=<?php echo CSS_VERSION; ?>">
     <title>Fastreed: Forgotten Password</title>
   </head>
   <body>

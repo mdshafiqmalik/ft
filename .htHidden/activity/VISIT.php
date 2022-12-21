@@ -5,7 +5,10 @@ if (!isset($_SERVROOT)) {
 }
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 
-$myPATH = myPath();
+if (!isset($myPATH)) {
+  $myPATH = myPath();
+}
+
 
 $GLOBALS['DEV_OPTIONS'] = $_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php';
 $GLOBALS['DB'] = $_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php';

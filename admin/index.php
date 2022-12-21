@@ -1,22 +1,14 @@
 <?php
 $_SERVROOT = '../../../';
-$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-include $_DOCROOT.'/.htHidden/activity/VISIT.php';
+include $_SERVER['DOCUMENT_ROOT'].'/.htHidden/activity/VISIT.php';
 new VisitorActivity();
 // admin check weather it is admin session or not
-if (isset($_SESSION['adminLoginStatus'])) {
-  if (!empty($_SESSION['adminLoginStatus'])) {
-    if ($_SESSION['adminLoginStatus']) {
-      // code...
-    }else {
-      header("Location: login/index.php");
-    }
-  }else {
-    header("Location: login/index.php");
-  }
+if ($_SESSION['AID'] && !empty($_SESSION['AID'])) {
+  // code...
 }else {
-  header("Location: login/index.php");
+  // header("Location: login/index.php");
 }
+
 
  ?>
 
@@ -25,7 +17,7 @@ if (isset($_SESSION['adminLoginStatus'])) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo $cssVersion; ?>">
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo CSS_VERSION;?>">
     <title>Fastreed: Admin Panel</title>
   </head>
   <body>
@@ -165,5 +157,5 @@ if (isset($_SESSION['adminLoginStatus'])) {
       </div>
     </div>
   </body>
-  <script src="/assets/js/all.js?v=<?php echo $cssVersion; ?>" charset="utf-8"></script>
+  <script src="/assets/js/all.js?v=<?php echo CSS_VERSION; ?>" charset="utf-8"></script>
 </html>
