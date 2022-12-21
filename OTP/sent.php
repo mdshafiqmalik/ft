@@ -84,7 +84,7 @@ class SentOTP
     $result = mysqli_query($this->DB, $sql);
     if (mysqli_num_rows($result)) {
       $row = mysqli_fetch_assoc($result);
-      $return = $row['userName'];
+      $return = $row;
     }else {
       $return = false;
     }
