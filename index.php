@@ -1,5 +1,5 @@
 <?php
-$_DOCROOT = '../';
+$_SERVROOT = '../../';
 include '.htHidden/activity/VISIT.php';
 new VisitorActivity();
 ?>

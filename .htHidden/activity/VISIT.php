@@ -1,15 +1,17 @@
 <?php
 session_start();
 if (!isset($_SERVROOT)) {
-  $_SERVROOT = '../../';
+  $_SERVROOT = '../../../';
 }
-$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-$GLOBALS['DD'] = $_DOCROOT.'/.htHidden/functions/DIRECTORY_LOCATION.php';
-include_once($GLOBALS['DD']);
 
-$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php';
-$GLOBALS['DB'] = $_SERVROOT.'htdocs/'.SECRETS.'/DB_CONNECT.php';
-$GLOBALS['AUTH'] = $_SERVROOT.'htdocs/'.SECRETS.'/AUTH.php';
+
+$GLOBALS['PATH_HELPER'] = '/kunden/homepages/40/d918784663/PATH_HELPER.php';
+
+include_once($GLOBALS['PATH_HELPER']);
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.MY_LOC.'/secrets/DEV_OPTIONS.php';
+$GLOBALS['DB'] = $_SERVROOT.MY_LOC.'/secrets/DB_CONNECT.php';
+$GLOBALS['AUTH'] = $_SERVROOT.MY_LOC.'/secrets/AUTH.php';
 
 $GLOBALS['BASIC_FUNC'] = $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php';
 $GLOBALS['ERROR_HANDLER'] = $_DOCROOT.'/.htHidden/functions/ERROR_HANDLER.php';
@@ -21,12 +23,12 @@ $GLOBALS['GUEST_VISIT'] = $_DOCROOT.'/.htHidden/activity/GUEST_VISIT.php';
 include_once($GLOBALS['DB']);
 include_once($GLOBALS['AUTH']);
 include_once($GLOBALS['BASIC_FUNC']);
-include_once($GLOBALS['DEV_OPTIONS'] );
-include_once($GLOBALS['ERROR_HANDLER'] );
+include_once($GLOBALS['DEV_OPTIONS']);
+include_once($GLOBALS['ERROR_HANDLER']);
 
-include_once($GLOBALS['ADMIN_VISIT'] );
-include_once($GLOBALS['USER_VISIT'] );
-include_once($GLOBALS['GUEST_VISIT'] );
+include_once($GLOBALS['ADMIN_VISIT']);
+include_once($GLOBALS['USER_VISIT']);
+include_once($GLOBALS['GUEST_VISIT']);
 
 
 class VisitorActivity
