@@ -12,7 +12,6 @@ class SentOTP
   private $OTP_PURPOSE;
   function __construct()
   {
-    echo "string";
     $DB_CONNECT = new Database();
     $this->DB = $DB_CONNECT->DBConnection();
 
