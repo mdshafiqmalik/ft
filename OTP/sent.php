@@ -96,7 +96,7 @@ class SentOTP
     if ($timestamp = sendOTP($EMAIL, $OTP_SENT, $USER_NAME)) {
      $return = $timestamp;
     }else {
-     $return = fasle;;
+     $return = false;;
     }
     return $return;
   }
