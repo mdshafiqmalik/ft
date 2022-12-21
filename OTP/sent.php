@@ -38,7 +38,6 @@ class SentOTP
     $OTPexist = $this->authOTP();
     if ($OTPexist['bool']) {
       $OTP = $OTPexist['data']['OTP'];
-      $sentTime = $OTPexist['data']['sentTime'];
       $userName = $OTPexist['data']['userName'];
       if (OTP_EMAIL_DISABLED) {
         $timestamp = date('h:i:s');
@@ -46,7 +45,7 @@ class SentOTP
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
       }else if ($OTPexist['data']['otpPurpose'] == 'NR') {
         $timestamp = $this->sendToNR($this->EMAIL_ADDR, $OTP, $userName);
-        if ($timestamp = $sentTime) {
+        if ($timestamp) {
           header("Location: /OTP/");
           setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
         }else {
