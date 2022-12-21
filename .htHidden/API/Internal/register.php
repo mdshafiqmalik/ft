@@ -6,9 +6,9 @@ if (!isset($_SERVROOT)) {
 
 $myPATH = myPath();
 
-$GLOBALS['DEV_OPTIONS'] = $_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php';
-$GLOBALS['DB'] = $_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php';
-$GLOBALS['AUTH'] = $_SERVROOT.$myPATH.'/secrets/AUTH.php';
+include($_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php');
+include($_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php');
+include($_SERVROOT.$myPATH.'/secrets/AUTH.php');
 
 include( $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php');
 
