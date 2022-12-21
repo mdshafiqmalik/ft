@@ -36,9 +36,9 @@ class SentOTP
 
   public function sendOTP(){
     $OTPexist = $this->authOTP();
-    $userName = $OTPexist['userName'];
     $SENTOTP = $OTPexist['OTP'];
     if ($OTPexist) {
+      $userName = $OTPexist['userName'];
       if (OTP_EMAIL_DISABLED) {
         $timestamp = date('h:i:s');
         header("Location: /OTP/");
