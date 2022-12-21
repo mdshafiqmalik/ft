@@ -3,10 +3,10 @@ header('content-type:application/json');
 if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../../../../';
 }
-
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 $myPATH = myPath();
 
-// include($_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php');
+include($_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php');
 include($_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php');
 include($_SERVROOT.$myPATH.'/secrets/AUTH.php');
 
