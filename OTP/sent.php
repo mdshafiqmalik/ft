@@ -2,6 +2,7 @@
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/VISIT.php';
+include $_DOCROOT.'/OTP/NR_MAIL.php';
 new VisitorActivity();
 new SentOTP();
 class SentOTP
