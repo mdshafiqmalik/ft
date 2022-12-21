@@ -72,7 +72,6 @@ class SentOTP
       $userEmail = $row['userEmail'];
       $getUsername = $this->getUsername($otpSession, $userEmail);
       $return= $row;
-      var_dump($row);
     }else {
       $return['bool'] = false;
     }
