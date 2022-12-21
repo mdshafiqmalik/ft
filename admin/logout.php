@@ -1,7 +1,9 @@
 <?php
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+include $_DOCROOT.'/.htHidden/activity/VISIT.php';
+new VisitorActivity();
+
 if (isset($_SESSION['adminLoginStatus']) && !empty($_SESSION['adminLoginStatus']) && $_SESSION['adminLoginStatus']) {
   include($GLOBALS['encDec']);
   include($GLOBALS['dbc']);

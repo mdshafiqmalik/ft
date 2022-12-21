@@ -1,10 +1,5 @@
 <?php
-include_once($GLOBALS['DB']);
-include_once($GLOBALS['BASIC_FUNC']);
-include_once($GLOBALS['AUTH']);
-include_once($GLOBALS['DEV_OPTIONS'] );
-
-class guestsVisits
+class GuestsVisits
 {
   private $DB_CONNECT;
   private $AUTH;
@@ -13,16 +8,15 @@ class guestsVisits
 
   function __construct()
   {
+
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();
     $this->BASIC_FUNC = new BasicFunctions();
     $this->DB = $this->DB_CONNECT->DBConnection();
-    $this->guestVisited();
   }
 
   public function guestVisited()
   {
-    $cookie; $guestID; $sessionID;
     // Authenticate with Cookie
       $cookie =  $this->checkCookie();
       if ($cookie['bool']) { // if user Exist

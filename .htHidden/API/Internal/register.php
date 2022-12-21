@@ -4,9 +4,16 @@ if (!isset($_SERVROOT)) {
   $_SERVROOT = '../../../../../';
 }
 
-include($_SERVROOT.'htdocs/secrets/DB_CONNECT.php');
-include( $_SERVROOT.'htdocs/secrets/BASIC_FUNC.php');
-include( $_SERVROOT.'htdocs/secrets/DEV_OPTIONS.php');
+$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
+$GLOBALS['DD'] = $_DOCROOT.'/.htHidden/functions/DIRECTORY_LOCATION.php';
+include_once($GLOBALS['DD']);
+
+include($_SERVROOT.'htdocs/'.SECRETS.'/DB_CONNECT.php');
+include($_SERVROOT.'htdocs/'.SECRETS.'/DEV_OPTIONS.php');
+include($_SERVROOT.'htdocs/'.SECRETS.'/AUTH.php');
+
+include( $_DOCROOT.'/.htHidden/functions/BASIC_FUNC.php');
+include( $_DOCROOT.'/.htHidden/functions/ERROR_HANDLER.php');
 
 
 $DB_CONNECTION = new Database();
@@ -15,12 +22,12 @@ $BF = new BasicFunctions();
 
 if (isset($_SERVER['HTTP_REFERER'])) {
   $thisHttp = $_SERVER['HTTP_REFERER'];
-  $u1Check = (boolean) strpos($thisHttp, "http://"."$DOMAIN"."/register/");
-  $u2Check = (boolean) strpos($thisHttp, "https://"."$DOMAIN"."/register/");
-  $u3Check = (boolean) strpos($thisHttp, "http://www."."$DOMAIN"."/register/");
-  $u4Check = (boolean) strpos($thisHttp, "https://www."."$DOMAIN"."/register/");
-  $u5Check = (boolean) strpos($thisHttp, "http://testing."."$DOMAIN"."/register/");
-  $u6Check = (boolean) strpos($thisHttp, "https://testing."."$DOMAIN"."/register/");
+  $u1Check = (boolean) strpos($thisHttp, "http://".DOMAIN."/register/");
+  $u2Check = (boolean) strpos($thisHttp, "https://".DOMAIN."/register/");
+  $u3Check = (boolean) strpos($thisHttp, "http://www.".DOMAIN."/register/");
+  $u4Check = (boolean) strpos($thisHttp, "https://www.".DOMAIN."/register/");
+  $u5Check = (boolean) strpos($thisHttp, "http://testing.".DOMAIN."/register/");
+  $u6Check = (boolean) strpos($thisHttp, "https://testing.".DOMAIN."/register/");
   if (!$u1Check || !$u2Check || !$u3Check || !$u4Check || !$u5Check || !$u6Check) {
       if (isset($_GET["username"])) {
         $inputValue = $_GET["username"];

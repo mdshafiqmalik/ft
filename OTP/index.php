@@ -1,7 +1,34 @@
 <?php
 $_SERVROOT = '../../../';
 $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-include $_DOCROOT.'/.htHidden/activity/checkVisitorType.php';
+include $_DOCROOT.'/.htHidden/activity/VISIT.php';
+new VisitorActivity();
+new GetOTP();
+class GetOTP extends VisitorActivity
+{
+  private $SESSION;
+  private $VA;
+
+  function __construct()
+  {
+    $this->SESSION = $this->getSessionID();
+    $this->VA = new GetOTP();
+    $this->DB = $this->VA->DB;
+    echo $this->DB;
+  }
+
+  public function getSessionID(){
+    if (isset($_SESSION['GSI'])) {
+      $currentSession = $_SESSION['GSI'];
+    }elseif ($_SESSION['ASI']) {
+      $currentSession = $_SESSION['ASI'];
+    }elseif ($_SESSION['USI']) {
+      $currentSession = $_SESSION['USI'];
+    }
+    return $currentSession;
+  }
+}
+
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

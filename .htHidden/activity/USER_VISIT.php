@@ -1,25 +1,22 @@
 <?php
-include_once($GLOBALS['DB']);
-include_once($GLOBALS['BASIC_FUNC']);
-include_once($GLOBALS['AUTH']);
-
-
-
-class userVisits
+class UsersVisits
 {
   private $DB_CONNECT;
   private $AUTH;
   private $BASIC_FUNC;
   private $DB;
 
-  function __construct(argument)
+  function __construct()
   {
+
 
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();
     $this->BASIC_FUNC = new BasicFunctions();
     $this->DB = $this->DB_CONNECT->DBConnection();
+  }
 
+  public function userVisited(){
     if ($this->sessionExist()["bool"]) {
       $sessionID = $this->sessionExist()["id"];
       $this->updateVisits($pagesViews,$sessionID);
@@ -28,10 +25,7 @@ class userVisits
     }
   }
 
-
-
-
-  function public sessionExist(){
+  public function sessionExist(){
     if (isset($_SESSION["USI"])) {
       $sess = $_SESSION["USI"];
       if ($this->checkSession($sess)["bool"]) {
@@ -47,7 +41,8 @@ class userVisits
     }
     return $sessionPresent;
   }
-  function public checkSession($sess){
+
+  public function checkSession($sess){
     $sql = "SELECT * FROM users_sessions WHERE sessionID = '$sess'";
     $result = mysqli_query($this->DB, $sql);
     if ($result) {
@@ -64,7 +59,7 @@ class userVisits
     }
     return $sessionPresent;
   }
-  function public makeSession($userID){
+  public function makeSession($userID){
     $userIP = $this->BASIC_FUNC->getIp();
     $date = date('Y-m-d');
     $dateTime = time();
@@ -77,7 +72,7 @@ class userVisits
     mysqli_query($this->DB, $sql2);
   }
 
-  function public updateVisits($sessionID){
+  public function updateVisits($sessionID){
     $visitTime = time();
     if (isset($_SERVER['HTTP_REFERER'])) {
       $httpRefe = $_SERVER['HTTP_REFERER'];
