@@ -6,7 +6,7 @@ if (!isset($_SERVROOT)) {
 
 $myPATH = myPath();
 
-include($_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php');
+// include($_SERVROOT.$myPATH.'/secrets/DEV_OPTIONS.php');
 include($_SERVROOT.$myPATH.'/secrets/DB_CONNECT.php');
 include($_SERVROOT.$myPATH.'/secrets/AUTH.php');
 
