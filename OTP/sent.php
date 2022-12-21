@@ -46,7 +46,7 @@ class SentOTP
       }else if ($this->OTP_PURPOSE == 'NR') {
         $timestamp = $this->sendToNR($this->EMAIL_ADDR, $OTP, $userName);
         if ($timestamp) {
-          setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
+          setcookie("sucessStatus","OTP sent (timestamp: $timestamp)", time()+10, '/');
           header("Location: /OTP/");
         }else {
           setcookie("authStatus","Cannot send OTP", time()+10, '/');
