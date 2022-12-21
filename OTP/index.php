@@ -1,9 +1,10 @@
 <?php
 $_SERVROOT = '../../../';
-$_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
-include $_DOCROOT.'/.htHidden/activity/VISIT.php';
+include $DOCROOT.'/.htHidden/activity/VISIT.php';
 new VisitorActivity();
 new GetOTP();
+
+
 class GetOTP
 {
   private $SESSION;
