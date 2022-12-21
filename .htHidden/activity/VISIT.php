@@ -108,4 +108,19 @@ class VisitorActivity
     return $status;
   }
 }
+
+function myPath(){
+  $domain = $_SERVER['HTTP_HOST'];
+  // For testing.fastreed.com
+  if ($domain == 'testing.fastreed.com') {
+    $myPATH = "testing";
+    // For www.fastreed.com and fastreed.com
+  }elseif ($domain == 'www.fastreed.com' || $domain == 'fastreed.com') {
+    $myPATH = "production";
+    // For Localhost
+  }elseif ($domain == 'localhost') {
+    $myPATH = "local";
+  }
+  return $myPATH;
+}
  ?>
