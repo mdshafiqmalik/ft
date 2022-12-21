@@ -4,7 +4,7 @@ $_DOCROOT = $_SERVER['DOCUMENT_ROOT'];
 include $_DOCROOT.'/.htHidden/activity/VISIT.php';
 new VisitorActivity();
 new GetOTP();
-class GetOTP extends VisitorActivity
+class GetOTP
 {
   private $SESSION;
   private $VA;
@@ -12,9 +12,6 @@ class GetOTP extends VisitorActivity
   function __construct()
   {
     $this->SESSION = $this->getSessionID();
-    $this->VA = new GetOTP();
-    $this->DB = $this->VA->DB;
-    echo $this->DB;
   }
 
   public function getSessionID(){

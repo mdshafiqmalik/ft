@@ -64,27 +64,41 @@ class SentOTP
   }
 
   public function authOTP(){
-    $sql = "SELECT * FROM OTP WHERE userEmail = '$this->EMAIL_ADDR' AND otpPurpose = '$this->OTP_PURPOSE'";
+    $sql = "SELECT userEmail, OTP , sessionID FROM OTP WHERE userEmail = '$this->EMAIL_ADDR' AND otpPurpose = '$this->OTP_PURPOSE'";
     $result = mysqli_query($this->DB, $sql);
     if (mysqli_num_rows($result)) {
       $row = mysqli_fetch_assoc($result);
-      $OTPFOUND['bool'] = true;
-      $OTPFOUND['data'] = $row['userName'];
+      $otpSession = $row['sessionID'];
+      $userEmail = $row['userEmail'];
+      $getUsername = $this->getUsername($otpSession, $userEmail);
+      $return['bool'] = true;
+      $return['data'] = $getUsername;
     }else {
-      $OTPFOUND['bool'] = false;
+      $return['bool'] = false;
     }
-    return $OTPFOUND;
+    return $return;
   }
 
+  public function getUsername($otpSession, $userEmail){
+    $sql = "SELECT userName FROM users_register WHERE sessionID = '$otpSession' AND userEmail = '$userEmail'";
+    $result = mysqli_query($this->DB, $sql);
+    if (mysqli_num_rows($result)) {
+      $row = mysqli_fetch_assoc($result);
+      $return = $row['userName'];
+    }else {
+      $return = false;
+    }
+    return $return;
+  }
 
   private function sendToNR($EMAIL, $OTP_SENT, $USER_NAME){
 
     if ($timestamp = sendOTP($EMAIL, $OTP_SENT, $USER_NAME)) {
-     $OTPSENT = $timestamp;
+     $return = $timestamp;
     }else {
-     $OTPSENT = fasle;;
+     $return = fasle;;
     }
-    return $OTPSENT;
+    return $return;
   }
   private function passWordRecovery(){
   }
