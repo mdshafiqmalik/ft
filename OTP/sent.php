@@ -73,7 +73,7 @@ class SentOTP
       $getUsername = $this->getUsername($otpSession, $userEmail);
       $return['bool'] = true;
       $return['data'] = $getUsername;
-      $return['OTP'] = $require $row['OTP'];
+      $return['OTP'] = $row['OTP'];
     }else {
       $return['bool'] = false;
     }
