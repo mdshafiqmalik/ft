@@ -22,7 +22,6 @@ include_once($GLOBALS['DB']);
 include_once($GLOBALS['AUTH']);
 include_once($GLOBALS['BASIC_FUNC']);
 include_once($GLOBALS['DEV_OPTIONS']);
-include_once($GLOBALS['ERROR_HANDLER']);
 
 include_once($GLOBALS['ADMIN_VISIT']);
 include_once($GLOBALS['USER_VISIT']);
@@ -42,7 +41,6 @@ class VisitorActivity
 
   function __construct()
   {
-    new HandleError("There is problem to Capturing Activity");
 
     // Creating Instances
     $this->GUEST_VISITED = new GuestsVisits();

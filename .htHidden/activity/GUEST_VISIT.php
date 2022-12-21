@@ -8,7 +8,6 @@ class GuestsVisits
 
   function __construct()
   {
-    new HandleError("There is problem to capture Guest Activity");
 
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();

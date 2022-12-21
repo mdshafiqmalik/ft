@@ -8,10 +8,6 @@ class BasicFunctions
 
   function __construct()
   {
-    // Error Handling for Database
-    // If any error found it will be redirected
-    // to BASIC_FUNC Error Page
-    new HandleError("There is error in basic functionality of website");
 
     // Creating Instances
     $this->DB_CONNECT = new Database();

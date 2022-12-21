@@ -9,7 +9,6 @@ class AdminVisits
   function __construct()
   {
 
-    new HandleError("There is problem to capture Admin Activity");
 
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();

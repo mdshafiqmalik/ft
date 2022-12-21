@@ -9,8 +9,6 @@ class UsersVisits
   function __construct()
   {
 
-    new HandleError("There is problem to capture User Activity");
-
 
     $this->DB_CONNECT = new Database();
     $this->AUTH = new Auth();
