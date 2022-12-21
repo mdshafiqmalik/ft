@@ -42,16 +42,16 @@ class SentOTP
       $userName = $OTPexist['userName'];
       if (OTP_EMAIL_DISABLED) {
         $timestamp = date('h:i:s');
-        header("Location: /OTP/");
         setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
+        header("Location: /OTP/");
       }else if ($this->OTP_PURPOSE == 'NR') {
         $timestamp = $this->sendToNR($this->EMAIL_ADDR, $OTP, $userName);
         if ($timestamp) {
-          header("Location: /OTP/");
           setcookie("sucessStatus","OTP sent with timestamp ($timestamp)", time()+10, '/');
+          header("Location: /OTP/");
         }else {
-          header("Location: /register/");
           setcookie("authStatus","Cannot send OTP", time()+10, '/');
+          header("Location: /register/");
         }
       }elseif ($this->OTP_PURPOSE == 'PR') {
         $this->passWordRecovery();
